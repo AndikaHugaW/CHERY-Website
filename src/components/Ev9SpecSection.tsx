@@ -20,51 +20,54 @@ export const Ev9SpecSection: React.FC = () => {
         />
       </div>
 
-      {/* Top Section: Title */}
-      <div className="relative z-10 text-center pt-2 sm:pt-4">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
-          Specification (Chery Q)
-        </h2>
-      </div>
-
-      {/* Middle Specs: Left (Dimensions) and Right (Power & Horsepower) */}
-      <div className="relative z-10 w-full max-w-[1500px] mx-auto flex items-center justify-between gap-4 px-2 sm:px-6 lg:px-12 my-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-        {/* Left: DIMENSION | LENGTH, WIDTH, HEIGHT */}
-        <div className="flex items-start gap-2.5 sm:gap-4">
-          <span className="font-bold text-[11px] sm:text-sm md:text-base text-white tracking-wider uppercase pt-0.5">
-            DIMENSION
-          </span>
-          <div className="w-[1.5px] h-14 sm:h-18 md:h-20 bg-white/70 shrink-0 self-stretch my-0.5" />
-          <div className="space-y-1 sm:space-y-1.5 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-white/90">LENGTH</span>
-              <span className="font-bold text-white">113.2 IN</span>
-            </div>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-white/90">WIDTH</span>
-              <span className="font-bold text-white">184.8 IN</span>
-            </div>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-white/90">HEIGHT</span>
-              <span className="font-bold text-white">72.8 IN</span>
-            </div>
-          </div>
+      {/* Top Header & Specs Group */}
+      <div className="relative z-10 w-full flex flex-col items-center">
+        {/* Title */}
+        <div className="text-center pt-2 sm:pt-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
+            Specification (Chery Q)
+          </h2>
         </div>
 
-        {/* Right: DIMENSION | POWER, HORSEPOWER */}
-        <div className="flex items-start gap-2.5 sm:gap-4 ml-auto">
-          <span className="font-bold text-[11px] sm:text-sm md:text-base text-white tracking-wider uppercase pt-0.5">
-            DIMENSION
-          </span>
-          <div className="w-[1.5px] h-10 sm:h-12 md:h-14 bg-white/70 shrink-0 self-stretch my-0.5" />
-          <div className="space-y-1 sm:space-y-1.5 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-white/90">POWER</span>
-              <span className="font-bold text-white">208 KW</span>
+        {/* Middle Specs: Exactly 30px below Title */}
+        <div className="w-full max-w-[1500px] mx-auto flex items-center justify-between gap-4 px-2 sm:px-6 lg:px-12 mt-[30px] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+          {/* Left: DIMENSION | LENGTH, WIDTH, HEIGHT */}
+          <div className="flex items-start gap-2.5 sm:gap-4">
+            <span className="font-bold text-[11px] sm:text-sm md:text-base text-white tracking-wider uppercase pt-0.5">
+              DIMENSION
+            </span>
+            <div className="w-[1.5px] h-14 sm:h-18 md:h-20 bg-white/70 shrink-0 self-stretch my-0.5" />
+            <div className="space-y-1 sm:space-y-1.5 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="text-white/90">LENGTH</span>
+                <span className="font-bold text-white">113.2 IN</span>
+              </div>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="text-white/90">WIDTH</span>
+                <span className="font-bold text-white">184.8 IN</span>
+              </div>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="text-white/90">HEIGHT</span>
+                <span className="font-bold text-white">72.8 IN</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-white/90">HORSEPOWER</span>
-              <span className="font-bold text-white">283 HP</span>
+          </div>
+
+          {/* Right: DIMENSION | POWER, HORSEPOWER */}
+          <div className="flex items-start gap-2.5 sm:gap-4 ml-auto">
+            <span className="font-bold text-[11px] sm:text-sm md:text-base text-white tracking-wider uppercase pt-0.5">
+              DIMENSION
+            </span>
+            <div className="w-[1.5px] h-10 sm:h-12 md:h-14 bg-white/70 shrink-0 self-stretch my-0.5" />
+            <div className="space-y-1 sm:space-y-1.5 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="text-white/90">POWER</span>
+                <span className="font-bold text-white">208 KW</span>
+              </div>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="text-white/90">HORSEPOWER</span>
+                <span className="font-bold text-white">283 HP</span>
+              </div>
             </div>
           </div>
         </div>
