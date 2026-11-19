@@ -14,18 +14,18 @@ interface HeroSectionProps {
 
 const heroCars = [
   {
-    id: 'seltos',
-    title: 'KIA All New Seltos',
-    tagline: 'Compact SUV Dynamic',
-    promoPrice: 'Rp 373 Juta',
-    image: '/images/katalog unit/all new seltos.webp',
+    id: 'hero-1',
+    title: 'Chery Salatiga - Landing Page 1',
+    tagline: 'Premium SUV',
+    promoPrice: '',
+    image: '/images/landing page/landingpage 1.png',
   },
   {
-    id: 'sonet',
-    title: 'KIA Sonet',
-    tagline: 'Smart Urban SUV',
-    promoPrice: 'Rp 272 Juta',
-    image: '/images/katalog unit/kia sonet.webp',
+    id: 'hero-2',
+    title: 'Chery Salatiga - Hero Section 2',
+    tagline: 'Dynamic Performance',
+    promoPrice: '',
+    image: '/images/landing page/herosection 2.png',
   },
 ];
 
@@ -46,7 +46,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => 
       <div className="absolute inset-0 z-0 overflow-hidden rounded-none">
         {heroCars.map((car, idx) => (
           <div
-            key={car.title}
+            key={car.id}
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
               idx === currentCarIndex
                 ? 'opacity-100 z-10'
