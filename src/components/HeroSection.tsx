@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
@@ -12,63 +12,21 @@ interface HeroSectionProps {
   onOpenTestDrive?: (carId?: string) => void;
 }
 
-const heroCars = [
-  {
-    id: 'hero-1',
-    title: 'Chery Salatiga - Landing Page 1',
-    tagline: 'Premium SUV',
-    promoPrice: '',
-    image: '/images/landing page/landingpage 1.png',
-  },
-  {
-    id: 'hero-2',
-    title: 'Chery Salatiga - Hero Section 2',
-    tagline: 'Dynamic Performance',
-    promoPrice: '',
-    image: '/images/landing page/herosection 2.png',
-  },
-];
-
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => {
-  const [currentCarIndex, setCurrentCarIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentCarIndex((prev) => (prev + 1) % heroCars.length);
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative w-full min-h-[92dvh] md:min-h-screen flex flex-col justify-end md:justify-between overflow-hidden bg-neutral-950 text-white p-6 sm:p-10 lg:p-14 rounded-none my-0 z-20">
       {/* 1. Fullscreen Unrounded Edge-to-Edge Car Background Stage */}
       <div className="absolute inset-0 z-0 overflow-hidden rounded-none">
-        {heroCars.map((car, idx) => (
-          <div
-            key={car.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              idx === currentCarIndex
-                ? 'opacity-100 z-10'
-                : 'opacity-0 pointer-events-none z-0'
-            }`}
-          >
-            <div className="relative w-full h-full">
-              <Image
-                src={car.image}
-                alt={car.title}
-                fill
-                priority={idx === 0}
-                sizes="100vw"
-                className="object-cover object-center w-full h-full scale-105 transition-transform duration-1000 rounded-none"
-              />
-            </div>
-          </div>
-        ))}
-
-        {/* Ambient Dark Gradient Overlay from bottom to top for maximum text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/30 z-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-black/20 z-10 pointer-events-none" />
+        <div className="relative w-full h-full">
+          <Image
+            src="/images/landing page/landingpage 1.png"
+            alt="Chery Salatiga"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center w-full h-full rounded-none"
+          />
+        </div>
       </div>
 
       {/* 2. MOBILE HERO CONTENT (<= 768px Only - Bottom Aligned Editorial Layout) */}
