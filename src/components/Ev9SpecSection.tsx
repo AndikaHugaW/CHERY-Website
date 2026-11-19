@@ -1,295 +1,113 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-interface CarSpecData {
-  id: string;
-  name: string;
-  badge: string;
-  bgImage: string;
-  dimensions: {
-    length: string;
-    width: string;
-    height: string;
-  };
-  performance: {
-    power: string;
-    torqueOrHp: string;
-  };
-  quickStats: {
-    stat1Label: string;
-    stat1Value: string;
-    stat2Label: string;
-    stat2Value: string;
-    stat3Label: string;
-    stat3Value: string;
-    stat4Label: string;
-    stat4Value: string;
-  };
-}
-
-const SPEC_CARS: CarSpecData[] = [
-  {
-    id: 'kia-sonet',
-    name: 'KIA SONET',
-    badge: 'DYNAMIC COMPACT SUV',
-    bgImage: '/images/katalog%20unit/kia%20sonet.webp',
-    dimensions: {
-      length: '4.110 MM',
-      width: '1.790 MM',
-      height: '1.625 - 1.642 MM',
-    },
-    performance: {
-      power: '115 PS',
-      torqueOrHp: '144 NM',
-    },
-    quickStats: {
-      stat1Label: 'ENGINE',
-      stat1Value: '1500 CC',
-      stat2Label: 'TRANSMISSION',
-      stat2Value: 'IVT',
-      stat3Label: 'DRIVE TYPE',
-      stat3Value: 'FWD',
-      stat4Label: 'SEATING',
-      stat4Value: '5 SEATER',
-    },
-  },
-  {
-    id: 'kia-seltos',
-    name: 'KIA SELTOS',
-    badge: 'BOLD & INTELLIGENT SUV',
-    bgImage: '/images/katalog%20unit/all%20new%20seltos.webp',
-    dimensions: {
-      length: '4.460 MM',
-      width: '1.830 MM',
-      height: '1.635 MM',
-    },
-    performance: {
-      power: '115 PS',
-      torqueOrHp: '144 NM',
-    },
-    quickStats: {
-      stat1Label: 'ENGINE',
-      stat1Value: '1500 CC',
-      stat2Label: 'TRANSMISSION',
-      stat2Value: 'IVT',
-      stat3Label: 'ACCELERATION',
-      stat3Value: '8.9 SEC',
-      stat4Label: 'SEATING',
-      stat4Value: '5 SEATER',
-    },
-  },
-  {
-    id: 'kia-carens',
-    name: 'KIA CARENS',
-    badge: 'VERSATILE FAMILY MPV',
-    bgImage: '/images/katalog%20unit/kia%20all%20new%20carens.webp',
-    dimensions: {
-      length: '4.550 MM',
-      width: '1.800 MM',
-      height: '1.708 MM',
-    },
-    performance: {
-      power: '115 PS',
-      torqueOrHp: '144 NM',
-    },
-    quickStats: {
-      stat1Label: 'ENGINE',
-      stat1Value: '1500 CC',
-      stat2Label: 'TRANSMISSION',
-      stat2Value: 'IVT / MANUAL',
-      stat3Label: 'DRIVE TYPE',
-      stat3Value: 'FWD',
-      stat4Label: 'SEATING',
-      stat4Value: '6-7 SEATER',
-    },
-  },
-];
-
+import React from 'react';
+import Image from 'next/image';
 
 export const Ev9SpecSection: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  // Auto transition every 3 seconds (3000ms) unless hovered
-  useEffect(() => {
-    if (isHovered) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % SPEC_CARS.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isHovered]);
-
-  const activeCar = SPEC_CARS[activeIndex];
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + SPEC_CARS.length) % SPEC_CARS.length);
-  };
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % SPEC_CARS.length);
-  };
-
   return (
     <section 
-      className="relative w-full min-h-[460px] sm:min-h-[560px] lg:min-h-[calc(100vh-80px)] bg-neutral-950 overflow-hidden flex flex-col justify-between py-4 sm:py-8 lg:py-12 px-3 sm:px-6 lg:px-12 text-white group"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[500px] sm:min-h-[580px] lg:min-h-[calc(100vh-80px)] overflow-hidden flex flex-col justify-between py-6 sm:py-8 lg:py-12 px-4 sm:px-8 lg:px-16 text-white"
     >
-      {/* Background Image Showcase with 1000ms Smooth Crossfade Transition */}
-      {SPEC_CARS.map((car, idx) => (
-        <div 
-          key={car.id}
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out ${
-            idx === activeIndex ? 'opacity-100 scale-100 z-0' : 'opacity-0 scale-105 pointer-events-none -z-10'
-          }`}
-          style={{
-            backgroundImage: `url('${car.bgImage}')`,
-          }}
+      {/* Background Image: herosection 2.png without dark overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/landing page/herosection 2.png"
+          alt="Specification Chery Q"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center w-full h-full"
         />
-      ))}
+      </div>
 
-      {/* Gradient & Dark Vignette for Crisp Text Contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/80 pointer-events-none z-0" />
-
-      {/* Top Section: Title & Model Selector Tabs */}
-      <div className="relative z-10 text-center pt-1 sm:pt-4 space-y-2 sm:space-y-3">
-        {/* Category Badge */}
-        <div className="inline-block">
-          <span className="bg-white/10 backdrop-blur-md text-white/90 text-[9px] sm:text-xs font-bold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-white/20 tracking-widest uppercase">
-            {activeCar.badge}
-          </span>
-        </div>
-
-        {/* Dynamic Title */}
-        <h2 className="text-lg sm:text-3xl md:text-5xl font-black tracking-tight text-white drop-shadow-lg uppercase transition-all duration-500">
-          Specification ({activeCar.name})
+      {/* Top Section: Title */}
+      <div className="relative z-10 text-center pt-2 sm:pt-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
+          Specification (Chery Q)
         </h2>
-
-        {/* Model Tabs Selector */}
-        <div className="flex items-center justify-center gap-1 sm:gap-2 pt-1 flex-wrap">
-          {SPEC_CARS.map((car, idx) => (
-            <button
-              key={car.id}
-              onClick={() => setActiveIndex(idx)}
-              className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-[9px] sm:text-xs font-bold transition-all duration-300 ${
-                idx === activeIndex
-                  ? 'bg-white text-black shadow-lg scale-105'
-                  : 'bg-black/40 hover:bg-black/60 text-white/70 hover:text-white border border-white/15'
-              }`}
-            >
-              {car.name}
-            </button>
-          ))}
-        </div>
       </div>
 
-      {/* Side Navigation Arrow Buttons */}
-      <button 
-        onClick={handlePrev}
-        aria-label="Previous Unit"
-        className="absolute left-1.5 sm:left-6 top-1/2 -translate-y-1/2 z-20 p-1.5 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md transition-all opacity-80 hover:opacity-100 hover:scale-110"
-      >
-        <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
-      </button>
-
-      <button 
-        onClick={handleNext}
-        aria-label="Next Unit"
-        className="absolute right-1.5 sm:right-6 top-1/2 -translate-y-1/2 z-20 p-1.5 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md transition-all opacity-80 hover:opacity-100 hover:scale-110"
-      >
-        <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
-      </button>
-
-      {/* Middle Grid: 4 Columns with Sub-sections Aligned with Battery Capacity & Weight */}
-      <div className="relative z-10 max-w-[1600px] mx-auto w-full px-2 sm:px-8 lg:px-16 grid grid-cols-4 gap-1.5 sm:gap-4 md:gap-8 mt-2 sm:mt-6 md:mt-8 mb-auto py-1 sm:py-4">
-        
-        {/* Col 1: Left Specs (DIMENSION - Pulled slightly inward) */}
-        <div className="col-span-1 space-y-1 sm:space-y-4 max-w-[260px]">
-          <h3 className="text-[9px] sm:text-xs md:text-sm font-extrabold tracking-widest text-white/90 uppercase border-b border-white/20 pb-0.5 inline-block">
+      {/* Middle Specs: Left (Dimensions) and Right (Power & Horsepower) */}
+      <div className="relative z-10 w-full max-w-[1500px] mx-auto flex items-center justify-between gap-4 px-2 sm:px-6 lg:px-12 my-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+        {/* Left: DIMENSION | LENGTH, WIDTH, HEIGHT */}
+        <div className="flex items-start gap-2.5 sm:gap-4">
+          <span className="font-bold text-[11px] sm:text-sm md:text-base text-white tracking-wider uppercase pt-0.5">
             DIMENSION
-          </h3>
-          
-          <div key={`dim-${activeCar.id}`} className="space-y-1 sm:space-y-2.5 text-[8px] sm:text-xs md:text-sm font-semibold tracking-wider transition-opacity duration-500">
-            <div className="flex items-center justify-between gap-1 sm:gap-4 md:gap-6">
-              <span className="text-white/80 uppercase">LENGTH</span>
-              <span className="text-white font-extrabold">{activeCar.dimensions.length}</span>
+          </span>
+          <div className="w-[1.5px] h-14 sm:h-18 md:h-20 bg-white/70 shrink-0 self-stretch my-0.5" />
+          <div className="space-y-1 sm:space-y-1.5 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-white/90">LENGTH</span>
+              <span className="font-bold text-white">113.2 IN</span>
             </div>
-            <div className="flex items-center justify-between gap-1 sm:gap-4 md:gap-6">
-              <span className="text-white/80 uppercase">WIDTH</span>
-              <span className="text-white font-extrabold">{activeCar.dimensions.width}</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-white/90">WIDTH</span>
+              <span className="font-bold text-white">184.8 IN</span>
             </div>
-            <div className="flex items-center justify-between gap-1 sm:gap-4 md:gap-6">
-              <span className="text-white/80 uppercase">HEIGHT</span>
-              <span className="text-white font-extrabold">{activeCar.dimensions.height}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Col 2 & Col 3: Empty Center Showcase Space */}
-        <div className="col-span-2 pointer-events-none" />
-
-        {/* Col 4: Right Specs (PERFORMANCE - Pulled slightly inward with ml-auto) */}
-        <div className="col-span-1 space-y-1 sm:space-y-4 max-w-[260px] ml-auto">
-          <h3 className="text-[9px] sm:text-xs md:text-sm font-extrabold tracking-widest text-white/90 uppercase border-b border-white/20 pb-0.5 inline-block">
-            PERFORMANCE
-          </h3>
-          
-          <div key={`perf-${activeCar.id}`} className="space-y-1 sm:space-y-2.5 text-[8px] sm:text-xs md:text-sm font-semibold tracking-wider transition-opacity duration-500">
-            <div className="flex items-center justify-between gap-1 sm:gap-4 md:gap-6">
-              <span className="text-white/80 uppercase">POWER</span>
-              <span className="text-white font-extrabold">{activeCar.performance.power}</span>
-            </div>
-            <div className="flex items-center justify-between gap-1 sm:gap-4 md:gap-6">
-              <span className="text-white/80 uppercase">OUTPUT</span>
-              <span className="text-white font-extrabold">{activeCar.performance.torqueOrHp}</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-white/90">HEIGHT</span>
+              <span className="font-bold text-white">72.8 IN</span>
             </div>
           </div>
         </div>
 
+        {/* Right: DIMENSION | POWER, HORSEPOWER */}
+        <div className="flex items-start gap-2.5 sm:gap-4 ml-auto">
+          <span className="font-bold text-[11px] sm:text-sm md:text-base text-white tracking-wider uppercase pt-0.5">
+            DIMENSION
+          </span>
+          <div className="w-[1.5px] h-10 sm:h-12 md:h-14 bg-white/70 shrink-0 self-stretch my-0.5" />
+          <div className="space-y-1 sm:space-y-1.5 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-white/90">POWER</span>
+              <span className="font-bold text-white">208 KW</span>
+            </div>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-white/90">HORSEPOWER</span>
+              <span className="font-bold text-white">283 HP</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Bottom Bar: Horizontal Quick Stats (Aligned with 4 Columns) */}
-      <div className="relative z-10 max-w-[1600px] mx-auto w-full px-2 sm:px-8 lg:px-16 pt-2 sm:pt-6 pb-1 border-t border-white/10">
-        <div key={`stats-${activeCar.id}`} className="grid grid-cols-4 gap-1 sm:gap-6 text-center transition-opacity duration-500">
-          
+      {/* Bottom Row: 4 Horizontal Quick Stats */}
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto pb-2 sm:pb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 text-center">
           <div>
-            <span className="block text-[8px] sm:text-xs font-bold tracking-widest text-white/80 uppercase">
-              {activeCar.quickStats.stat1Label}
+            <span className="block text-[10px] sm:text-xs md:text-sm font-bold tracking-wider text-white uppercase">
+              BATTERY CAPACITY
             </span>
-            <span className="block text-[11px] sm:text-xl md:text-2xl font-black text-white mt-0.5 sm:mt-1 tracking-tight">
-              {activeCar.quickStats.stat1Value}
+            <span className="block text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white mt-0.5 tracking-tight uppercase">
+              51 KWH
             </span>
           </div>
 
           <div>
-            <span className="block text-[8px] sm:text-xs font-bold tracking-widest text-white/80 uppercase">
-              {activeCar.quickStats.stat2Label}
+            <span className="block text-[10px] sm:text-xs md:text-sm font-bold tracking-wider text-white uppercase">
+              DUAL MOTOR
             </span>
-            <span className="block text-[11px] sm:text-xl md:text-2xl font-black text-white mt-0.5 sm:mt-1 tracking-tight">
-              {activeCar.quickStats.stat2Value}
-            </span>
-          </div>
-
-          <div>
-            <span className="block text-[8px] sm:text-xs font-bold tracking-widest text-white/80 uppercase">
-              {activeCar.quickStats.stat3Label}
-            </span>
-            <span className="block text-[11px] sm:text-xl md:text-2xl font-black text-white mt-0.5 sm:mt-1 tracking-tight">
-              {activeCar.quickStats.stat3Value}
+            <span className="block text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white mt-0.5 tracking-tight uppercase">
+              AWD
             </span>
           </div>
 
           <div>
-            <span className="block text-[8px] sm:text-xs font-bold tracking-widest text-white/80 uppercase">
-              {activeCar.quickStats.stat4Label}
+            <span className="block text-[10px] sm:text-xs md:text-sm font-bold tracking-wider text-white uppercase">
+              TOP SPEED
             </span>
-            <span className="block text-[11px] sm:text-xl md:text-2xl font-black text-white mt-0.5 sm:mt-1 tracking-tight">
-              {activeCar.quickStats.stat4Value}
+            <span className="block text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white mt-0.5 tracking-tight uppercase">
+              225 KM/H
             </span>
           </div>
 
+          <div>
+            <span className="block text-[10px] sm:text-xs md:text-sm font-bold tracking-wider text-white uppercase">
+              WEIGHT
+            </span>
+            <span className="block text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white mt-0.5 tracking-tight uppercase">
+              4,030 LBS
+            </span>
+          </div>
         </div>
       </div>
     </section>
