@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MapPin, Phone } from 'lucide-react';
 import { CONTACT_INFO } from '@/data/contact';
+import logoImg from '../../public/images/logo/logo.png';
 
 const socialLinks = [
   {
@@ -49,15 +50,13 @@ export const Footer: React.FC<FooterProps> = () => {
           <div className="lg:col-span-4 space-y-4">
             <Link href="/" className="inline-flex items-center gap-3">
               <Image
-                src="/images/logo/logo.png"
-                alt="Masati Semarang Logo"
-                width={140}
-                height={40}
-                style={{ width: 'auto', height: '40px' }}
-                className="h-10 w-auto object-contain"
+                src={logoImg}
+                alt="Logo"
+                style={{ width: 'auto', height: '32px' }}
+                className="h-8 w-auto object-contain brightness-0"
               />
               <span className="font-semibold text-xl tracking-tight text-black uppercase">
-                MASATI SEMARANG
+                Salatiga
               </span>
             </Link>
 
@@ -175,7 +174,7 @@ export const Footer: React.FC<FooterProps> = () => {
 
         {/* Bottom Bar: Copyright & Policy */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 gap-4">
-          <p>© 2026 Masati Semarang. All rights reserved.</p>
+          <p>© 2026 Salatiga. All rights reserved.</p>
           <div className="flex items-center gap-6 font-medium text-gray-600">
             <Link href="/kontak" className="hover:text-black transition-colors">
               Privacy Policy
