@@ -40,7 +40,7 @@ export default function KatalogPage() {
 
       <section className="relative w-full min-h-[72vh] sm:min-h-[80vh] lg:min-h-[85vh] flex items-end overflow-hidden bg-neutral-900 pt-20">
         <Image
-          src="/images/katalog unit/hero.webp"
+          src="/images/katalog unit/hero-katalog.webp"
           alt="Chery Hero Katalog"
           fill
           sizes="100vw"

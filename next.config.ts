@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
         hostname: 'cheryidn.sgp1.cdn.digitaloceanspaces.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'assets.aceternity.com',
+        pathname: '/**',
+      },
     ],
   },
   experimental: {

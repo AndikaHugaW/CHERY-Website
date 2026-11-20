@@ -1,157 +1,182 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { LiquidGlass } from '@/components/ui/liquid-glass';
+import { cn } from '@/lib/utils';
+import {
+  Navbar as ResizableNavbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  MobileNavHeader,
+  MobileNavMenu,
+  MobileNavToggle,
+  useNavbarVisible,
+} from '@/components/ui/resizable-navbar';
 import logoImg from '../../public/images/logo/logo.png';
 
 interface NavbarProps {
   onOpenTestDrive?: (carId?: string) => void;
 }
 
+/**
+ * Glass action button that inverts to a solid white pill with dark text once
+ * the navbar enters its resized (scrolled) state.
+ */
+const NavbarActionButton: React.FC<{
+  children: React.ReactNode;
+  href?: string;
+  onClick?: () => void;
+}> = ({ children, href, onClick }) => {
+  const visible = useNavbarVisible();
+
+  return (
+    <LiquidGlass
+      radius={999}
+      scale={22}
+      aberration={10}
+      bevelDepth={16}
+      frost={0.3}
+      tint={0.14}
+      className={cn(
+        'shadow-[0_12px_40px_rgb(0_0_0/0.25),inset_0_1px_0_rgb(255_255_255/0.5)]',
+        visible && 'bg-white! shadow-[0_10px_30px_rgb(0_0_0/0.28)]',
+      )}
+    >
+      {href ? (
+        <Link
+          href={href}
+          className={cn(
+            'block text-sm font-semibold px-5 py-2.5 rounded-full text-center transition-colors duration-300',
+            visible ? 'text-gray-950' : 'text-white',
+          )}
+        >
+          {children}
+        </Link>
+      ) : (
+        <button
+          type="button"
+          onClick={onClick}
+          className={cn(
+            'block text-sm font-semibold px-5 py-2.5 rounded-full text-center transition-all duration-300 active:scale-95',
+            visible ? 'text-gray-950' : 'text-white',
+          )}
+        >
+          {children}
+        </button>
+      )}
+    </LiquidGlass>
+  );
+};
+
 export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navLinks = [
-    { name: 'Beranda', href: '/' },
-    { name: 'Katalog Unit', href: '/katalog' },
-    { name: 'Layanan Bengkel', href: '/bengkel' },
-    { name: 'Kontak & Tentang', href: '/kontak' },
+    { name: 'Beranda', link: '/' },
+    { name: 'Katalog Unit', link: '/katalog' },
+    { name: 'Layanan Bengkel', link: '/bengkel' },
+    { name: 'Kontak & Tentang', link: '/kontak' },
   ];
 
   const isCatalogUnitDetail =
     pathname != null && /^\/katalog\/[^/]+$/.test(pathname);
 
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isCatalogUnitDetail
-          ? 'bg-black border-b border-white/10 shadow-lg'
-          : scrolled
-            ? 'bg-neutral-950/85 backdrop-blur-md border-b border-white/10 shadow-lg'
-            : 'bg-transparent border-b border-transparent'
-      }`}
+  const brandLogo = (
+    <Link
+      href="/"
+      className="relative z-20 mr-2 flex shrink-0 items-center gap-3.5 group"
     >
-      <div className="max-w-[1728px] mx-auto px-4 sm:px-8 lg:px-12 h-20 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3.5 group">
-          <div className="relative h-10 flex items-center">
-            <Image
-              src={logoImg}
-              alt="Logo"
-              style={{ width: 'auto', height: '26px' }}
-              className="h-6 sm:h-7 w-auto object-contain group-hover:scale-105 transition-transform"
-              priority
-            />
-          </div>
-          <span className="font-semibold text-xl sm:text-2xl tracking-tight text-white uppercase">
-            Salatiga
-          </span>
-        </Link>
+      <span className="relative h-10 flex items-center">
+        <Image
+          src={logoImg}
+          alt="Logo"
+          style={{ width: 'auto', height: '26px' }}
+          className="h-6 sm:h-7 w-auto object-contain group-hover:scale-105 transition-transform"
+          priority
+        />
+      </span>
+      <span className="font-semibold text-lg sm:text-xl tracking-tight text-white uppercase">
+        Salatiga
+      </span>
+    </Link>
+  );
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-9 text-sm">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`relative py-1 transition-colors group ${
-                  isActive
-                    ? 'text-white font-bold'
-                    : 'text-white/50 hover:text-white font-medium'
-                }`}
-              >
-                {link.name}
-                <span
-                  className={`absolute bottom-[-6px] left-0 right-0 h-[2px] bg-white rounded-full transition-all duration-300 ${
-                    isActive
-                      ? 'opacity-100 scale-x-100'
-                      : 'opacity-0 scale-x-0 group-hover:opacity-40 group-hover:scale-x-75'
-                  }`}
-                />
-              </Link>
-            );
-          })}
-        </nav>
+  const actionButton = onOpenTestDrive ? (
+    <NavbarActionButton onClick={() => onOpenTestDrive()}>
+      Test Drive
+    </NavbarActionButton>
+  ) : (
+    <NavbarActionButton href="/kontak">Kontak</NavbarActionButton>
+  );
 
-        {/* Right Action Button */}
-        <div className="hidden md:flex items-center">
-          {onOpenTestDrive ? (
-            <button
-              type="button"
-              onClick={() => onOpenTestDrive()}
-              className="bg-transparent hover:bg-white/10 text-white border border-white/80 text-sm font-semibold px-6 py-2.5 rounded-full shadow-sm transition-all active:scale-95"
-            >
-              Test Drive
-            </button>
-          ) : (
-            <Link
-              href="/kontak"
-              className="bg-white/15 hover:bg-white/25 text-white border border-white/30 backdrop-blur-sm text-sm font-semibold px-6 py-2.5 rounded-full shadow-sm transition-all active:scale-95 text-center inline-block"
-            >
-              Kontak
-            </Link>
-          )}
-        </div>
+  return (
+    <ResizableNavbar className="fixed top-0 inset-x-0 z-50 w-full">
+      {/* Desktop Navigation */}
+      <NavBody
+        className="max-w-[1728px] px-4 sm:px-8 lg:px-12 md:flex"
+        visibleWidth="76%"
+        minWidth={760}
+        visibleClassName={
+          isCatalogUnitDetail
+            ? 'bg-black/90! border-b border-white/10 shadow-lg'
+            : 'bg-neutral-950/85! border-b border-white/10 shadow-lg'
+        }
+      >
+        {brandLogo}
+        <NavItems
+          items={navLinks}
+          className="md:flex"
+          linkClassName="text-white/60! hover:text-white! transition-colors"
+          activeClassName="text-white!"
+          hoverPillClassName="bg-white/10!"
+          isActive={(item) => pathname === item.link}
+        />
+        <div className="relative z-20 flex items-center shrink-0">{actionButton}</div>
+      </NavBody>
 
-        {/* Mobile Menu Toggle Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
-          aria-label="Toggle Menu"
+      {/* Mobile Navigation */}
+      <MobileNav
+        visibleClassName="bg-neutral-950/90! border-b border-white/10 shadow-lg"
+        className="px-4 sm:px-8 md:hidden"
+      >
+        <MobileNavHeader>
+          {brandLogo}
+          <MobileNavToggle
+            isOpen={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-white"
+          />
+        </MobileNavHeader>
+
+        <MobileNavMenu
+          isOpen={mobileMenuOpen}
+          onClose={() => setMobileMenuOpen(false)}
+          menuClassName="bg-neutral-950/95 backdrop-blur-xl border-t border-white/10 text-white"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-neutral-950/95 backdrop-blur-xl border-t border-white/10 px-4 pt-3 pb-6 space-y-3">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block py-2 text-base transition-colors ${
-                  isActive
-                    ? 'font-bold text-white border-l-4 border-white pl-2'
-                    : 'text-white/50 hover:text-white pl-3'
-                }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-          <div className="pt-2">
+          {navLinks.map((item, idx) => (
             <Link
-              href="/kontak"
+              key={`mobile-link-${idx}`}
+              href={item.link}
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full bg-white text-black font-semibold py-3 rounded-lg text-center hover:bg-gray-100 transition-colors"
+              className={`relative ${
+                pathname === item.link
+                  ? 'font-bold text-white'
+                  : 'text-white/60 hover:text-white'
+              }`}
             >
-              Kontak
+              <span className="block">{item.name}</span>
             </Link>
+          ))}
+          <div className="flex w-full flex-col gap-4">
+            <div className="w-full">{actionButton}</div>
           </div>
-        </div>
-      )}
-    </header>
+        </MobileNavMenu>
+      </MobileNav>
+    </ResizableNavbar>
   );
 };
-
-

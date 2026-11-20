@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/Navbar';
+import { LiquidGlass } from '@/components/ui/liquid-glass';
 
 const BengkelKomitmenSection = dynamic(() => import('@/components/BengkelKomitmenSection').then(mod => mod.BengkelKomitmenSection));
 const BengkelLayananUnggulanSection = dynamic(() => import('@/components/BengkelLayananUnggulanSection').then(mod => mod.BengkelLayananUnggulanSection));
@@ -19,9 +20,9 @@ export default function BengkelPage() {
 
       {/* Section 1: Hero / Coming Soon */}
       <section className="relative w-full aspect-[16/9] min-h-[480px] sm:min-h-[580px] lg:min-h-[640px] max-h-[720px] flex items-center justify-center text-center overflow-hidden bg-neutral-900">
-        {/* Background Image: /images/layanan bengkel/bengkel.jpeg */}
+        {/* Background Image: /images/layanan bengkel/hero-layanan-bengkel.png */}
         <Image
-          src="/images/layanan bengkel/bengkel.jpeg"
+          src="/images/layanan bengkel/hero-layanan-bengkel.png"
           alt="Layanan Bengkel Resmi Chery"
           fill
           sizes="100vw"
@@ -29,8 +30,8 @@ export default function BengkelPage() {
           priority
         />
 
-        {/* Dark Contrast Overlay with slight blur */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        {/* Light contrast overlay for text readability */}
+        <div className="absolute inset-0 bg-black/25" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-[1728px] mx-auto px-4 sm:px-8 lg:px-12 py-16 flex flex-col items-center justify-center">
@@ -43,9 +44,19 @@ export default function BengkelPage() {
           </p>
 
           <div className="pt-6">
-            <span className="bg-white text-gray-950 font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-2xl inline-block uppercase tracking-wider">
-              Coming soon
-            </span>
+            <LiquidGlass
+              radius={999}
+              scale={26}
+              aberration={10}
+              bevelDepth={18}
+              frost={0.3}
+              tint={0.16}
+              className="inline-flex shadow-[0_12px_40px_rgb(0_0_0/0.25),inset_0_1px_0_rgb(255_255_255/0.5)]"
+            >
+              <span className="text-white font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full inline-block uppercase tracking-wider drop-shadow">
+                Coming soon
+              </span>
+            </LiquidGlass>
           </div>
         </div>
       </section>
