@@ -33,7 +33,7 @@ export default function Home() {
       {/* Section 2: Stats Banner */}
       <StatsSection />
 
-      {/* Section 3: KIA EV9 Specification Showcase */}
+      {/* Section 3: Chery EV9 Specification Showcase */}
       <Ev9SpecSection />
 
       {/* Section 4: Unit Unggulan */}
@@ -43,7 +43,7 @@ export default function Home() {
       <TestDriveAdrenalineSection onOpenTestDrive={handleOpenTestDrive} />
 
 
-      {/* Section 7: Layanan Bengkel Resmi KIA (Coming Soon) */}
+      {/* Section 7: Layanan Bengkel Resmi Chery (Coming Soon) */}
       <BengkelComingSoonSection />
 
       {/* Footer */}

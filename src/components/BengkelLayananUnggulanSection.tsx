@@ -29,7 +29,7 @@ export const BengkelLayananUnggulanSection: React.FC = () => {
       title: 'Suku Cadang Asli',
       isComingSoon: false,
       description:
-        'Jaminan kualitas dengan suku cadang asli KIA yang dirancang khusus untuk kompatibilitas dan durabilitas maksimal.',
+        'Jaminan kualitas dengan suku cadang asli Chery yang dirancang khusus untuk kompatibilitas dan durabilitas maksimal.',
       checklist: ['Garansi Resmi', 'Ketersediaan Stok', 'Pemasangan Ahli'],
     },
   ];

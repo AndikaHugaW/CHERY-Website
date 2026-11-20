@@ -12,12 +12,12 @@ export interface Promo {
 export const PROMOS_DATA: Promo[] = [
   {
     id: 'promo-dp-ringan',
-    title: 'Promo Spesial KIA Semarang',
+    title: 'Promo Spesial Chery Semarang',
     subtitle: 'DP Ringan Mulai 10% atau Angsuran Terjangkau',
     tag: 'LIMITED DEAL',
     discountValue: 'Free Wallbox Charger',
     validUntil: '31 Agustus 2026',
-    description: 'Dapatkan penawaran khusus pembelian KIA EV6 di Dealer Resmi KIA Semarang. Bonus Wallbox Home Charger senilai Rp 20 Juta & Free Instalasi Listrik.',
+    description: 'Dapatkan penawaran khusus pembelian Chery EV6 di Dealer Resmi Chery Semarang. Bonus Wallbox Home Charger senilai Rp 20 Juta & Free Instalasi Listrik.',
     highlights: [
       'Gratis Home Charger + Instalasi PLN',
       'Bunga 0% tenor hingga 2 tahun',
@@ -27,12 +27,12 @@ export const PROMOS_DATA: Promo[] = [
   },
   {
     id: 'promo-seltos-merdeka',
-    title: 'Paket Kredit KIA Seltos Turbo',
+    title: 'Paket Kredit Chery Seltos Turbo',
     subtitle: 'Angsuran Ringan & Cashback Spesial',
     tag: 'POPULAR CHOICE',
     discountValue: 'Cashback s/d 25 Juta',
     validUntil: '31 Agustus 2026',
-    description: 'Wujudkan impian memiliki SUV modern KIA Seltos dengan skema angsuran fleksibel dan approval instan 1 hari kerja.',
+    description: 'Wujudkan impian memiliki SUV modern Chery Seltos dengan skema angsuran fleksibel dan approval instan 1 hari kerja.',
     highlights: [
       'DP Mulai 15%',
       'Proses Leasing Mudah & Cepat',
@@ -47,7 +47,7 @@ export const PROMOS_DATA: Promo[] = [
     tag: 'FAMILY FAVOURITE',
     discountValue: 'Free Asuransi All Risk 1 Thn',
     validUntil: '15 September 2026',
-    description: 'Nikmati perjalanan keluarga tingkat premium bersama KIA All New Carens. Dapatkan Asuransi All Risk gratis selama 1 tahun penuh.',
+    description: 'Nikmati perjalanan keluarga tingkat premium bersama Chery All New Carens. Dapatkan Asuransi All Risk gratis selama 1 tahun penuh.',
     highlights: [
       'Free Asuransi All Risk 1 Tahun',
       'Bunga Rendah Mulai 2.75%',

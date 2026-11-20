@@ -18,14 +18,14 @@ interface TestDriveBooking {
 // In-memory array store for demonstration during dev server execution
 const bookingsStore: TestDriveBooking[] = [
   {
-    bookingId: 'TD-KIA-9012',
+    bookingId: 'TD-Chery-9012',
     name: 'Budi Santoso',
     phone: '081299887766',
     email: 'budi@example.com',
-    carId: 'kia-sonet',
-    carName: 'KIA Sonet',
+    carId: 'tiggo-cross',
+    carName: 'TIGGO CROSS',
     preferredDate: '2026-08-10',
-    location: 'Dealer KIA Semarang (Dr. Cipto)',
+    location: 'Dealer Chery Semarang (Dr. Cipto)',
     notes: 'Ingin mencoba sunroof dan fitur 1.5L IVT',
     createdAt: new Date().toISOString(),
     status: 'CONFIRMED'
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
       (c) => c.id.toLowerCase() === carId.toLowerCase()
     );
 
-    const bookingId = `TD-KIA-${Math.floor(1000 + Math.random() * 9000)}`;
+    const bookingId = `TD-Chery-${Math.floor(1000 + Math.random() * 9000)}`;
 
     const newBooking: TestDriveBooking = {
       bookingId,
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       carId,
       carName: selectedCar ? selectedCar.name : carId,
       preferredDate,
-      location: location || 'Dealer KIA Semarang',
+      location: location || 'Dealer Chery Semarang',
       notes: notes || '',
       createdAt: new Date().toISOString(),
       status: 'PENDING_CONFIRMATION'
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         status: 'success',
-        message: 'Jadwal Test Drive berhasil dikirim! Tim Sales KIA Semarang akan segera menghubungi Anda.',
+        message: 'Jadwal Test Drive berhasil dikirim! Tim Sales Chery Semarang akan segera menghubungi Anda.',
         data: newBooking
       },
       { status: 201 }

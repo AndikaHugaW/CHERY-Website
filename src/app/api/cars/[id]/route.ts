@@ -26,7 +26,7 @@ export async function GET(
 
     return NextResponse.json({
       status: 'success',
-      dealer: 'KIA Official Dealer Masati Semarang',
+      dealer: 'Chery Official Dealer',
       data: {
         ...car,
         specifications

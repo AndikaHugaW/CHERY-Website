@@ -19,9 +19,9 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
     name: '',
     phone: '',
     email: '',
-    carId: preselectedCarId || 'kia-sonet',
+    carId: preselectedCarId || 'tiggo-cross',
     preferredDate: '',
-    location: 'Showroom KIA Semarang (Jl. Dr. Cipto)',
+    location: 'Showroom Chery Semarang (Jl. Dr. Cipto)',
     notes: '',
   });
 
@@ -181,7 +181,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-gray-700 mb-1">
-                    Pilih Mobil KIA *
+                    Pilih Mobil Chery *
                   </label>
                   <select
                     value={formData.carId}
@@ -219,8 +219,8 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-sm"
                 >
-                  <option value="Showroom KIA Semarang (Jl. Dr. Cipto)">
-                    Showroom Official KIA Semarang
+                  <option value="Showroom Chery Semarang (Jl. Dr. Cipto)">
+                    Showroom Official Chery Semarang
                   </option>
                   <option value="Home Test Drive (Rumah Pelanggan Area Semarang)">
                     Home Test Drive (Antar Unit ke Rumah)

@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
         if (carInfo) {
           return NextResponse.json({
             status: 'success',
-            dealer: 'KIA Official Dealer Masati Semarang',
+            dealer: 'Chery Official Dealer',
             data: {
               carId: carInfo.id,
               carName: carInfo.name,
@@ -62,14 +62,14 @@ export async function GET(request: NextRequest) {
         const filteredCategories = spec.categories.filter((cat) => cat.id.toLowerCase() === category.toLowerCase());
         return NextResponse.json({
           status: 'success',
-          dealer: 'KIA Official Dealer Masati Semarang',
+          dealer: 'Chery Official Dealer',
           data: { ...spec, categories: filteredCategories }
         });
       }
 
       return NextResponse.json({
         status: 'success',
-        dealer: 'KIA Official Dealer Masati Semarang',
+        dealer: 'Chery Official Dealer',
         data: spec
       });
     }
@@ -89,7 +89,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       status: 'success',
       total: allSpecs.length,
-      dealer: 'KIA Official Dealer Masati Semarang',
+      dealer: 'Chery Official Dealer',
       address: CONTACT_INFO.address,
       contact: '0823-2228-3081',
       data: allSpecs

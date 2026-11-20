@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight, Headphones, CheckCircle2 } from 'lucide-react';
 import { CONTACT_INFO } from '@/data/contact';
+import { CARS_DATA } from '@/data/cars';
 
 export const BengkelJadwalServisSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -21,7 +22,7 @@ export const BengkelJadwalServisSection: React.FC = () => {
   };
 
   const handleWhatsAppRedirect = () => {
-    const text = `Halo KIA Semarang, saya ingin konfirmasi booking servis:\nNama: ${formData.name}\nTelepon: ${formData.phone}\nModel: ${formData.carModel || '-'}\nLayanan: ${formData.serviceType || '-'}\nTanggal: ${formData.arrivalDate || '-'}`;
+    const text = `Halo Chery Semarang, saya ingin konfirmasi booking servis:\nNama: ${formData.name}\nTelepon: ${formData.phone}\nModel: ${formData.carModel || '-'}\nLayanan: ${formData.serviceType || '-'}\nTanggal: ${formData.arrivalDate || '-'}`;
     window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -35,7 +36,7 @@ export const BengkelJadwalServisSection: React.FC = () => {
           <div className="relative aspect-[16/10] w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-md bg-gray-200">
             <Image
               src="/images/layanan bengkel/kantor.jpeg"
-              alt="KIA Service Center & Dealership"
+              alt="Chery Service Center & Dealership"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover object-center"
@@ -62,7 +63,7 @@ export const BengkelJadwalServisSection: React.FC = () => {
                 Layanan Pelanggan
               </p>
               <p className="text-xs font-medium text-gray-500 mt-0.5">
-                0800 1 800 KIA (Bebas Pulsa)
+                0800 1 800 Chery (Bebas Pulsa)
               </p>
             </div>
           </div>
@@ -141,12 +142,13 @@ export const BengkelJadwalServisSection: React.FC = () => {
                     className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-black transition-all appearance-none cursor-pointer"
                   >
                     <option value="" disabled>
-                      Pilih Model KIA Anda
+                      Pilih Model Chery Anda
                     </option>
-                    <option value="KIA Sonet">KIA Sonet</option>
-                    <option value="KIA Seltos">KIA Seltos</option>
-                    <option value="KIA Carens">KIA Carens</option>
-                    <option value="KIA EV6">KIA EV6</option>
+                    {CARS_DATA.map((car) => (
+                      <option key={car.id} value={car.name}>
+                        {car.name}
+                      </option>
+                    ))}
                     <option value="Lainnya">Lainnya</option>
                   </select>
                 </div>

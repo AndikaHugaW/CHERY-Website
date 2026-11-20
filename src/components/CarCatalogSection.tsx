@@ -18,11 +18,11 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeModalCar, setActiveModalCar] = useState<Car | null>(null);
 
-  const categories = ['All', 'EV', 'SUV', 'MPV'];
+  const categories = ['All', 'BEV', 'CSH', 'ICE'];
 
   const filteredCars = cars.filter((car) => {
     const matchesCategory =
-      selectedCategory === 'All' || car.category === selectedCategory;
+      selectedCategory === 'All' || car.powertrain === selectedCategory;
     const matchesSearch =
       car.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       car.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -38,7 +38,7 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Jajaran Mobil Terbaru{' '}
             <span className="bg-gradient-to-r from-red-500 to-amber-400 bg-clip-text text-transparent">
-              KIA Semarang
+              Chery Semarang
             </span>
           </h2>
           <p className="text-gray-400 text-base sm:text-lg">
@@ -70,7 +70,7 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Cari tipe (Sonet, Seltos, dll)..."
+              placeholder="Cari model (Tiggo, J6, OMODA, dll)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-red-500/60 focus:ring-1 focus:ring-red-500/60 text-sm transition-all"
@@ -105,7 +105,7 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
 
                   {/* Category Tag */}
                   <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-gray-300 text-xs font-semibold">
-                    {car.category}
+                    {car.powertrain}
                   </div>
                 </div>
 

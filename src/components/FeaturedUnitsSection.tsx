@@ -3,51 +3,30 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Gauge, Users, Zap, Fuel } from 'lucide-react';
+import { ArrowRight, Gauge, Users, Fuel } from 'lucide-react';
+import { CARS_DATA } from '@/data/cars';
 
 interface FeaturedUnitsSectionProps {
   onOpenTestDrive?: (carId?: string) => void;
 }
 
 export const FeaturedUnitsSection: React.FC<FeaturedUnitsSectionProps> = ({ onOpenTestDrive }) => {
-  const featuredUnits = [
-    {
-      id: 'kia-sonet',
-      name: 'KIA Sonet',
-      categoryBadge: 'SUV',
-      price: 'Mulai Rp 272.000.000',
-      image: '/images/katalog unit/kia sonet.webp',
+  const featuredIds = ['tiggo-cross', 'j6', 'chery-c5'];
+  const featuredUnits = featuredIds
+    .map((id) => CARS_DATA.find((c) => c.id === id))
+    .filter(Boolean)
+    .map((car) => ({
+      id: car!.id,
+      name: car!.name,
+      categoryBadge: car!.powertrain,
+      price: `Mulai ${car!.formattedPrice}`,
+      image: car!.image,
       specs: [
-        { icon: Fuel, label: '1.5L Engine' },
-        { icon: Gauge, label: '115 PS' },
-        { icon: Users, label: '5-Seater' },
+        { icon: Fuel, label: car!.engine },
+        { icon: Gauge, label: car!.power },
+        { icon: Users, label: `${car!.seats}-Seater` },
       ],
-    },
-    {
-      id: 'kia-seltos',
-      name: 'KIA Seltos',
-      categoryBadge: 'SUV',
-      price: 'Mulai Rp 373.000.000',
-      image: '/images/katalog unit/all new seltos.webp',
-      specs: [
-        { icon: Fuel, label: '1.4L Turbo / 1.5L' },
-        { icon: Gauge, label: '140 PS' },
-        { icon: Users, label: '5-Seater' },
-      ],
-    },
-    {
-      id: 'kia-all-new-carens',
-      name: 'KIA All New Carens',
-      categoryBadge: 'MPV',
-      price: 'Mulai Rp 407.000.000',
-      image: '/images/katalog unit/kia all new carens.webp',
-      specs: [
-        { icon: Fuel, label: '1.4L Turbo / 1.5L' },
-        { icon: Gauge, label: '140 PS' },
-        { icon: Users, label: '6-7 Seater' },
-      ],
-    },
-  ];
+    }));
 
 
   return (
@@ -61,7 +40,7 @@ export const FeaturedUnitsSection: React.FC<FeaturedUnitsSectionProps> = ({ onOp
               Unit Unggulan
             </h2>
             <p className="text-gray-600 text-sm sm:text-base mt-2 max-w-xl leading-relaxed">
-              Eksplorasi kendaraan KIA paling diminati. Inovasi desain dan performa tanpa kompromi untuk setiap perjalanan Anda.
+              Eksplorasi kendaraan Chery paling diminati. Inovasi desain dan performa tanpa kompromi untuk setiap perjalanan Anda.
             </p>
           </div>
 

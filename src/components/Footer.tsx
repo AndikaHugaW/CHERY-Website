@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = () => {
             </Link>
 
             <p className="text-gray-600 text-sm leading-relaxed max-w-sm">
-              Dealer resmi KIA melayani penjualan, perawatan, dan suku cadang dengan standar global.
+              Dealer resmi Chery melayani penjualan, perawatan, dan suku cadang dengan standar global.
             </p>
 
             {/* Social Media Links from /images/medsos/ default and hover folders */}

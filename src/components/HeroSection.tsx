@@ -34,12 +34,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => 
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight flex flex-col gap-2">
           <span>Temukan Mobil</span>
-          <span>KIA Impian Anda</span>
+          <span>Chery Impian Anda</span>
         </h1>
 
         {/* Description */}
         <p className="text-sm sm:text-base font-medium text-white/80 tracking-wide pb-1">
-          Dealer resmi KIA Semarang
+          Dealer resmi Chery Semarang
         </p>
 
         {/* Action Buttons (Stacked Vertically) */}
@@ -112,7 +112,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => 
         {/* Headline with 20px gap */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight flex flex-col gap-[20px] max-w-2xl">
           <span>Temukan Mobil</span>
-          <span>KIA Impian Anda</span>
+          <span>Chery Impian Anda</span>
         </h1>
 
         {/* Action Buttons: Side-by-Side horizontally on Desktop */}

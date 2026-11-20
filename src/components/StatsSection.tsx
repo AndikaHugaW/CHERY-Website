@@ -4,7 +4,7 @@ import React from 'react';
 
 const statsData = [
   { value: '01', label: 'Authorized Dealer' },
-  { value: '05+', label: 'KIA Models' },
+  { value: '05+', label: 'Chery Models' },
   { value: '24/7', label: 'Sales Assistance' },
   { value: '100%', label: 'Customer Support' },
 ];

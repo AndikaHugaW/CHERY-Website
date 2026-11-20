@@ -17,7 +17,7 @@ export async function GET(
       if (carInfo) {
         return NextResponse.json({
           status: 'success',
-          dealer: 'KIA Official Dealer Masati Semarang',
+          dealer: 'Chery Official Dealer',
           data: {
             carId: carInfo.id,
             carName: carInfo.name,
@@ -56,7 +56,7 @@ export async function GET(
 
     return NextResponse.json({
       status: 'success',
-      dealer: 'KIA Official Dealer Masati Semarang',
+      dealer: 'Chery Official Dealer',
       address: CONTACT_INFO.address,
       contact: '0823-2228-3081',
       data: spec

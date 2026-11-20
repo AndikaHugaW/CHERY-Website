@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
     const minPriceParam = searchParams.get('minPrice');
     const maxPriceParam = searchParams.get('maxPrice');
     const bodyTypeParam = searchParams.get('bodyType');
+    const powertrainParam = searchParams.get('powertrain');
     const transmissionParam = searchParams.get('transmission');
     const sortParam = searchParams.get('sort'); // e.g. "price-low", "price-high", "name-asc"
 
@@ -45,6 +46,12 @@ export async function GET(request: NextRequest) {
       filteredCars = filteredCars.filter(
         (car) => car.category.toLowerCase() === category.toLowerCase()
       );
+    }
+
+    // Filter by powertrain line (BEV / CSH / ICE)
+    if (powertrainParam && powertrainParam !== 'All' && powertrainParam !== 'Semua') {
+      const pt = powertrainParam.toUpperCase();
+      filteredCars = filteredCars.filter((car) => car.powertrain === pt);
     }
 
     // Filter by Body Type
@@ -111,7 +118,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       status: 'success',
       total: filteredCars.length,
-      dealer: 'KIA Official Dealer Semarang',
+      dealer: 'Chery Official Dealer Semarang',
       address: CONTACT_INFO.address,
       contact: '0823-2228-3081',
       data: filteredCars

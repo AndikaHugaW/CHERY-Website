@@ -22,7 +22,7 @@ export default function BengkelPage() {
         {/* Background Image: /images/layanan bengkel/bengkel.jpeg */}
         <Image
           src="/images/layanan bengkel/bengkel.jpeg"
-          alt="Layanan Bengkel Resmi KIA"
+          alt="Layanan Bengkel Resmi Chery"
           fill
           sizes="100vw"
           className="object-cover object-center"
@@ -35,7 +35,7 @@ export default function BengkelPage() {
         {/* Hero Content */}
         <div className="relative z-10 max-w-[1728px] mx-auto px-4 sm:px-8 lg:px-12 py-16 flex flex-col items-center justify-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl drop-shadow-lg">
-            Layanan Bengkel Resmi KIA
+            Layanan Bengkel Resmi Chery
           </h1>
 
           <p className="text-gray-200 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed mt-4 font-medium drop-shadow">

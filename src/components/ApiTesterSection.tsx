@@ -18,28 +18,28 @@ const ENDPOINTS: ApiEndpoint[] = [
     name: 'Get All Cars',
     method: 'GET',
     url: '/api/cars',
-    description: 'Mengambil seluruh daftar mobil KIA OTR Semarang beserta spesifikasi utama.',
+    description: 'Mengambil seluruh daftar mobil Chery OTR Semarang beserta spesifikasi utama.',
   },
   {
     id: 'get-cars-ev',
     name: 'Filter EV Only',
     method: 'GET',
     url: '/api/cars?category=EV',
-    description: 'Mengambil daftar mobil KIA berkategori Electric Vehicle (EV6 & EV9).',
+    description: 'Mengambil daftar mobil Chery berkategori Electric Vehicle (EV6 & EV9).',
   },
   {
     id: 'get-cars-search',
     name: 'Search Car by Keyword',
     method: 'GET',
     url: '/api/cars?q=seltos',
-    description: 'Mencari mobil KIA berdasarkan nama/deskripsi.',
+    description: 'Mencari mobil Chery berdasarkan nama/deskripsi.',
   },
   {
     id: 'get-promos',
     name: 'Get Active Promos',
     method: 'GET',
     url: '/api/promos',
-    description: 'Mengambil promo dan paket kredit terbaru Dealer KIA Semarang.',
+    description: 'Mengambil promo dan paket kredit terbaru Dealer Chery Semarang.',
   },
   {
     id: 'post-test-drive',
@@ -54,7 +54,7 @@ const ENDPOINTS: ApiEndpoint[] = [
         email: 'ahmad@example.com',
         carId: 'kia-sonet',
         preferredDate: '2026-08-15',
-        location: 'Showroom KIA Semarang',
+        location: 'Showroom Chery Semarang',
         notes: 'Uji coba performa 1.5L IVT'
       },
       null,
@@ -66,13 +66,13 @@ const ENDPOINTS: ApiEndpoint[] = [
     name: 'Send Inquiry (POST)',
     method: 'POST',
     url: '/api/contact',
-    description: 'Mengirim pertanyaan/konsultasi ke tim Sales Executive KIA Semarang.',
+    description: 'Mengirim pertanyaan/konsultasi ke tim Sales Executive Chery Semarang.',
     sampleBody: JSON.stringify(
       {
         name: 'Dewi Lestari',
         phone: '085712345678',
-        subject: 'Tanya Angsuran KIA Sonet',
-        message: 'Berapa simulasi DP 20% tenor 5 tahun untuk KIA Sonet?'
+        subject: 'Tanya Angsuran Chery Sonet',
+        message: 'Berapa simulasi DP 20% tenor 5 tahun untuk Chery Sonet?'
       },
       null,
       2

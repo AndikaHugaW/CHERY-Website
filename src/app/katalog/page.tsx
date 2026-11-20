@@ -1,141 +1,108 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { ArrowRight } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
+import { CARS_DATA } from '@/data/cars';
 
-const KatalogGridSection = dynamic(() => import('@/components/KatalogGridSection').then(mod => mod.KatalogGridSection));
-const Footer = dynamic(() => import('@/components/Footer').then(mod => mod.Footer));
-const TestDriveModal = dynamic(() => import('@/components/TestDriveModal').then(mod => mod.TestDriveModal), { ssr: false });
+const KatalogGridSection = dynamic(() =>
+  import('@/components/KatalogGridSection').then((mod) => mod.KatalogGridSection)
+);
+const Footer = dynamic(() => import('@/components/Footer').then((mod) => mod.Footer));
+const TestDriveModal = dynamic(
+  () => import('@/components/TestDriveModal').then((mod) => mod.TestDriveModal),
+  { ssr: false }
+);
 
-const heroSlides = [
-  {
-    image: '/images/katalog unit/hero.webp',
-    subtitle: 'World Class Design.',
-    title: 'Drive now',
-  },
-  {
-    image: '/images/katalog unit/hero2.webp',
-    subtitle: 'World Class Design.',
-    title: 'Drive now',
-  },
-  {
-    image: '/images/katalog unit/hero3.webp',
-    subtitle: 'World Class Design.',
-    title: 'Drive now',
-  },
-  {
-    image: '/images/katalog unit/kia all new carens.webp',
-    subtitle: 'World Class Design.',
-    title: 'Drive now',
-  },
-  {
-    image: '/images/katalog unit/kia ev9.webp',
-    subtitle: 'World Class Design.',
-    title: 'Drive now',
-  },
-];
-
+const FEATURED_CAR =
+  CARS_DATA.find((c) => c.id === 'j6') ??
+  CARS_DATA.find((c) => c.id === 'j6t-csh') ??
+  CARS_DATA[0];
 
 export default function KatalogPage() {
   const [testDriveOpen, setTestDriveOpen] = useState(false);
   const [selectedCarId, setSelectedCarId] = useState<string | undefined>(undefined);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroSlides.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const handleOpenTestDrive = (carId?: string) => {
     setSelectedCarId(carId);
     setTestDriveOpen(true);
   };
 
-  const handleExploreMore = () => {
-    const element = document.getElementById('katalog-grid');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const featuredPrice =
+    FEATURED_CAR.rawPrice > 0 ? FEATURED_CAR.formattedPrice : FEATURED_CAR.priceStarting;
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900 font-sans">
-      {/* Section 1: Navbar & Hero Section */}
+    <main className="min-h-screen bg-white text-gray-900 font-sans">
       <Navbar onOpenTestDrive={handleOpenTestDrive} />
 
-      <section className="relative w-full h-[65vh] sm:h-[78vh] lg:h-[88vh] flex flex-col justify-end items-center overflow-hidden bg-neutral-900 pb-16 sm:pb-20 select-none">
-        {/* Background Images Crossfade Transition */}
-        {heroSlides.map((slide, index) => (
-          <div
-            key={slide.image}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <Image
-              src={slide.image}
-              alt="KIA Hero Banner"
-              fill
-              sizes="100vw"
-              className="w-full h-full object-cover object-center"
-              priority={index === 0}
-            />
+      <section className="relative w-full min-h-[72vh] sm:min-h-[80vh] lg:min-h-[85vh] flex items-end overflow-hidden bg-neutral-900 pt-20">
+        <Image
+          src="/images/katalog unit/hero.webp"
+          alt="Chery Hero Katalog"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-black/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+
+        <div className="relative z-10 w-full max-w-[1728px] mx-auto px-4 sm:px-8 lg:px-12 pb-12 sm:pb-16 lg:pb-20">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 lg:gap-16">
+            <div className="max-w-xl">
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight tracking-tight">
+                Temukan Kendaraan Sesuai Gaya Hidup Anda
+              </h1>
+            </div>
+
+            <div className="w-full lg:max-w-md xl:max-w-lg shrink-0 space-y-5 lg:-ml-4 xl:-ml-8">
+              <div className="text-white">
+                <p className="text-xl sm:text-2xl lg:text-3xl font-semibold tracking-tight">
+                  Chery {FEATURED_CAR.model}
+                </p>
+                <p className="text-base sm:text-lg lg:text-xl text-white/85 mt-1.5">
+                  Mulai{' '}
+                  <span className="font-semibold text-white">
+                    {FEATURED_CAR.rawPrice > 0
+                      ? featuredPrice
+                      : featuredPrice || 'Harga Segera Diumumkan'}
+                  </span>
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Link
+                  href="#katalog-grid"
+                  className="flex-1 min-w-0 bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/40 text-white font-medium text-sm sm:text-base py-3 pl-8 sm:pl-9 pr-2 rounded-full flex items-center justify-between gap-4 transition-all group"
+                >
+                  <span>Lihat Semua Mobil</span>
+                  <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-gray-900 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => handleOpenTestDrive(FEATURED_CAR.id)}
+                  className="flex-1 min-w-0 bg-white hover:bg-neutral-100 text-gray-900 font-semibold text-sm sm:text-base py-3 pl-8 sm:pl-9 pr-2 rounded-full flex items-center justify-between gap-4 transition-all group shadow-lg"
+                >
+                  <span>Booking Test Drive</span>
+                  <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gray-900 text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
-        ))}
-
-
-        {/* Soft Dark Vignette Overlay for Crisp Text Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 pointer-events-none" />
-
-        {/* Centered Overlay Content (Subtitle, Title, Action Button) */}
-        <div className="relative z-10 text-center px-4 max-w-xl mx-auto flex flex-col items-center justify-center space-y-2.5 mb-2 sm:mb-4">
-          <p className="text-white/90 text-xs sm:text-sm font-medium tracking-wide drop-shadow-sm">
-            {heroSlides[currentImageIndex].subtitle}
-          </p>
-          
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-none drop-shadow-md pb-2">
-            {heroSlides[currentImageIndex].title}
-          </h1>
-
-          <div className="pt-2">
-            <button
-              onClick={handleExploreMore}
-              className="bg-white hover:bg-neutral-100 text-gray-900 font-semibold px-7 py-3 sm:px-9 sm:py-3.5 text-xs sm:text-sm shadow-2xl transition-all duration-200 active:scale-95 cursor-pointer rounded-none"
-            >
-              Explore More
-            </button>
-          </div>
-        </div>
-
-        {/* Bottom Slide Dash Indicators */}
-        <div className="absolute bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-2 sm:gap-3">
-          {heroSlides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentImageIndex(index)}
-              className={`h-0.5 sm:h-1 transition-all duration-300 cursor-pointer ${
-                index === currentImageIndex
-                  ? 'w-8 sm:w-12 bg-white'
-                  : 'w-5 sm:w-7 bg-white/40 hover:bg-white/70'
-              }`}
-              aria-label={`Switch to slide ${index + 1}`}
-            />
-          ))}
         </div>
       </section>
 
-      {/* Section 2: Katalog Unit Filter Sidebar & Grid with API Integration */}
       <KatalogGridSection onOpenTestDrive={handleOpenTestDrive} />
 
-      {/* Footer */}
       <Footer onOpenTestDrive={handleOpenTestDrive} />
 
-      {/* Test Drive Modal */}
       <TestDriveModal
         isOpen={testDriveOpen}
         preselectedCarId={selectedCarId}

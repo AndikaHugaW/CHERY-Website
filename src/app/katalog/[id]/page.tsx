@@ -12,309 +12,16 @@ import {
   Check,
   ArrowLeft,
   PhoneCall,
+  ChevronLeft,
   ChevronRight,
   Settings,
   User,
   Fuel,
-  Battery,
-  Zap,
-  Compass
 } from 'lucide-react';
 
-interface CarVariant {
-  name: string;
-  trim: string;
-  price: string;
-  image: string;
-  badge?: string;
-  engine: string;
-  transmission: string;
-  seats: number;
-  fuelType: string;
-  features: string[];
-}
+const GALLERY_THUMBS_VISIBLE = 3;
 
-const CAR_VARIANTS_MAP: Record<string, CarVariant[]> = {
-  'kia-sonet': [
-    {
-      name: 'Trendy',
-      trim: '1.5L IVT Trendy',
-      price: 'Rp 272.000.000',
-      image: '/images/katalog unit/kia sonet/kia-sonet-trendy.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L',
-      transmission: 'IVT Automatic',
-      seats: 5,
-      fuelType: 'Bensin',
-      features: [
-        'Smartstream Gamma II 1.5L with IVT',
-        '16" Alloy Wheel Dual Tone Color',
-        'Supervision with 4.2" TFT LCD Cluster',
-        '8" LCD Infotainment Screen with Android Auto & Apple CarPlay',
-        'Rear Centre Arm Rest with Cup Holder',
-        'Rear Parking Camera with Reverse Parking Distance Warning',
-        'Remote Engine Start'
-      ]
-    },
-    {
-      name: 'Black Edition',
-      trim: '1.5L IVT Black Edition',
-      price: 'Rp 279.000.000',
-      image: '/images/katalog unit/kia sonet/kia-sonet-motion.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L',
-      transmission: 'IVT Automatic',
-      seats: 5,
-      fuelType: 'Bensin',
-      features: [
-        'Smartstream Gamma II 1.5L with IVT',
-        '16" Alloy Wheel Dual Tone Color',
-        'Multireflector LED with Star Map LED DRL',
-        'Exclusive Black Edition Styling',
-        '8" LCD Infotainment Screen with Android Auto & Apple CarPlay',
-        'Rear Parking Camera with Reverse Parking Distance Warning',
-        'Remote Engine Start'
-      ]
-    },
-    {
-      name: 'Motion',
-      trim: '1.5L IVT Motion',
-      price: 'Rp 297.000.000',
-      image: '/images/katalog unit/kia sonet/kia-sonet-motion.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L',
-      transmission: 'IVT Automatic',
-      seats: 5,
-      fuelType: 'Bensin',
-      features: [
-        'Smartstream Gamma II 1.5L with IVT',
-        '16" Alloy Wheel Dual Tone Color',
-        'Multireflector LED with Star Map LED DRL',
-        'Supervision with 4.2" TFT LCD Cluster',
-        '8" LCD Infotainment Screen with Android Auto & Apple CarPlay',
-        'Rear Centre Arm Rest with Cup Holder',
-        'Rear Parking Camera with Reverse Parking Distance Warning'
-      ]
-    },
-    {
-      name: 'Signature',
-      trim: '1.5L IVT Signature',
-      price: 'Rp 323.000.000',
-      image: '/images/katalog unit/kia sonet/kia-sonet-signature.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L',
-      transmission: 'IVT Automatic',
-      seats: 5,
-      fuelType: 'Bensin',
-      features: [
-        'Smartstream Gamma II 1.5L with IVT',
-        '16" Alloy Wheel Dual Tone Color',
-        'Multireflector LED with Star Map LED DRL',
-        'Sunroof Electric',
-        '10.25" Full Digital Cluster',
-        '8" LCD Infotainment Screen with Android Auto & Apple CarPlay',
-        'BOSE Premium Sound System with 8-speakers'
-      ]
-    }
-  ],
-  'kia-seltos': [
-    {
-      name: 'Trendy',
-      trim: '1.5L IVT Trendy',
-      price: 'Rp 373.000.000',
-      image: '/images/katalog unit/kia seltos/kia-seltos-1.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II (115 PS)',
-      transmission: 'Intelligent VT',
-      seats: 5,
-      fuelType: 'Bensin',
-      features: [
-        'Smartstream 1.5L Gamma II DOHC Dual CVVT',
-        '10.25" Infotainment Display with CarPlay & Android Auto',
-        'Electronic Parking Brake (EPB) with Auto Hold',
-        '17" Alloy Wheels (215/60 R17)'
-      ]
-    },
-    {
-      name: 'Prestige+ ADAS',
-      trim: '1.5L IVT Prestige+ ADAS',
-      price: 'Rp 432.000.000',
-      image: '/images/katalog unit/kia seltos/kia-seltos-1.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II (115 PS)',
-      transmission: 'Intelligent VT',
-      seats: 5,
-      fuelType: 'Bensin',
-      features: [
-        '12.3" Infotainment Display with CarPlay & Android Auto',
-        'Drive Wise ADAS Safety Suite with Smart Cruise Control',
-        'Front Ventilated Seats & Power Driver Seat',
-        '17" Alloy Wheels & Dual Zone Auto Climate'
-      ]
-    },
-    {
-      name: 'GT Line',
-      trim: '1.5L IVT GT Line',
-      price: 'Rp 485.000.000',
-      image: '/images/katalog unit/kia seltos/kia-seltos-gtline.webp',
-      badge: 'PROMO',
-      engine: 'Smartstream 1.5L Gamma II (115 PS)',
-      transmission: 'Intelligent VT',
-      seats: 5,
-      fuelType: 'Bensin',
-      features: [
-        '12.3" Full Digital Cluster & 12.3" Infotainment Display',
-        'BOSE Premium 8-Speaker Audio System',
-        'Panoramic Sunroof & 18" Alloy Wheels',
-        'Blind-spot View Monitor (BVM) & Surround View Monitor'
-      ]
-    }
-  ],
-  'kia-all-new-carens': [
-    {
-      name: 'Trendy',
-      trim: '1.5 IVT Trendy 7-Seater',
-      price: 'Rp 310.000.000',
-      image: '/images/katalog unit/kia all new carens/carens2.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II',
-      transmission: 'Intelligent VT',
-      seats: 7,
-      fuelType: 'Bensin',
-      features: [
-        'Smartstream Gamma II 1.5L with IVT',
-        '26.6" Dual Panoramic Display with 12.3" Digital LCD Cluster',
-        '12.3" Infotainment Display with CarPlay & Android Auto',
-        'BOSE Premium 8-Speaker Sound System',
-        '6 Airbags & PDW Forward & Reverse'
-      ]
-    },
-    {
-      name: 'Motion',
-      trim: '1.5 IVT Motion 6-Seater',
-      price: 'Rp 349.000.000',
-      image: '/images/katalog unit/kia all new carens/carens3.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II',
-      transmission: 'Intelligent VT',
-      seats: 6,
-      fuelType: 'Bensin',
-      features: [
-        'Smartstream Gamma II 1.5L with IVT',
-        '2nd Row Captain Seats with Arm Rest',
-        'Wireless Smartphone Charging & Remote Engine Start',
-        'Drive Mode Select & TPMS',
-        '17" Diamond Cut Alloy Wheels'
-      ]
-    },
-    {
-      name: 'Black Edition',
-      trim: '1.5 IVT Black Edition 6-Seater',
-      price: 'Rp 349.000.000',
-      image: '/images/katalog unit/kia all new carens/carens3.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II',
-      transmission: 'Intelligent VT',
-      seats: 6,
-      fuelType: 'Bensin',
-      features: [
-        'Exclusive Black Edition Styling',
-        '2nd Row Captain Seats with Arm Rest',
-        'Wireless Smartphone Charging & Remote Engine Start',
-        'Drive Mode Select & TPMS',
-        '17" Diamond Cut Alloy Wheels'
-      ]
-    },
-    {
-      name: 'Signature',
-      trim: '1.5 IVT Signature ADAS 6-Seater',
-      price: 'Rp 390.000.000',
-      image: '/images/katalog unit/kia all new carens/carens3.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II',
-      transmission: 'Intelligent VT',
-      seats: 6,
-      fuelType: 'Bensin',
-      features: [
-        'Drive Wise ADAS (SCC, FCA, LFA, LKA, BVM, BCA, MSLA, HBA)',
-        'Sunroof Electric with One-Touch',
-        'Electronic Parking Brake (EPB) with Auto Hold',
-        'Downhill Brake Control (DBC)',
-        'BOSE Premium 8-Speaker & 6 Airbags'
-      ]
-    }
-  ],
-  'kia-ev6': [
-    {
-      name: 'M/T',
-      trim: '1.5 MPI Premiere M/T 7-Seater',
-      price: 'Rp 269.000.000',
-      image: '/images/katalog unit/kia all new carens/carens1.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II',
-      transmission: 'Manual 6-Speed',
-      seats: 7,
-      fuelType: 'Bensin',
-      features: [
-        'Smartstream Gamma II 1.5L Engine',
-        '8" Infotainment Display with Apple CarPlay & Android Auto',
-        'Supervision 4.2" TFT LCD Cluster',
-        '2 Airbags & ABS, EBD, BA, ESC, HAC'
-      ]
-    },
-    {
-      name: 'Trendy',
-      trim: '1.5 IVT Trendy 7-Seater',
-      price: 'Rp 299.000.000',
-      image: '/images/katalog unit/kia all new carens/carens2.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II',
-      transmission: 'Intelligent VT',
-      seats: 7,
-      fuelType: 'Bensin',
-      features: [
-        '26.6" Dual Panoramic Display with 12.3" Cluster',
-        '12.3" Infotainment Display',
-        'BOSE Premium 8-Speaker',
-        '6 Airbags & PDW Forward & Reverse'
-      ]
-    },
-    {
-      name: 'Motion',
-      trim: '1.5 IVT Motion 6-Seater',
-      price: 'Rp 339.000.000',
-      image: '/images/katalog unit/kia all new carens/carens3.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II',
-      transmission: 'Intelligent VT',
-      seats: 6,
-      fuelType: 'Bensin',
-      features: [
-        '2nd Row Captain Seats with Arm Rest',
-        'Wireless Charging & Remote Engine Start',
-        'Drive Mode Select & TPMS',
-        '17" Diamond Cut Alloy Wheels'
-      ]
-    },
-    {
-      name: 'Signature',
-      trim: '1.5 IVT Signature ADAS 6-Seater',
-      price: 'Rp 369.000.000',
-      image: '/images/katalog unit/kia all new carens/carens3.webp',
-      badge: 'READY STOCK',
-      engine: 'Smartstream 1.5L Gamma II',
-      transmission: 'Intelligent VT',
-      seats: 6,
-      fuelType: 'Bensin',
-      features: [
-        'Drive Wise ADAS (SCC, FCA, LFA, LKA, BVM, BCA, MSLA, HBA)',
-        'Sunroof Electric with One-Touch',
-        'Electronic Parking Brake (EPB) with Auto Hold',
-        'Downhill Brake Control (DBC)'
-      ]
-    }
-  ]
-};
+import { CAR_VARIANTS_MAP, CarVariantCard } from '@/data/variants';
 
 
 export default function CarDetailPage() {
@@ -324,6 +31,7 @@ export default function CarDetailPage() {
 
   const [car, setCar] = useState<Car | null>(null);
   const [selectedImage, setSelectedImage] = useState<string>('');
+  const [thumbPage, setThumbPage] = useState(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -338,6 +46,7 @@ export default function CarDetailPage() {
 
         if (json.status === 'success' && json.data) {
           setCar(json.data);
+          setThumbPage(0);
           setSelectedImage(json.data.image || json.data.gallery?.[0] || '');
         } else {
           setError(json.message || 'Mobil tidak ditemukan');
@@ -353,23 +62,37 @@ export default function CarDetailPage() {
     fetchCarDetail();
   }, [carId]);
 
+  useEffect(() => {
+    if (!car?.gallery?.length) return;
+    const idx = car.gallery.indexOf(selectedImage);
+    if (idx === -1) return;
+    if (car.gallery.length <= GALLERY_THUMBS_VISIBLE) return;
+    setThumbPage((prev) => {
+      if (idx < prev) return idx;
+      if (idx >= prev + GALLERY_THUMBS_VISIBLE) {
+        return Math.min(idx - GALLERY_THUMBS_VISIBLE + 1, car.gallery!.length - GALLERY_THUMBS_VISIBLE);
+      }
+      return prev;
+    });
+  }, [selectedImage, car]);
+
   const handleWhatsAppContact = () => {
     if (!car) return;
     const phone = CONTACT_INFO.waNumber;
     const text = encodeURIComponent(
-      `Halo KIA Semarang, saya tertarik dengan unit ${car.name} (${car.trim}) - ${car.formattedPrice}. Bisa tanyakan informasi promo & simulasi kreditnya?`
+      `Halo Chery Semarang, saya tertarik dengan unit ${car.name} (${car.trim}) - ${car.formattedPrice}. Bisa tanyakan informasi promo & simulasi kreditnya?`
     );
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
   };
 
-  const currentVariants = (carId && CAR_VARIANTS_MAP[carId]) || CAR_VARIANTS_MAP['kia-sonet'];
+  const currentVariants: CarVariantCard[] = (carId && CAR_VARIANTS_MAP[carId]) || [];
 
   return (
     <main className="min-h-screen bg-white text-gray-900 font-sans flex flex-col justify-between">
       {/* Top Navbar */}
       <Navbar />
 
-      <div className="flex-1 max-w-[1728px] w-full mx-auto px-4 sm:px-8 lg:px-12 py-8 md:py-12">
+      <div className="flex-1 max-w-[1728px] w-full mx-auto px-4 sm:px-8 lg:px-12 pt-24 pb-8 md:pt-28 md:pb-12">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-500 mb-8">
           <Link href="/" className="hover:text-black transition-colors">
@@ -380,7 +103,9 @@ export default function CarDetailPage() {
             Mobil
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-          <span className="text-gray-900 font-extrabold">{car ? car.name : 'Detail Mobil'}</span>
+          <span className="text-gray-900 font-extrabold">
+            {car ? `Chery ${car.name}` : 'Detail Mobil'}
+          </span>
         </nav>
 
         {/* Loading State */}
@@ -428,35 +153,75 @@ export default function CarDetailPage() {
                 </div>
               </div>
 
-              {/* Thumbnails Row */}
-              {car.gallery && car.gallery.length > 0 && (
-                <div className="grid grid-cols-3 gap-3.5">
-                  {car.gallery.map((imgUrl, idx) => {
-                    const isSelected = selectedImage === imgUrl;
-                    return (
+              {/* Thumbnails Row / Carousel (>3 gambar) */}
+              {car.gallery && car.gallery.length > 0 && (() => {
+                const gallery = car.gallery;
+                const useCarousel = gallery.length > GALLERY_THUMBS_VISIBLE;
+                const maxThumbPage = Math.max(0, gallery.length - GALLERY_THUMBS_VISIBLE);
+                const visibleThumbs = useCarousel
+                  ? gallery.slice(thumbPage, thumbPage + GALLERY_THUMBS_VISIBLE)
+                  : gallery;
+
+                return (
+                  <div
+                    className={`flex items-stretch gap-2 sm:gap-3 ${useCarousel ? '' : ''}`}
+                    aria-label="Galeri thumbnail"
+                  >
+                    {useCarousel && (
                       <button
-                        key={idx}
-                        onClick={() => setSelectedImage(imgUrl)}
-                        className={`relative aspect-[16/10] bg-gray-50 rounded-2xl overflow-hidden transition-all cursor-pointer ${
-                          isSelected
-                            ? 'border-2 border-black ring-2 ring-black/10 shadow-md shadow-black/10 scale-102'
-                            : 'border border-gray-200 hover:border-gray-300 opacity-80 hover:opacity-100'
-                        }`}
+                        type="button"
+                        disabled={thumbPage <= 0}
+                        onClick={() => setThumbPage((p) => Math.max(0, p - 1))}
+                        className="shrink-0 self-center w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-gray-50 disabled:opacity-35 disabled:pointer-events-none transition-colors shadow-sm flex items-center justify-center"
+                        aria-label="Thumbnail sebelumnya"
                       >
-                        <div className="relative w-full h-full">
-                          <Image
-                            src={imgUrl}
-                            alt={`${car.name} thumb ${idx + 1}`}
-                            fill
-                            sizes="(max-width: 768px) 33vw, 200px"
-                            className="object-cover object-center"
-                          />
-                        </div>
+                        <ChevronLeft className="w-5 h-5 text-gray-800" />
                       </button>
-                    );
-                  })}
-                </div>
-              )}
+                    )}
+
+                    <div className="flex-1 min-w-0 grid grid-cols-3 gap-3 sm:gap-3.5">
+                      {visibleThumbs.map((imgUrl) => {
+                        const idx = gallery.indexOf(imgUrl);
+                        const isSelected = selectedImage === imgUrl;
+                        return (
+                          <button
+                            key={`${imgUrl}-${idx}`}
+                            type="button"
+                            onClick={() => setSelectedImage(imgUrl)}
+                            className={`relative aspect-[16/10] bg-gray-50 rounded-2xl overflow-hidden transition-all cursor-pointer ${
+                              isSelected
+                                ? 'border-2 border-black ring-2 ring-black/10 shadow-md shadow-black/10'
+                                : 'border border-gray-200 hover:border-gray-300 opacity-85 hover:opacity-100'
+                            }`}
+                          >
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={imgUrl}
+                                alt={`${car.name} thumb ${idx + 1}`}
+                                fill
+                                sizes="(max-width: 768px) 33vw, 200px"
+                                className="object-cover object-center"
+                              />
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {useCarousel && (
+                      <button
+                        type="button"
+                        disabled={thumbPage >= maxThumbPage}
+                        onClick={() => setThumbPage((p) => Math.min(maxThumbPage, p + 1))}
+                        className="shrink-0 self-center w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-gray-50 disabled:opacity-35 disabled:pointer-events-none transition-colors shadow-sm flex items-center justify-center"
+                        aria-label="Thumbnail berikutnya"
+                      >
+                        <ChevronRight className="w-5 h-5 text-gray-800" />
+                      </button>
+                    )}
+                  </div>
+                );
+              })()}
             </div>
 
             {/* Right Column: Car Details, Specs & Features (6 cols) */}
@@ -534,34 +299,42 @@ export default function CarDetailPage() {
 
                 {/* Fitur Section */}
                 <div className="space-y-4 pt-2">
-                  <h3 className="text-lg font-black text-gray-900">Fitur</h3>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-4 text-xs sm:text-sm">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h3 className="text-lg font-black text-gray-900">Fitur</h3>
+                    {car.features && car.features.length > 0 && (
+                      <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wide">
+                        {car.features.length} fitur utama
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-4 text-xs sm:text-sm max-h-[420px] overflow-y-auto pr-1 scrollbar-thin">
                     {car.features && car.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2.5 text-gray-800">
-                        <Check className="w-4 h-4 text-black shrink-0 stroke-[3]" />
-                        <span className="font-bold text-gray-800">{feature}</span>
+                      <div key={idx} className="flex items-start gap-2.5 text-gray-800">
+                        <Check className="w-4 h-4 text-black shrink-0 stroke-[3] mt-0.5" />
+                        <span className="font-bold text-gray-800 leading-snug">{feature}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Action Buttons Pinned at Bottom */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 mt-auto">
+              {/* Action Buttons — berdampingan seperti mockup */}
+              <div className="flex flex-row gap-3 pt-6 mt-auto">
                 <button
+                  type="button"
                   onClick={handleWhatsAppContact}
-                  className="w-full bg-black hover:bg-gray-800 text-white font-extrabold py-4 px-6 rounded-2xl text-base transition-all shadow-lg shadow-black/10 active:scale-98 flex items-center justify-center gap-2.5 cursor-pointer"
+                  className="flex-1 min-w-0 bg-black hover:bg-gray-900 text-white font-bold py-3.5 px-4 rounded-xl text-sm sm:text-base transition-colors flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <PhoneCall className="w-5 h-5" />
+                  <PhoneCall className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0" strokeWidth={2} />
                   <span>Hubungi Kami</span>
                 </button>
 
                 <Link
                   href="/katalog"
-                  className="w-full bg-white border-2 border-gray-900 hover:bg-black hover:text-white text-gray-900 font-extrabold py-4 px-6 rounded-2xl text-base transition-all text-center flex items-center justify-center gap-2.5 cursor-pointer active:scale-98"
+                  className="flex-1 min-w-0 bg-white border border-black hover:bg-gray-50 text-black font-bold py-3.5 px-4 rounded-xl text-sm sm:text-base transition-colors text-center flex items-center justify-center"
                 >
-                  <span>Kembali ke Daftar</span>
+                  <span>Kembali ke daftar</span>
                 </Link>
               </div>
 
@@ -571,12 +344,12 @@ export default function CarDetailPage() {
         )}
 
         {/* Section 2: Varian Unit / Varian Tersedia */}
-        {!loading && car && (
+        {!loading && car && currentVariants.length > 0 && (
           <section className="mt-16 sm:mt-24 pt-12 border-t border-gray-200">
             {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-2">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-black tracking-tight">
-                Lupakan yang Biasa, Hidupkan yang Luar Biasa
+                Pilih Varian {car.name}
               </h2>
               <p className="text-sm font-semibold text-gray-500">
                 {currentVariants.length} Tingkat/Varian tersedia
@@ -655,10 +428,10 @@ export default function CarDetailPage() {
                         Fitur utama :
                       </p>
                       <ul className="space-y-1.5 text-xs text-gray-600 font-medium">
-                        {v.features.map((f, i) => (
+                        {v.features.slice(0, 6).map((f, i) => (
                           <li key={i} className="flex items-start gap-1.5">
-                            <span className="text-gray-400">•</span>
-                            <span className="line-clamp-1">{f}</span>
+                            <span className="text-gray-400 shrink-0">•</span>
+                            <span className="line-clamp-2 leading-snug">{f}</span>
                           </li>
                         ))}
                       </ul>

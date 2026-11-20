@@ -9,7 +9,7 @@ export const BengkelComingSoonSection: React.FC = () => {
       {/* Full Width & Height Background Image */}
       <Image
         src="/images/layanan bengkel/bengkel.jpeg"
-        alt="Layanan Bengkel KIA Semarang"
+        alt="Layanan Bengkel Chery Semarang"
         fill
         sizes="100vw"
         className="object-cover object-center"
@@ -22,7 +22,7 @@ export const BengkelComingSoonSection: React.FC = () => {
       {/* Content Box */}
       <div className="relative z-10 max-w-[1728px] mx-auto px-4 sm:px-8 lg:px-12 py-16 flex flex-col items-center justify-center space-y-6">
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight drop-shadow-2xl">
-          Layanan Bengkel Resmi KIA
+          Layanan Bengkel Resmi Chery
         </h2>
 
         <p className="text-gray-200 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed font-medium drop-shadow">

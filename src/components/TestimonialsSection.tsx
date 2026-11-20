@@ -18,9 +18,9 @@ export const TestimonialsSection: React.FC = () => {
       id: '1',
       rating: 5,
       quote:
-        '"Pelayanan sangat profesional. Proses pembelian EV6 sangat transparan dan dibantu dari awal sampai mobil dikirim ke rumah. Sangat puas dengan Dealer KIA Semarang."',
+        '"Pelayanan sangat profesional. Proses pembelian EV6 sangat transparan dan dibantu dari awal sampai mobil dikirim ke rumah. Sangat puas dengan Dealer Chery Semarang."',
       authorName: 'Budi Santoso',
-      authorRole: 'Pemilik KIA EV6',
+      authorRole: 'Pemilik Chery EV6',
       avatarInitial: 'B',
     },
     {
@@ -38,7 +38,7 @@ export const TestimonialsSection: React.FC = () => {
       quote:
         '"Tukar tambah Seltos lama saya dengan Sorento baru prosesnya anti ribet. Salesnya komunikatif dan memberikan penawaran terbaik."',
       authorName: 'Deni Hermawan',
-      authorRole: 'Pemilik KIA Sorento',
+      authorRole: 'Pemilik Chery Sorento',
       avatarInitial: 'D',
     },
   ];
@@ -53,7 +53,7 @@ export const TestimonialsSection: React.FC = () => {
             Apa Kata Klien Kami
           </h2>
           <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-            Komitmen kami adalah kepuasan Anda. Simak pengalaman mereka yang telah mempercayakan perjalanannya bersama KIA Semarang.
+            Komitmen kami adalah kepuasan Anda. Simak pengalaman mereka yang telah mempercayakan perjalanannya bersama Chery Semarang.
           </p>
         </div>
 

@@ -33,13 +33,13 @@ export const TestDriveAdrenalineSection: React.FC<TestDriveAdrenalineSectionProp
             </h2>
             
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-md">
-              Rasakan sensasi berkendara yang sebenarnya. Jadwalkan test drive Anda hari ini dan biarkan performa KIA berbicara.
+              Rasakan sensasi berkendara yang sebenarnya. Jadwalkan test drive Anda hari ini dan biarkan performa Chery berbicara.
             </p>
 
             {submitted ? (
               <div className="bg-emerald-950/80 border border-emerald-500/30 rounded-2xl p-4 flex items-center gap-3 text-emerald-400 text-sm font-semibold">
                 <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
-                <span>Terima kasih! Tim Sales KIA Semarang akan segera menghubungi nomor WhatsApp Anda.</span>
+                <span>Terima kasih! Tim Sales Chery Semarang akan segera menghubungi nomor WhatsApp Anda.</span>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch gap-3 pt-2 max-w-lg">
@@ -66,7 +66,7 @@ export const TestDriveAdrenalineSection: React.FC<TestDriveAdrenalineSectionProp
           <div className="lg:col-span-6 relative min-h-[300px] sm:min-h-[380px] lg:min-h-[460px] bg-neutral-900 overflow-hidden">
             <Image
               src="/images/landing page/img5.webp"
-              alt="KIA Experience the Adrenaline"
+              alt="Chery Experience the Adrenaline"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover object-center"

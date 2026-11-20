@@ -7,7 +7,7 @@ import { TEAM_MEMBERS } from '@/data/contact';
 
 export const KontakTimProfesionalSection: React.FC = () => {
   const handleContactPerson = (waUrl: string, name: string) => {
-    const text = encodeURIComponent(`Halo ${name}, saya ingin berkonsultasi mengenai unit KIA`);
+    const text = encodeURIComponent(`Halo ${name}, saya ingin berkonsultasi mengenai unit Chery`);
     window.open(`${waUrl}?text=${text}`, '_blank');
   };
 
@@ -38,7 +38,7 @@ export const KontakTimProfesionalSection: React.FC = () => {
                 <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden shrink-0 border-4 border-white shadow-md">
                   <Image
                     src={member.image}
-                    alt={`${member.name} - ${member.role} KIA Semarang`}
+                    alt={`${member.name} - ${member.role} Chery Semarang`}
                     fill
                     sizes="128px"
                     className={member.imagePosition || 'object-cover object-center'}
