@@ -63,10 +63,10 @@ export const TestDriveAdrenalineSection: React.FC<TestDriveAdrenalineSectionProp
             )}
           </div>
 
-          {/* Right Column: Car Cockpit Image using img5.webp */}
+          {/* Right Column: Chery unit image */}
           <div className="lg:col-span-6 relative min-h-[300px] sm:min-h-[380px] lg:min-h-[460px] bg-neutral-900 overflow-hidden">
             <Image
-              src="/images/landing page/img5.webp"
+              src="/images/landing page/herosection 2.webp"
               alt="Chery Experience the Adrenaline"
               fill
               qualityRole="hero"

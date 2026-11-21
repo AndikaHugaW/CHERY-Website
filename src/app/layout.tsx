@@ -1,14 +1,13 @@
 import type { Metadata, Viewport } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-sans',
-  weight: ['400', '500', '600', '700', '800'],
-});
+/*
+ * Font memakai Satoshi yang di-host lokal (public/fonts) dan dideklarasikan
+ * sebagai @font-face di globals.css. Sengaja tidak memakai `next/font/google`
+ * agar proses build di CI/Vercel tidak bergantung pada akses jaringan ke
+ * fonts.googleapis.com.
+ */
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kiasemarang.id'),
@@ -98,8 +97,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`${plusJakartaSans.variable} scroll-smooth`}>
-      <body className={`${plusJakartaSans.className} antialiased bg-white text-gray-900 min-h-screen`}>
+    <html lang="id" className="scroll-smooth">
+      <body className="antialiased bg-white text-gray-900 min-h-screen">
         {children}
         <Analytics />
       </body>
