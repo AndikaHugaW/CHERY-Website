@@ -98,7 +98,7 @@ export const KontakInquireSection: React.FC = () => {
                     <input
                       type="tel"
                       required
-                      placeholder="0823-2228-3081"
+                      placeholder="0813-2652-822"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all"

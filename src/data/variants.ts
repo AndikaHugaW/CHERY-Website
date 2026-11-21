@@ -48,29 +48,11 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
       ]
     }
   ],
-  "j6t-csh": [
-    {
-      "name": "J6T CSH",
-      "trim": "J6T CSH",
-      "price": "Harga Segera Diumumkan",
-      "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/j6t-csh/car-front-thumbnail.webp",
-      "badge": "SEGERA HADIR",
-      "engine": "Comprehensive Mileage 1000km",
-      "transmission": "Automatic",
-      "seats": 5,
-      "fuelType": "Hybrid",
-      "features": [
-        "Comprehensive Mileage 1000km",
-        "Ground clearance 220 mm",
-        "0–100 km/h in 5,5s"
-      ]
-    }
-  ],
   "j6": [
     {
       "name": "J6T IWD",
       "trim": "J6T IWD",
-      "price": "Rp 650.500.000",
+      "price": "Rp 655.500.000",
       "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/j6/j6t-iwd.png",
       "badge": "TERSEDIA",
       "engine": "Intelligent Wheel Drive",
@@ -86,7 +68,7 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
     {
       "name": "J6T",
       "trim": "J6T",
-      "price": "Rp 585.500.000",
+      "price": "Rp 590.500.000",
       "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/j6/j6t-rwd.png",
       "badge": "TERSEDIA",
       "engine": "Suspensi Multi-Link Aluminium H-Arm",
@@ -196,7 +178,7 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
     {
       "name": "TIGGO 9 CSH AWD",
       "trim": "TIGGO 9 CSH AWD",
-      "price": "Rp 749.900.000",
+      "price": "Rp 770.400.000",
       "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-9-csh/variants/9-csh-car-image.png",
       "badge": "TERSEDIA",
       "engine": "1.5 TGDI Turbo Engine - 5th Gen. Dedicated Hybrid Engine",
@@ -221,7 +203,7 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
     {
       "name": "TIGGO 8 CSH FWD COMFORT",
       "trim": "TIGGO 8 CSH FWD COMFORT",
-      "price": "Rp 459.900.000",
+      "price": "Rp 471.900.000",
       "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/22%20NOV%202025/tiggo-8-csh-fwd-comfort-grey.png",
       "badge": "TERSEDIA",
       "engine": "Front Wheel Drive",
@@ -237,7 +219,7 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
     {
       "name": "TIGGO 8 CSH FWD PREMIUM",
       "trim": "TIGGO 8 CSH FWD PREMIUM",
-      "price": "Rp 529.900.000",
+      "price": "Rp 541.900.000",
       "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-csh/tiggo-8-csh-green-new-thumbnail.png",
       "badge": "TERSEDIA",
       "engine": "1,5T DHE",
@@ -260,7 +242,7 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
     {
       "name": "TIGGO 8 CSH AWD",
       "trim": "TIGGO 8 CSH AWD",
-      "price": "Rp 579.900.000",
+      "price": "Rp 591.900.000",
       "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/22%20NOV%202025/tiggo-8-csh-awd-black.png",
       "badge": "TERSEDIA",
       "engine": "All Wheel Drive",
@@ -372,9 +354,9 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
   ],
   "tiggo-cross-csh-hybrid": [
     {
-      "name": "TIGGO CROSS CSH Hybrid",
-      "trim": "TIGGO CROSS CSH Hybrid",
-      "price": "Rp 339.800.000",
+      "name": "TIGGO CROSS CSH Premium",
+      "trim": "TIGGO CROSS CSH Premium",
+      "price": "Rp 349.800.000",
       "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-cross-csh/variants/cross-csh-thumbnail-image.png",
       "badge": "TERSEDIA",
       "engine": "Mesin 1,5L DHE",
@@ -520,8 +502,8 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
     {
       "name": "CHERY C5 CSH",
       "trim": "CHERY C5 CSH",
-      "price": "Rp 409.900.000",
-      "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/color-options/car-white-howlite-two-tone.webp",
+      "price": "Rp 419.900.000",
+      "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/color-options/car-red.webp",
       "badge": "TERSEDIA",
       "engine": "Comprehensive Mileage 1000km+",
       "transmission": "Automatic",

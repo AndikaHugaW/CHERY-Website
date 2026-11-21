@@ -121,7 +121,7 @@ export async function GET(request: NextRequest) {
       total: filteredCars.length,
       dealer: 'Chery Official Dealer Semarang',
       address: CONTACT_INFO.address,
-      contact: '0823-2228-3081',
+      contact: '0813-2652-822',
       data: filteredCars,
     });
   } catch (error) {

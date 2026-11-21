@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
       total: allSpecs.length,
       dealer: 'Chery Official Dealer',
       address: CONTACT_INFO.address,
-      contact: '0823-2228-3081',
+      contact: '0813-2652-822',
       data: allSpecs
     });
   } catch (error) {

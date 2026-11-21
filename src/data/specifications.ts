@@ -39,12 +39,12 @@ export const CAR_SPECIFICATIONS: Record<string, CarSpecification> = {
     ],
     "categories": []
   },
-  "j6t-csh": {
-    "carId": "j6t-csh",
-    "carName": "J6T CSH",
-    "tagline": "Nikmati performa berkendara maksimal dalam balutan gaya yang elegan. Temukan info spesifikasi, fitur dan harga Chery J6T CSH di sini.",
+  "chery-c5-csh": {
+    "carId": "chery-c5-csh",
+    "carName": "CHERY C5 CSH",
+    "tagline": "AKSELERASI MAKSIMUM",
     "variants": [
-      "J6T CSH"
+      "CHERY C5 CSH"
     ],
     "categories": []
   },
@@ -2980,7 +2980,7 @@ export const CAR_SPECIFICATIONS: Record<string, CarSpecification> = {
     "carName": "TIGGO CROSS CSH",
     "tagline": "Rasakan masa depan berkendara dengan Chery TIGGO CROSS CSH Hybrid. Lebih nyaman, sangat cepat, dan dilengkapi fitur cerdas untuk perjalanan lebih pintar.",
     "variants": [
-      "TIGGO CROSS CSH Hybrid"
+      "TIGGO CROSS CSH Premium"
     ],
     "categories": [
       {
@@ -4957,15 +4957,6 @@ export const CAR_SPECIFICATIONS: Record<string, CarSpecification> = {
         ]
       }
     ]
-  },
-  "chery-c5-csh": {
-    "carId": "chery-c5-csh",
-    "carName": "CHERY C5 CSH",
-    "tagline": "AKSELERASI MAKSIMUM",
-    "variants": [
-      "CHERY C5 CSH"
-    ],
-    "categories": []
   },
   "chery-c5": {
     "carId": "chery-c5",

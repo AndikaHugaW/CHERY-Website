@@ -1,20 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
-import Image from '@/components/ui/optimized-image';
-import { IMAGE_SIZES } from '@/lib/image-optimization';
 import Link from 'next/link';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { Car, CARS_DATA } from '@/data/cars';
-import { getCarCardDisplay } from '@/data/catalog-card-specs';
+import { VehicleCard } from '@/components/VehicleCard';
 import {
   Search,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Fuel,
-  Gauge,
-  Users,
-  Battery,
 } from 'lucide-react';
 
 interface KatalogGridSectionProps {
@@ -30,32 +25,6 @@ const MODEL_OPTIONS = [
     value: model,
   })),
 ];
-
-function powertrainBadgeLabel(car: Car): string {
-  if (car.powertrain === 'BEV') return 'EV';
-  if (car.powertrain === 'CSH') return 'CSH';
-  return 'ICE';
-}
-
-function formatPower(car: Car): string {
-  if (car.power && car.power !== 'N/A') {
-    const ps = car.power.match(/(\d+)\s*PS/i);
-    if (ps) return `${ps[1]} PS`;
-    const hp = car.power.match(/(\d+)\s*HP/i);
-    if (hp) return `${hp[1]} HP`;
-    return car.power.split('/')[0].trim();
-  }
-  return '—';
-}
-
-function primarySpec(car: Car): string {
-  if (car.powertrain === 'BEV') {
-    return car.range || car.specs.range || car.battery || 'Listrik';
-  }
-  const engine = car.engine;
-  if (engine.length > 22) return `${engine.slice(0, 20)}…`;
-  return engine;
-}
 
 export const KatalogGridSection: React.FC<KatalogGridSectionProps> = ({
   onOpenTestDrive,
@@ -128,77 +97,15 @@ export const KatalogGridSection: React.FC<KatalogGridSectionProps> = ({
     fetchFilteredCars(searchInput);
   };
 
-  const renderCarCard = (car: Car) => {
-    const badge = powertrainBadgeLabel(car);
-    const cardDisplay = getCarCardDisplay(car.id);
-    const specCols =
-      car.powertrain === 'CSH' && cardDisplay?.baterai
-        ? 'grid-cols-2 sm:grid-cols-4'
-        : 'grid-cols-3';
-
-    const specCell = (label: string, value: string) => (
-      <div key={`${car.id}-${label}`} className="flex flex-col items-center text-center min-w-0">
-        <span className="text-[10px] font-medium text-gray-500 uppercase">{label}</span>
-        <span className="text-base sm:text-lg font-bold text-gray-900 mt-1">{value}</span>
-      </div>
-    );
-
-    return (
-      <article
-        key={car.id}
-        className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
-      >
-        <div className="p-5 sm:p-6 flex flex-col flex-1 gap-4">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight uppercase">
-              {car.name}
-            </h3>
-            <div className="flex items-center gap-2 shrink-0">
-              {cardDisplay?.isNew && (
-                <span className="text-[10px] font-extrabold uppercase text-red-600 bg-red-50 px-2 py-0.5 rounded">
-                  New
-                </span>
-              )}
-              <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-gray-100 text-gray-800">
-                {badge}
-              </span>
-            </div>
-          </div>
-
-          <div className="relative aspect-[16/10] bg-[#f3f4f6] overflow-hidden rounded-lg">
-            <Image
-              src={car.image}
-              alt={car.name}
-              fill
-              qualityRole="product"
-              className="object-contain object-center p-2"
-              sizes={IMAGE_SIZES.catalogCard}
-            />
-          </div>
-
-          {cardDisplay ? (
-            <div className={'grid gap-3 border-t border-gray-100 pt-4 ' + specCols}>
-              {car.powertrain === 'BEV' &&
-                cardDisplay.baterai &&
-                specCell('Baterai', cardDisplay.baterai.replace(/ kwh/i, '').trim())}
-              {car.powertrain === 'CSH' && cardDisplay.baterai && specCell('Baterai', cardDisplay.baterai)}
-              {car.powertrain === 'CSH' && cardDisplay.mesin && specCell('Mesin', cardDisplay.mesin)}
-              {car.powertrain === 'ICE' && cardDisplay.mesin && specCell('Mesin', cardDisplay.mesin)}
-              {specCell('Panjang', cardDisplay.panjang.replace(/ mm/i, '').trim())}
-              {specCell('Wheelbase', cardDisplay.wheelbase.replace(/ mm/i, '').trim())}
-            </div>
-          ) : null}
-
-          <Link
-            href={'/katalog/' + car.id}
-            className="mt-auto w-full border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 text-sm font-bold py-2.5 px-4 rounded-full text-center transition-colors"
-          >
-            Lihat Detail
-          </Link>
-        </div>
-      </article>
-    );
-  };
+  const renderCarCard = (car: Car) => (
+    <VehicleCard
+      key={car.id}
+      car={car}
+      primaryLabel="Pesan"
+      onPrimaryAction={() => onOpenTestDrive?.(car.id)}
+      sizes={IMAGE_SIZES.catalogCard}
+    />
+  );
 
   return (
     <section id="katalog-grid" className="bg-[#fafafa] border-t border-gray-100">

@@ -8,10 +8,13 @@ import { MapPin, Phone } from 'lucide-react';
 import { CONTACT_INFO } from '@/data/contact';
 import logoImg from '../../public/images/logo/logo.webp';
 
+const WHATSAPP_MESSAGE =
+  'Halo%20Chery%20Semarang,%20saya%20butuh%20informasi%20mengenai%20unit,%20harga,%20dan%20promo';
+
 const socialLinks = [
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/kia.masati.semarang?igsh=Ymg5ZmxpcjEzYTc0',
+    href: 'https://www.instagram.com/cherymasati.salatiga?avpt=eThmN3BkM3UybDVi',
     icon: '/images/medsos/Instagram.png',
   },
   {
@@ -21,12 +24,12 @@ const socialLinks = [
   },
   {
     name: 'WhatsApp',
-    href: CONTACT_INFO.waUrl,
+    href: `${CONTACT_INFO.waUrl}?text=${WHATSAPP_MESSAGE}`,
     icon: '/images/medsos/Whatsapp.png',
   },
   {
     name: 'TikTok',
-    href: 'https://www.tiktok.com/@kia.masati.srg?_r=1&_t=ZS-98jOj1ATGKN',
+    href: 'https://www.tiktok.com/@cherymasatisalatiga?_r=1&_t=ZS-9BWJ2xumYOQ',
     icon: '/images/medsos/tiktok.png',
   },
 ];
@@ -153,10 +156,13 @@ export const Footer: React.FC<FooterProps> = () => {
                   {CONTACT_INFO.address}
                 </span>
               </a>
-              <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-gray-700 shrink-0" />
+              <a
+                href={`tel:${CONTACT_INFO.phone}`}
+                className="flex items-center gap-3 hover:text-black transition-colors group"
+              >
+                <Phone className="w-5 h-5 text-gray-700 group-hover:text-black shrink-0" />
                 <span>{CONTACT_INFO.phoneFormatted}</span>
-              </div>
+              </a>
             </div>
           </div>
 

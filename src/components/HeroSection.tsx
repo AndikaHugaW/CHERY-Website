@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from '@/components/ui/optimized-image';
 import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
@@ -14,24 +14,77 @@ interface HeroSectionProps {
   onOpenTestDrive?: (carId?: string) => void;
 }
 
+const HERO_SLIDES = [
+  {
+    src: '/images/landing page/landingpage 1.webp',
+    alt: 'Chery Salatiga',
+    blurDataURL: BLUR_PLACEHOLDERS.landingpage1,
+  },
+  {
+    src: '/images/landing page/landingpage 2.jpg',
+    alt: 'Chery Semarang',
+  },
+  {
+    src: '/images/landing page/landingpage 3.jpg',
+    alt: 'Chery Semarang',
+  },
+  {
+    src: '/images/landing page/landingpage 4.png',
+    alt: 'Chery Semarang',
+  },
+] as const;
+
+const SLIDE_INTERVAL_MS = 5500;
+const FADE_DURATION_MS = 1200;
+
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    const id = window.setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, SLIDE_INTERVAL_MS);
+
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <section className="relative w-full min-h-[92dvh] md:min-h-screen flex flex-col justify-end md:justify-between overflow-hidden bg-neutral-950 text-white p-6 sm:p-10 lg:p-14 rounded-none my-0 z-20">
-      {/* 1. Fullscreen Unrounded Edge-to-Edge Car Background Stage */}
-      <div className="absolute inset-0 z-0 overflow-hidden rounded-none">
-        <div className="relative w-full h-full">
-          <Image
-            src="/images/landing page/landingpage 1.webp"
-            alt="Chery Salatiga"
-            fill
-            preload
-            qualityRole="hero"
-            sizes={IMAGE_SIZES.fullBleed}
-            placeholder="blur"
-            blurDataURL={BLUR_PLACEHOLDERS.landingpage1}
-            className="object-cover object-center w-full h-full rounded-none"
-          />
-        </div>
+      {/* 1. Fullscreen background — slide 1 tetap landingpage 1, lalu transisi 2–4 */}
+      <div className="absolute inset-0 z-0 overflow-hidden rounded-none bg-neutral-950">
+        {HERO_SLIDES.map((slide, index) => {
+          const isActive = index === activeIndex;
+          const blurProps =
+            'blurDataURL' in slide && slide.blurDataURL
+              ? { placeholder: 'blur' as const, blurDataURL: slide.blurDataURL }
+              : { placeholder: 'empty' as const };
+
+          return (
+            <div
+              key={slide.src}
+              className="absolute inset-0 transition-opacity ease-in-out"
+              style={{
+                opacity: isActive ? 1 : 0,
+                transitionDuration: `${FADE_DURATION_MS}ms`,
+              }}
+              aria-hidden={!isActive}
+            >
+              <Image
+                src={slide.src}
+                alt={isActive ? slide.alt : ''}
+                fill
+                preload={index === 0}
+                qualityRole="hero"
+                sizes={IMAGE_SIZES.fullBleed}
+                {...blurProps}
+                className="object-cover object-center w-full h-full rounded-none"
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* 2. MOBILE HERO CONTENT (<= 768px Only - Bottom Aligned Editorial Layout) */}
