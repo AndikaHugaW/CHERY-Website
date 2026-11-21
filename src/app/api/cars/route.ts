@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { CARS_DATA } from '@/data/cars';
+import { CARS_DATA, Car } from '@/data/cars';
+import { CATALOG_LINEUP_ORDER } from '@/data/catalog-card-specs';
 import { CONTACT_INFO } from '@/data/contact';
+
+function getLineupCars(): Car[] {
+  return CATALOG_LINEUP_ORDER.map((id) => CARS_DATA.find((c) => c.id === id)).filter(
+    (c): c is Car => Boolean(c)
+  );
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -8,15 +15,14 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get('category');
     const query = searchParams.get('q')?.toLowerCase();
     const id = searchParams.get('id');
-    const modelsParam = searchParams.get('models'); // e.g. "Sonet,Seltos"
+    const modelsParam = searchParams.get('models');
     const minPriceParam = searchParams.get('minPrice');
     const maxPriceParam = searchParams.get('maxPrice');
     const bodyTypeParam = searchParams.get('bodyType');
     const powertrainParam = searchParams.get('powertrain');
     const transmissionParam = searchParams.get('transmission');
-    const sortParam = searchParams.get('sort'); // e.g. "price-low", "price-high", "name-asc"
+    const sortParam = searchParams.get('sort');
 
-    // Single Car by ID
     if (id) {
       const car = CARS_DATA.find((item) => item.id.toLowerCase() === id.toLowerCase());
       if (!car) {
@@ -27,34 +33,28 @@ export async function GET(request: NextRequest) {
       }
       return NextResponse.json({
         status: 'success',
-        data: car
+        data: car,
       });
     }
 
-    let filteredCars = [...CARS_DATA];
+    let filteredCars = getLineupCars();
 
-    // Filter by Models
     if (modelsParam && modelsParam.trim() !== '') {
       const modelsList = modelsParam.split(',').map((m) => m.trim().toLowerCase());
-      filteredCars = filteredCars.filter((car) =>
-        modelsList.includes(car.model.toLowerCase())
-      );
+      filteredCars = filteredCars.filter((car) => modelsList.includes(car.model.toLowerCase()));
     }
 
-    // Filter by Category
     if (category && category !== 'All') {
       filteredCars = filteredCars.filter(
         (car) => car.category.toLowerCase() === category.toLowerCase()
       );
     }
 
-    // Filter by powertrain line (BEV / CSH / ICE)
     if (powertrainParam && powertrainParam !== 'All' && powertrainParam !== 'Semua') {
       const pt = powertrainParam.toUpperCase();
       filteredCars = filteredCars.filter((car) => car.powertrain === pt);
     }
 
-    // Filter by Body Type
     if (bodyTypeParam && bodyTypeParam !== 'All' && bodyTypeParam !== 'Semua') {
       filteredCars = filteredCars.filter((car) => {
         if (bodyTypeParam.toLowerCase() === 'elektrik' || bodyTypeParam.toLowerCase() === 'ev') {
@@ -64,20 +64,24 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // Filter by Transmission Type
     if (transmissionParam && transmissionParam !== 'Semua' && transmissionParam !== 'All') {
       filteredCars = filteredCars.filter((car) => {
-        if (transmissionParam.toLowerCase().includes('automatic') || transmissionParam.toLowerCase().includes('at')) {
+        if (
+          transmissionParam.toLowerCase().includes('automatic') ||
+          transmissionParam.toLowerCase().includes('at')
+        ) {
           return car.transmissionType === 'Automatic';
         }
-        if (transmissionParam.toLowerCase().includes('manual') || transmissionParam.toLowerCase().includes('mt')) {
+        if (
+          transmissionParam.toLowerCase().includes('manual') ||
+          transmissionParam.toLowerCase().includes('mt')
+        ) {
           return car.transmissionType === 'Manual';
         }
         return true;
       });
     }
 
-    // Filter by Min Price (in raw IDR)
     if (minPriceParam) {
       const minVal = parseFloat(minPriceParam);
       if (!isNaN(minVal)) {
@@ -85,7 +89,6 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Filter by Max Price (in raw IDR)
     if (maxPriceParam) {
       const maxVal = parseFloat(maxPriceParam);
       if (!isNaN(maxVal)) {
@@ -93,7 +96,6 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Filter by Query
     if (query) {
       filteredCars = filteredCars.filter(
         (car) =>
@@ -103,15 +105,14 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Sorting (Default: price-low -> termurah ke termahal)
     if (sortParam === 'price-high') {
       filteredCars.sort((a, b) => b.rawPrice - a.rawPrice);
     } else if (sortParam === 'name-asc') {
       filteredCars.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sortParam === 'newest') {
-      // Keep natural order in cars.ts
+    } else if (sortParam === 'newest' || sortParam === 'popular') {
+      const order = new Map(CATALOG_LINEUP_ORDER.map((carId, index) => [carId, index]));
+      filteredCars.sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0));
     } else {
-      // Default: price-low (Harga Terendah)
       filteredCars.sort((a, b) => a.rawPrice - b.rawPrice);
     }
 
@@ -121,7 +122,7 @@ export async function GET(request: NextRequest) {
       dealer: 'Chery Official Dealer Semarang',
       address: CONTACT_INFO.address,
       contact: '0823-2228-3081',
-      data: filteredCars
+      data: filteredCars,
     });
   } catch (error) {
     return NextResponse.json(

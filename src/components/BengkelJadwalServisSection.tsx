@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
+import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
 import { ArrowRight, Headphones, CheckCircle2 } from 'lucide-react';
 import { CONTACT_INFO } from '@/data/contact';
 import { CARS_DATA } from '@/data/cars';
@@ -38,7 +40,10 @@ export const BengkelJadwalServisSection: React.FC = () => {
               src="/images/layanan bengkel/kantor.jpeg"
               alt="Chery Service Center & Dealership"
               fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              qualityRole="hero"
+              sizes={IMAGE_SIZES.heroSplit}
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDERS['kantor-bengkel']}
               className="object-cover object-center"
             />
           </div>

@@ -37,7 +37,7 @@ export default function Home() {
       <Ev9SpecSection />
 
       {/* Section 4: Unit Unggulan */}
-      <FeaturedUnitsSection onOpenTestDrive={handleOpenTestDrive} />
+      <FeaturedUnitsSection />
 
       {/* Section 5: Experience the Adrenaline Test Drive CTA */}
       <TestDriveAdrenalineSection onOpenTestDrive={handleOpenTestDrive} />

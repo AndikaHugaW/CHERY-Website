@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { CheckCircle2 } from 'lucide-react';
 
 interface TestDriveAdrenalineSectionProps {
@@ -68,7 +69,8 @@ export const TestDriveAdrenalineSection: React.FC<TestDriveAdrenalineSectionProp
               src="/images/landing page/img5.webp"
               alt="Chery Experience the Adrenaline"
               fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              qualityRole="hero"
+              sizes={IMAGE_SIZES.heroSplit}
               className="object-cover object-center"
             />
 

@@ -2,7 +2,8 @@
 
 import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { useParams, useSearchParams } from 'next/navigation';
 import { 
   ArrowLeft, 
@@ -202,9 +203,10 @@ function SpecificationContent() {
                   src={car.image}
                   alt={car.name}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  qualityRole="product"
+                  sizes={IMAGE_SIZES.specDiagram}
                   className="object-contain"
-                  priority
+                  preload
                 />
               </div>
 

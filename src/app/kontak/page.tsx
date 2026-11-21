@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
+import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
 import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/Navbar';
 
@@ -91,7 +93,10 @@ export default function KontakPage() {
               src="/images/kontak/kantor.jpeg"
               alt="Chery Semarang Showroom Exterior"
               fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              qualityRole="hero"
+              sizes={IMAGE_SIZES.heroSplit}
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDERS['kantor-kontak']}
               className="object-cover object-center"
             />
 

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { LiquidGlass } from "@/components/ui/liquid-glass";
+import Image from "@/components/ui/optimized-image";
 
 type LiquidGlassDemoProps = {
   shape?: "circle" | "pill";
@@ -30,10 +31,12 @@ export default function LiquidGlassDemo({
       ref={constraintsRef}
       className="relative h-[36rem] w-full overflow-hidden bg-neutral-900"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src="https://assets.aceternity.com/screenshots/colourful-office.webp"
         alt=""
+        fill
+        sizes="100vw"
+        qualityRole="decorative"
         className="absolute inset-0 size-full object-cover"
         draggable={false}
       />

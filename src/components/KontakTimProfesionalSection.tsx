@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { Phone, MessageCircle } from 'lucide-react';
 import { TEAM_MEMBERS } from '@/data/contact';
 
@@ -40,7 +41,8 @@ export const KontakTimProfesionalSection: React.FC = () => {
                     src={member.image}
                     alt={`${member.name} - ${member.role} Chery Semarang`}
                     fill
-                    sizes="128px"
+                    qualityRole="avatar"
+                    sizes={IMAGE_SIZES.avatar}
                     className={member.imagePosition || 'object-cover object-center'}
                   />
                 </div>

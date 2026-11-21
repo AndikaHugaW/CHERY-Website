@@ -2,35 +2,32 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { MapPin, Phone } from 'lucide-react';
 import { CONTACT_INFO } from '@/data/contact';
-import logoImg from '../../public/images/logo/logo.png';
+import logoImg from '../../public/images/logo/logo.webp';
 
 const socialLinks = [
   {
     name: 'Instagram',
     href: 'https://www.instagram.com/kia.masati.semarang?igsh=Ymg5ZmxpcjEzYTc0',
-    defaultIcon: '/images/medsos/default/icon 1.svg',
-    hoverIcon: '/images/medsos/hover/icon 1.svg',
+    icon: '/images/medsos/Instagram.png',
   },
   {
     name: 'Facebook',
     href: 'https://facebook.com',
-    defaultIcon: '/images/medsos/default/icon 2.svg',
-    hoverIcon: '/images/medsos/hover/icon 2.svg',
+    icon: '/images/medsos/Facebook.png',
   },
   {
     name: 'WhatsApp',
     href: CONTACT_INFO.waUrl,
-    defaultIcon: '/images/medsos/default/icon 3.svg',
-    hoverIcon: '/images/medsos/hover/icon 3.svg',
+    icon: '/images/medsos/Whatsapp.png',
   },
   {
     name: 'TikTok',
     href: 'https://www.tiktok.com/@kia.masati.srg?_r=1&_t=ZS-98jOj1ATGKN',
-    defaultIcon: '/images/medsos/default/icon 4.svg',
-    hoverIcon: '/images/medsos/hover/icon 4.svg',
+    icon: '/images/medsos/tiktok.png',
   },
 ];
 
@@ -52,6 +49,8 @@ export const Footer: React.FC<FooterProps> = () => {
               <Image
                 src={logoImg}
                 alt="Logo"
+                qualityRole="logo"
+                sizes={IMAGE_SIZES.logo}
                 style={{ width: 'auto', height: '32px' }}
                 className="h-8 w-auto object-contain brightness-0"
               />
@@ -64,7 +63,7 @@ export const Footer: React.FC<FooterProps> = () => {
               Dealer resmi Chery melayani penjualan, perawatan, dan suku cadang dengan standar global.
             </p>
 
-            {/* Social Media Links from /images/medsos/ default and hover folders */}
+            {/* Social Media Links from /images/medsos/ */}
             <div className="flex items-center gap-3 pt-2">
               {socialLinks.map((item) => (
                 <a
@@ -75,23 +74,14 @@ export const Footer: React.FC<FooterProps> = () => {
                   aria-label={item.name}
                   className="group relative w-10 h-10 flex items-center justify-center transition-transform duration-200 hover:scale-110"
                 >
-                  {/* Default State Icon */}
                   <Image
-                    src={item.defaultIcon}
+                    src={item.icon}
                     alt={`${item.name} Icon`}
                     width={40}
                     height={40}
+                    qualityRole="thumbnail"
                     unoptimized
-                    className="w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
-                  />
-                  {/* Hover State Icon */}
-                  <Image
-                    src={item.hoverIcon}
-                    alt={`${item.name} Hover Icon`}
-                    width={40}
-                    height={40}
-                    unoptimized
-                    className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </a>
               ))}

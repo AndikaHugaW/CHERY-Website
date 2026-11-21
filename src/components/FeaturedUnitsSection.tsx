@@ -11,7 +11,7 @@ interface FeaturedUnitsSectionProps {
 }
 
 export const FeaturedUnitsSection: React.FC<FeaturedUnitsSectionProps> = ({ onOpenTestDrive }) => {
-  const featuredIds = ['tiggo-cross', 'j6', 'chery-c5'];
+  const featuredIds = ['chery-q', 'j6', 'chery-e5'];
   const featuredUnits = featuredIds
     .map((id) => CARS_DATA.find((c) => c.id === id))
     .filter(Boolean)

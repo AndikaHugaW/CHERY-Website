@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
+import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
 
 export const Ev9SpecSection: React.FC = () => {
   return (
@@ -11,11 +13,14 @@ export const Ev9SpecSection: React.FC = () => {
       {/* Background Image: herosection 2.png without dark overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/landing page/herosection 2.png"
+          src="/images/landing page/herosection 2.webp"
           alt="Specification Chery Q"
           fill
-          priority
-          sizes="100vw"
+          preload
+          qualityRole="hero"
+          sizes={IMAGE_SIZES.fullBleed}
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDERS.herosection2}
           className="object-cover object-center w-full h-full"
         />
       </div>

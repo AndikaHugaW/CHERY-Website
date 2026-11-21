@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { Car } from '@/data/cars';
 import { Search, Zap, Users, Gauge, CalendarCheck, Info, X, CheckCircle2 } from 'lucide-react';
 
@@ -92,6 +93,8 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
                     src={car.image}
                     alt={car.name}
                     fill
+                    qualityRole="product"
+                    sizes={IMAGE_SIZES.catalogSection}
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#090B10] via-transparent to-transparent opacity-80" />
@@ -196,7 +199,14 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
 
             <div className="flex items-center gap-4">
               <div className="relative w-24 h-16 rounded-xl overflow-hidden shrink-0">
-                <Image src={activeModalCar.image} alt={activeModalCar.name} fill className="object-cover" />
+                <Image
+                  src={activeModalCar.image}
+                  alt={activeModalCar.name}
+                  fill
+                  qualityRole="thumbnail"
+                  sizes={IMAGE_SIZES.modalThumb}
+                  className="object-cover"
+                />
               </div>
               <div>
                 <span className="text-xs font-bold text-red-500 uppercase tracking-widest">

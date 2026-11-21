@@ -75,11 +75,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/images/logo/logo.png' },
-      { url: '/images/logo/logo.png', type: 'image/png' },
+      { url: '/images/logo/favicon.ico', sizes: '16x16 32x32 48x48' },
+      { url: '/images/logo/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/images/logo/icon-512.png', type: 'image/png', sizes: '512x512' },
     ],
-    shortcut: '/images/logo/logo.png',
-    apple: '/images/logo/logo.png',
+    shortcut: '/images/logo/favicon.ico',
+    apple: '/images/logo/apple-icon.png',
   },
   manifest: '/manifest.webmanifest',
 };

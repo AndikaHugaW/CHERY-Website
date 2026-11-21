@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
+import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { ArrowRight } from 'lucide-react';
@@ -43,9 +45,12 @@ export default function KatalogPage() {
           src="/images/katalog unit/hero-katalog.webp"
           alt="Chery Hero Katalog"
           fill
-          sizes="100vw"
+          preload
+          qualityRole="hero"
+          sizes={IMAGE_SIZES.fullBleed}
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDERS['hero-katalog']}
           className="object-cover object-center"
-          priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-black/10 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />

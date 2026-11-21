@@ -25,7 +25,7 @@ export const TEAM_MEMBERS = [
     waNumber: '6282322283081',
     waUrl: 'https://wa.me/6282322283081',
     description: 'Memimpin strategi pemasaran dan promosi digital untuk memberikan penawaran terbaik dan kemudahan informasi bagi pelanggan Chery Semarang.',
-    image: '/images/kontak/aricahyo.png',
+    image: '/images/kontak/aricahyo.webp',
     imagePosition: 'object-cover object-top',
   },
   {
@@ -37,7 +37,7 @@ export const TEAM_MEMBERS = [
     waNumber: '6282137775491',
     waUrl: 'https://wa.me/6282137775491',
     description: 'Memimpin tim dengan visi integritas dan pelayanan premium. Memastikan setiap interaksi di Chery Semarang memberikan pengalaman standar global.',
-    image: '/images/kontak/timothy.png',
+    image: '/images/kontak/timothy.webp',
     imagePosition: 'object-cover object-top',
   },
   {
@@ -49,7 +49,7 @@ export const TEAM_MEMBERS = [
     waNumber: '6281390936281',
     waUrl: 'https://wa.me/6281390936281',
     description: 'Spesialis pembiayaan dan fleet management.',
-    image: '/images/kontak/kevin.png',
+    image: '/images/kontak/kevin.webp',
     imagePosition: 'object-cover object-center',
   },
 ];

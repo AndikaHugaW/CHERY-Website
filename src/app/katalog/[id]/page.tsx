@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { Navbar } from '@/components/Navbar';
@@ -139,18 +140,16 @@ export default function CarDetailPage() {
             <div className="lg:col-span-6 space-y-4">
               
               {/* Main Image Frame */}
-              <div className="relative aspect-[16/11] bg-gray-50 border border-gray-200/90 rounded-3xl overflow-hidden group shadow-sm flex items-center justify-center">
-                {/* Main Selected Image */}
-                <div className="relative w-full h-full">
-                  <Image
-                    src={selectedImage || car.image}
-                    alt={car.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-center transition-all duration-500"
-                    priority
-                  />
-                </div>
+              <div className="relative aspect-[16/11] sm:aspect-[4/3] bg-gray-50 border border-gray-200/90 rounded-3xl overflow-hidden group shadow-sm">
+                <Image
+                  src={selectedImage || car.image}
+                  alt={car.name}
+                  fill
+                  qualityRole="product"
+                  sizes={IMAGE_SIZES.detailMain}
+                  className="object-contain object-center p-4 sm:p-8 transition-all duration-500"
+                  preload
+                />
               </div>
 
               {/* Thumbnails Row / Carousel (>3 gambar) */}
@@ -199,7 +198,8 @@ export default function CarDetailPage() {
                                 src={imgUrl}
                                 alt={`${car.name} thumb ${idx + 1}`}
                                 fill
-                                sizes="(max-width: 768px) 33vw, 200px"
+                                qualityRole="thumbnail"
+                                sizes={IMAGE_SIZES.detailThumb}
                                 className="object-cover object-center"
                               />
                             </div>
@@ -357,7 +357,7 @@ export default function CarDetailPage() {
             </div>
 
             {/* Cards Grid using Katalog Unit card style */}
-            <div className={`grid grid-cols-1 ${currentVariants.length === 1 ? 'max-w-md mx-auto' : currentVariants.length === 2 ? 'md:grid-cols-2 max-w-4xl mx-auto' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6 lg:gap-8`}>
+            <div className={`grid grid-cols-1 ${currentVariants.length === 1 ? 'max-w-lg mx-auto' : currentVariants.length === 2 ? 'md:grid-cols-2 max-w-5xl mx-auto' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6 lg:gap-8`}>
               {currentVariants.map((v, index) => (
                 <div
                   key={index}
@@ -365,7 +365,7 @@ export default function CarDetailPage() {
                   className="bg-white rounded-2xl border border-gray-200 hover:border-gray-400 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-xl flex flex-col justify-between cursor-pointer group"
                 >
                   {/* Top Image Showcase */}
-                  <div className="relative aspect-[16/10] bg-[#F2F4F7] w-full overflow-hidden">
+                  <div className="relative aspect-[5/3] sm:aspect-[16/10] bg-[#F2F4F7] w-full overflow-hidden">
                     {v.badge && (
                       <div className="absolute top-4 left-4 z-10">
                         <span className="bg-white/90 text-gray-900 text-[11px] font-extrabold px-3 py-1 rounded-full shadow-sm backdrop-blur-sm tracking-wider uppercase">
@@ -377,8 +377,9 @@ export default function CarDetailPage() {
                       src={v.image}
                       alt={v.name}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      qualityRole="product"
+                      sizes={IMAGE_SIZES.catalogCardWide}
+                      className="object-contain object-center p-4 sm:p-6 group-hover:scale-[1.03] transition-transform duration-500"
                     />
                   </div>
 

@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
+import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
 import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/Navbar';
 import { LiquidGlass } from '@/components/ui/liquid-glass';
@@ -20,14 +22,17 @@ export default function BengkelPage() {
 
       {/* Section 1: Hero / Coming Soon */}
       <section className="relative w-full aspect-[16/9] min-h-[480px] sm:min-h-[580px] lg:min-h-[640px] max-h-[720px] flex items-center justify-center text-center overflow-hidden bg-neutral-900">
-        {/* Background Image: /images/layanan bengkel/hero-layanan-bengkel.png */}
+        {/* Background Image: /images/layanan bengkel/hero-layanan-bengkel.webp */}
         <Image
-          src="/images/layanan bengkel/hero-layanan-bengkel.png"
+          src="/images/layanan bengkel/hero-layanan-bengkel.webp"
           alt="Layanan Bengkel Resmi Chery"
           fill
-          sizes="100vw"
+          preload
+          qualityRole="hero"
+          sizes={IMAGE_SIZES.fullBleed}
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDERS['hero-bengkel']}
           className="object-cover object-center"
-          priority
         />
 
         {/* Light contrast overlay for text readability */}

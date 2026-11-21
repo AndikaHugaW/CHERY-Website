@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { usePathname } from 'next/navigation';
 import { LiquidGlass } from '@/components/ui/liquid-glass';
 import { cn } from '@/lib/utils';
@@ -16,7 +17,7 @@ import {
   MobileNavToggle,
   useNavbarVisible,
 } from '@/components/ui/resizable-navbar';
-import logoImg from '../../public/images/logo/logo.png';
+import logoImg from '../../public/images/logo/logo.webp';
 
 interface NavbarProps {
   onOpenTestDrive?: (carId?: string) => void;
@@ -95,9 +96,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
         <Image
           src={logoImg}
           alt="Logo"
+          qualityRole="logo"
+          sizes={IMAGE_SIZES.logo}
           style={{ width: 'auto', height: '26px' }}
           className="h-6 sm:h-7 w-auto object-contain group-hover:scale-105 transition-transform"
-          priority
+          preload
         />
       </span>
       <span className="font-semibold text-lg sm:text-xl tracking-tight text-white uppercase">
@@ -116,7 +119,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
 
   return (
     <ResizableNavbar className="fixed top-0 inset-x-0 z-50 w-full">
-      {/* Desktop Navigation */}
       <NavBody
         className="max-w-[1728px] px-4 sm:px-8 lg:px-12 md:flex"
         visibleWidth="76%"
@@ -139,7 +141,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
         <div className="relative z-20 flex items-center shrink-0">{actionButton}</div>
       </NavBody>
 
-      {/* Mobile Navigation */}
       <MobileNav
         visibleClassName="bg-neutral-950/90! border-b border-white/10 shadow-lg"
         className="px-4 sm:px-8 md:hidden"
@@ -163,11 +164,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
               key={`mobile-link-${idx}`}
               href={item.link}
               onClick={() => setMobileMenuOpen(false)}
-              className={`relative ${
+              className={cn(
+                'relative',
                 pathname === item.link
                   ? 'font-bold text-white'
-                  : 'text-white/60 hover:text-white'
-              }`}
+                  : 'text-white/60 hover:text-white',
+              )}
             >
               <span className="block">{item.name}</span>
             </Link>

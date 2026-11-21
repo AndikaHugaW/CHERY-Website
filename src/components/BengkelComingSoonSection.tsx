@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
+import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
 
 export const BengkelComingSoonSection: React.FC = () => {
   return (
@@ -11,9 +13,12 @@ export const BengkelComingSoonSection: React.FC = () => {
         src="/images/layanan bengkel/bengkel.jpeg"
         alt="Layanan Bengkel Chery Semarang"
         fill
-        sizes="100vw"
+        preload
+        qualityRole="hero"
+        sizes={IMAGE_SIZES.fullBleed}
+        placeholder="blur"
+        blurDataURL={BLUR_PLACEHOLDERS.bengkel}
         className="object-cover object-center"
-        priority
       />
 
       {/* Dark Contrast Overlay */}

@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
 import Link from 'next/link';
 import { Car, CARS_DATA } from '@/data/cars';
+import { getCarCardDisplay } from '@/data/catalog-card-specs';
 import {
   Search,
   ChevronDown,
@@ -128,86 +130,71 @@ export const KatalogGridSection: React.FC<KatalogGridSectionProps> = ({
 
   const renderCarCard = (car: Car) => {
     const badge = powertrainBadgeLabel(car);
-    const priceLabel =
-      car.rawPrice > 0
-        ? `Mulai ${car.formattedPrice}`
-        : car.priceStarting === 'Segera Hadir'
-          ? 'Harga Segera Diumumkan'
-          : `Mulai ${car.priceStarting}`;
+    const cardDisplay = getCarCardDisplay(car.id);
+    const specCols =
+      car.powertrain === 'CSH' && cardDisplay?.baterai
+        ? 'grid-cols-2 sm:grid-cols-4'
+        : 'grid-cols-3';
+
+    const specCell = (label: string, value: string) => (
+      <div key={`${car.id}-${label}`} className="flex flex-col items-center text-center min-w-0">
+        <span className="text-[10px] font-medium text-gray-500 uppercase">{label}</span>
+        <span className="text-base sm:text-lg font-bold text-gray-900 mt-1">{value}</span>
+      </div>
+    );
 
     return (
       <article
         key={car.id}
         className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
       >
-        <div className="relative aspect-[16/10] bg-[#f3f4f6] overflow-hidden">
-          <div className="absolute top-3 left-3 z-10">
-            <span
-              className={`text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm ${
-                badge === 'EV'
-                  ? 'bg-white/90 text-gray-800'
-                  : badge === 'CSH'
-                    ? 'bg-amber-100/95 text-amber-900'
-                    : 'bg-white/90 text-gray-800'
-              }`}
-            >
-              {badge}
-            </span>
-          </div>
-          <Image
-            src={car.image}
-            alt={car.name}
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        </div>
-
         <div className="p-5 sm:p-6 flex flex-col flex-1 gap-4">
-          <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight uppercase">
               {car.name}
             </h3>
-            <p className="text-sm text-gray-600 mt-1 font-medium">{priceLabel}</p>
-          </div>
-
-          <div className="flex items-center justify-between gap-2 text-[11px] sm:text-xs text-gray-600 border-t border-gray-100 pt-4">
-            <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0 text-center">
-              {car.powertrain === 'BEV' ? (
-                <Battery className="w-4 h-4 text-gray-400 shrink-0" />
-              ) : (
-                <Fuel className="w-4 h-4 text-gray-400 shrink-0" />
+            <div className="flex items-center gap-2 shrink-0">
+              {cardDisplay?.isNew && (
+                <span className="text-[10px] font-extrabold uppercase text-red-600 bg-red-50 px-2 py-0.5 rounded">
+                  New
+                </span>
               )}
-              <span className="truncate w-full font-medium">{primarySpec(car)}</span>
-            </div>
-            <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0 text-center border-x border-gray-100 px-2">
-              <Gauge className="w-4 h-4 text-gray-400 shrink-0" />
-              <span className="truncate w-full font-medium">{formatPower(car)}</span>
-            </div>
-            <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0 text-center">
-              <Users className="w-4 h-4 text-gray-400 shrink-0" />
-              <span className="font-medium">{car.seats}-Seater</span>
+              <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-gray-100 text-gray-800">
+                {badge}
+              </span>
             </div>
           </div>
 
-          <div className="flex gap-3 mt-auto pt-1">
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                if (onOpenTestDrive) onOpenTestDrive(car.id);
-              }}
-              className="flex-1 bg-black hover:bg-neutral-800 text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors"
-            >
-              Pesan
-            </button>
-            <Link
-              href={`/katalog/${car.id}`}
-              className="flex-1 border border-gray-300 hover:border-gray-900 hover:bg-gray-50 text-gray-900 text-sm font-semibold py-2.5 px-3 rounded-lg text-center transition-colors"
-            >
-              Detail Spesifikasi
-            </Link>
+          <div className="relative aspect-[16/10] bg-[#f3f4f6] overflow-hidden rounded-lg">
+            <Image
+              src={car.image}
+              alt={car.name}
+              fill
+              qualityRole="product"
+              className="object-contain object-center p-2"
+              sizes={IMAGE_SIZES.catalogCard}
+            />
           </div>
+
+          {cardDisplay ? (
+            <div className={'grid gap-3 border-t border-gray-100 pt-4 ' + specCols}>
+              {car.powertrain === 'BEV' &&
+                cardDisplay.baterai &&
+                specCell('Baterai', cardDisplay.baterai.replace(/ kwh/i, '').trim())}
+              {car.powertrain === 'CSH' && cardDisplay.baterai && specCell('Baterai', cardDisplay.baterai)}
+              {car.powertrain === 'CSH' && cardDisplay.mesin && specCell('Mesin', cardDisplay.mesin)}
+              {car.powertrain === 'ICE' && cardDisplay.mesin && specCell('Mesin', cardDisplay.mesin)}
+              {specCell('Panjang', cardDisplay.panjang.replace(/ mm/i, '').trim())}
+              {specCell('Wheelbase', cardDisplay.wheelbase.replace(/ mm/i, '').trim())}
+            </div>
+          ) : null}
+
+          <Link
+            href={'/katalog/' + car.id}
+            className="mt-auto w-full border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 text-sm font-bold py-2.5 px-4 rounded-full text-center transition-colors"
+          >
+            Lihat Detail
+          </Link>
         </div>
       </article>
     );

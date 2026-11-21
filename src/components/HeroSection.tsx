@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/optimized-image';
+import { IMAGE_SIZES } from '@/lib/image-optimization';
+import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
 import Link from 'next/link';
 import { 
   ArrowUpRight,
@@ -19,11 +21,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => 
       <div className="absolute inset-0 z-0 overflow-hidden rounded-none">
         <div className="relative w-full h-full">
           <Image
-            src="/images/landing page/landingpage 1.png"
+            src="/images/landing page/landingpage 1.webp"
             alt="Chery Salatiga"
             fill
-            priority
-            sizes="100vw"
+            preload
+            qualityRole="hero"
+            sizes={IMAGE_SIZES.fullBleed}
+            placeholder="blur"
+            blurDataURL={BLUR_PLACEHOLDERS.landingpage1}
             className="object-cover object-center w-full h-full rounded-none"
           />
         </div>
