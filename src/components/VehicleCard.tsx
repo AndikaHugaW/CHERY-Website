@@ -43,34 +43,32 @@ const POWERTRAIN_LABEL: Record<Car['powertrain'], string> = {
  */
 
 /** Kelas gap literal agar Tailwind v4 tidak mem-purge class dinamis. */
-const CARD_GRID_GAP = 'gap-3';
+const CARD_GRID_GAP = 'gap-2.5 sm:gap-3';
 
 /**
  * Penempatan horizontal tiap komponen spesifikasi di dalam grid.
- * Grid spesifikasi memakai `repeat(3, minmax(0, 1fr))` (Tailwind `grid-cols-3`)
- * dengan lebar penuh yang sama persis dengan container tombol, sehingga:
+ * Grid spesifikasi memakai 3 kolom di web dan mobile agar konsisten dan sejajar.
  * - kolom 1 -> batas kiri tombol "Pesan"
  * - kolom 2 -> titik tengah card (= titik tengah celah kedua tombol)
  * - kolom 3 -> batas kanan tombol "Detail Spesifikasi"
- * `justify-self` memposisikan blok item; `dt`/`dd` ikut rata agar label dan
- * nilai berhenti pada anchor yang sama. Semua kelas literal (Tailwind v4
- * tidak mem-purge class dinamis) dan di-scope `sm:` agar mobile tetap stack.
+ * justify-self memposisikan blok item; dt/dd ikut rata agar label dan
+ * nilai berhenti pada anchor yang sama di mobile maupun web.
  */
 const SPEC_ALIGN = {
   start: {
-    item: 'sm:justify-self-start',
-    label: 'sm:justify-start',
-    value: 'sm:text-left',
+    item: 'justify-self-start sm:justify-self-start',
+    label: 'justify-start sm:justify-start',
+    value: 'text-left sm:text-left',
   },
   center: {
-    item: 'sm:justify-self-center',
-    label: 'sm:justify-center',
-    value: 'sm:text-center',
+    item: 'justify-self-center sm:justify-self-center',
+    label: 'justify-center sm:justify-center',
+    value: 'text-center sm:text-center',
   },
   end: {
-    item: 'sm:justify-self-end',
-    label: 'sm:justify-end',
-    value: 'sm:text-right',
+    item: 'justify-self-end sm:justify-self-end',
+    label: 'justify-end sm:justify-end',
+    value: 'text-right sm:text-right',
   },
 } as const;
 
@@ -82,10 +80,10 @@ const SPEC_ALIGN_ORDER: Record<number, SpecAlignKey[]> = {
   4: ['start', 'center', 'center', 'end'],
 };
 
-/** Jumlah kolom grid per jumlah spesifikasi (mobile ikut menyesuaikan). */
+/** Jumlah kolom grid per jumlah spesifikasi (mobile 3 kolom agar rapi seperti web). */
 const SPEC_GRID_COLS: Record<number, string> = {
   2: 'grid-cols-2',
-  3: 'grid-cols-1 sm:grid-cols-3',
+  3: 'grid-cols-3',
   4: 'grid-cols-2 sm:grid-cols-4',
 };
 
@@ -203,16 +201,16 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
       </div>
 
       {/* Body */}
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
+      <div className="flex flex-1 flex-col p-4 sm:p-6">
         <div>
           <h3
-            className={`text-xl sm:text-[1.375rem] font-bold tracking-tight leading-tight ${
+            className={`text-lg sm:text-[1.375rem] font-bold tracking-tight leading-tight ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}
           >
             {car.name}
           </h3>
-          <p className={`mt-1.5 text-sm font-medium ${isDark ? 'text-white/70' : 'text-gray-500'}`}>
+          <p className={`mt-1 sm:mt-1.5 text-xs sm:text-sm font-medium ${isDark ? 'text-white/70' : 'text-gray-500'}`}>
             Mulai{' '}
             <span className={isDark ? 'font-semibold text-white' : 'font-semibold text-gray-900'}>
               {car.rawPrice > 0 ? car.formattedPrice : car.priceStarting}
@@ -223,7 +221,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
         {/* Specs — memakai grid yang sama dengan baris tombol agar tepi kolom sejajar */}
         {display && specItems.length > 0 ? (
           <dl
-            className={`mt-5 grid ${specGridCols} ${CARD_GRID_GAP} gap-y-4 border-t pt-5 ${
+            className={`mt-4 sm:mt-5 grid ${specGridCols} ${CARD_GRID_GAP} gap-y-3 sm:gap-y-4 border-t pt-4 sm:pt-5 ${
               isDark ? 'border-white/10' : 'border-gray-100'
             }`}
           >
@@ -232,28 +230,28 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
               return (
                 <div key={item.label} className={`min-w-0 ${align.item}`}>
                   <dt
-                    className={`flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider ${
+                    className={`flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider ${
                       isDark ? 'text-white/55' : 'text-gray-400'
                     } ${align.label}`}
                   >
-                    {item.label === 'Mesin' && <Fuel className="h-3.5 w-3.5 shrink-0" aria-hidden />}
-                    {item.label === 'Tenaga' && <Gauge className="h-3.5 w-3.5 shrink-0" aria-hidden />}
-                    {item.label === 'Kursi' && <Users className="h-3.5 w-3.5 shrink-0" aria-hidden />}
+                    {item.label === 'Mesin' && <Fuel className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" aria-hidden />}
+                    {item.label === 'Tenaga' && <Gauge className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" aria-hidden />}
+                    {item.label === 'Kursi' && <Users className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" aria-hidden />}
                     {item.label === 'Baterai' && (
-                      <BatteryCharging className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                      <BatteryCharging className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" aria-hidden />
                     )}
-                    {item.label === 'Panjang' && <Ruler className="h-3.5 w-3.5 shrink-0" aria-hidden />}
-                    {item.label === 'Wheelbase' && <Milestone className="h-3.5 w-3.5 shrink-0" aria-hidden />}
+                    {item.label === 'Panjang' && <Ruler className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" aria-hidden />}
+                    {item.label === 'Wheelbase' && <Milestone className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" aria-hidden />}
                     <span className="truncate">{item.label}</span>
                   </dt>
                   <dd
-                    className={`mt-1.5 text-sm font-bold leading-tight ${
+                    className={`mt-1 sm:mt-1.5 text-xs sm:text-sm font-bold leading-tight ${
                       isDark ? 'text-white' : 'text-gray-900'
                     } ${align.value}`}
                   >
                     {item.value}
                     {item.unit && (
-                      <span className={`ml-0.5 text-[11px] font-medium ${isDark ? 'text-white/50' : 'text-gray-400'}`}>
+                      <span className={`ml-0.5 text-[10px] sm:text-[11px] font-medium ${isDark ? 'text-white/50' : 'text-gray-400'}`}>
                         {item.unit}
                       </span>
                     )}
@@ -263,13 +261,13 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
             })}
           </dl>
         ) : (
-          <div className="mt-5 flex items-center justify-between gap-3 border-t border-gray-100 pt-5">
+          <div className="mt-4 sm:mt-5 flex items-center justify-between gap-3 border-t border-gray-100 pt-4 sm:pt-5">
             {fallbackSpecs.map((spec) => {
               const Icon = spec.icon;
               return (
                 <div key={spec.label} className="flex min-w-0 items-center gap-1.5">
-                  <Icon className="h-4 w-4 shrink-0 text-gray-400" aria-hidden />
-                  <span className="truncate text-xs font-semibold text-gray-600">{spec.label}</span>
+                  <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-gray-400" aria-hidden />
+                  <span className="truncate text-[11px] sm:text-xs font-semibold text-gray-600">{spec.label}</span>
                 </div>
               );
             })}
@@ -277,12 +275,12 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
         )}
 
         {/* Actions — lebar penuh, dua tombol sama lebar, sejajar dengan baris spesifikasi */}
-        <div className={`mt-6 grid grid-cols-2 ${CARD_GRID_GAP}`}>
+        <div className={`mt-5 sm:mt-6 grid grid-cols-2 ${CARD_GRID_GAP}`}>
           {onPrimaryAction ? (
             <button
               type="button"
               onClick={onPrimaryAction}
-              className={`inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-bold transition-all duration-200 active:scale-[0.98] ${
+              className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold transition-all duration-200 active:scale-[0.98] ${
                 isDark
                   ? 'bg-white text-gray-900 hover:bg-white/90'
                   : 'bg-gray-900 text-white hover:bg-gray-800'
@@ -292,7 +290,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
             </button>
           ) : (
             <span
-              className={`inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-bold ${
+              className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold ${
                 isDark ? 'bg-white text-gray-900' : 'bg-gray-900 text-white'
               }`}
             >
@@ -302,14 +300,14 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
 
           <Link
             href={href}
-            className={`group/btn inline-flex items-center justify-center gap-1.5 rounded-full border px-4 py-2.5 text-sm font-bold transition-all duration-200 active:scale-[0.98] ${
+            className={`group/btn inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full border px-2.5 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold transition-all duration-200 active:scale-[0.98] ${
               isDark
                 ? 'border-white/25 text-white hover:border-white/50 hover:bg-white/10'
                 : 'border-gray-300 text-gray-900 hover:border-gray-900 hover:bg-gray-900 hover:text-white'
             }`}
           >
-            <span>Detail Spesifikasi</span>
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
+            <span className="truncate">Detail Spesifikasi</span>
+            <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
           </Link>
         </div>
       </div>

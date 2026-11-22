@@ -279,25 +279,25 @@ export const MobileNav = ({
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
+        backdropFilter: visible ? "blur(18px)" : "none",
         boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          ? "0 12px 36px -4px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 1px 0 rgba(255, 255, 255, 0.25) inset"
           : "none",
-        width: visible ? "94%" : "100%",
-        paddingRight: visible ? "16px" : "0px",
-        paddingLeft: visible ? "16px" : "0px",
-        borderRadius: visible ? "8px" : "1rem",
-        y: visible ? 16 : 0,
+        width: visible ? "92%" : "100%",
+        paddingRight: visible ? "14px" : "16px",
+        paddingLeft: visible ? "14px" : "16px",
+        borderRadius: visible ? "9999px" : "1.25rem",
+        y: visible ? 12 : 0,
       }}
       transition={{
         type: "spring",
-        stiffness: 200,
-        damping: 50,
+        stiffness: 220,
+        damping: 45,
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-1.5rem)] sm:max-w-[calc(100vw-3rem)] flex-col items-center justify-between bg-transparent py-2.5 transition-colors",
         !visible && defaultClassName,
-        visible && cn("bg-white/80 dark:bg-neutral-950/80", visibleClassName),
+        visible && cn("bg-white/75 dark:bg-neutral-950/75 backdrop-blur-2xl", visibleClassName),
         className,
       )}
     >
@@ -332,11 +332,16 @@ export const MobileNavMenu = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: -10, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -8, scale: 0.98 }}
+          transition={{
+            type: "spring",
+            stiffness: 350,
+            damping: 30,
+          }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
+            "absolute inset-x-0 top-full mt-3 z-50 flex w-full flex-col items-start justify-start gap-2 rounded-3xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.3)] backdrop-blur-2xl transition-all",
             menuClassName,
             className,
           )}
@@ -357,10 +362,22 @@ export const MobileNavToggle = ({
   onClick: () => void;
   className?: string;
 }) => {
-  return isOpen ? (
-    <IconX className={cn("text-black dark:text-white", className)} onClick={onClick} />
-  ) : (
-    <IconMenu2 className={cn("text-black dark:text-white", className)} onClick={onClick} />
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={isOpen ? "Tutup menu" : "Buka menu"}
+      className={cn(
+        "relative z-20 flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus:outline-none",
+        className,
+      )}
+    >
+      {isOpen ? (
+        <IconX className="h-5 w-5" />
+      ) : (
+        <IconMenu2 className="h-5 w-5" />
+      )}
+    </button>
   );
 };
 

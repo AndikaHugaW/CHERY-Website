@@ -89,6 +89,68 @@ const NavbarActionButton: React.FC<{
   );
 };
 
+const MobileNavHeaderSection: React.FC<{
+  isMobileDefaultTransparent: boolean;
+  isMobileLightTheme: boolean;
+  mobileMenuOpen: boolean;
+  setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({
+  isMobileDefaultTransparent,
+  isMobileLightTheme,
+  mobileMenuOpen,
+  setMobileMenuOpen,
+}) => {
+  const visible = useNavbarVisible();
+
+  // Saat visible (scrolled) -> selalu pakai tema terang (logo dark, teks #2B2B2B, toggle hitam).
+  // Saat !visible (posisi awal / default di atas):
+  //   - Jika isMobileDefaultTransparent (landing page, katalog, bengkel):
+  //     Logo putih, teks putih, toggle putih!
+  //   - Jika tidak (misal /kontak):
+  //     Logo dark, teks #2B2B2B, toggle hitam.
+  const useLightMobile = visible ? isMobileLightTheme : !isMobileDefaultTransparent;
+
+  return (
+    <MobileNavHeader className="px-1 py-0.5">
+      <Link
+        href="/"
+        className="relative z-20 mr-2 flex shrink-0 items-center gap-3.5 group"
+      >
+        <span className="relative h-10 flex items-center">
+          <Image
+            src={useLightMobile ? logoDarkImg : logoImg}
+            alt="Logo"
+            qualityRole="logo"
+            sizes={IMAGE_SIZES.logo}
+            style={{ width: 'auto', height: '26px' }}
+            className="h-6 sm:h-7 w-auto object-contain group-hover:scale-105 transition-transform"
+            preload
+          />
+        </span>
+        <span
+          className={cn(
+            'font-semibold text-lg sm:text-xl tracking-tight uppercase transition-colors duration-200',
+            useLightMobile ? 'text-[#2B2B2B]' : 'text-white',
+          )}
+        >
+          Salatiga
+        </span>
+      </Link>
+
+      <MobileNavToggle
+        isOpen={mobileMenuOpen}
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className={cn(
+          'transition-colors duration-200',
+          useLightMobile
+            ? 'bg-black/5 hover:bg-black/10 border border-black/10 text-[#2B2B2B]'
+            : 'bg-white/10 hover:bg-white/20 border border-white/20 text-white',
+        )}
+      />
+    </MobileNavHeader>
+  );
+};
+
 export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -122,20 +184,43 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
 
   /**
    * Halaman detail mobil dan kontak & tentang memakai navbar terang (latar #F8F9FA)
-   * dengan logo dan CTA hitam, seperti pada referensi desain. Halaman lain mempertahankan
+   * dengan logo dan CTA hitam di desktop. Halaman lain mempertahankan
    * tema gelap-hingga-scroll yang sudah ada.
    */
   const isLightTheme =
     isCatalogUnitDetail || pathname === '/kontak' || pathname === '/kontak/';
 
-  const brandLogo = (
+  /**
+   * Versi mobile navbar untuk landing page ('/'), katalog unit ('/katalog'),
+   * dan kontak & tentang ('/kontak') mengikuti tema terang liquid glass
+   * milik page kontak dan tentang saat scrolled.
+   */
+  const isMobileLightTheme =
+    pathname === '/' ||
+    pathname === '/katalog' ||
+    (pathname != null && pathname.startsWith('/katalog')) ||
+    (pathname != null && pathname.startsWith('/kontak')) ||
+    isLightTheme;
+
+  /**
+   * Navbar default versi mobile untuk landing page, katalog unit, dan bengkel
+   * tanpa background fill (transparan), dengan logo dan teks putih.
+   */
+  const isMobileDefaultTransparent =
+    pathname === '/' ||
+    pathname === '/katalog' ||
+    pathname === '/katalog/' ||
+    pathname === '/bengkel' ||
+    pathname === '/bengkel/';
+
+  const renderBrandLogo = (isLight: boolean) => (
     <Link
       href="/"
       className="relative z-20 mr-2 flex shrink-0 items-center gap-3.5 group"
     >
       <span className="relative h-10 flex items-center">
         <Image
-          src={isLightTheme ? logoDarkImg : logoImg}
+          src={isLight ? logoDarkImg : logoImg}
           alt="Logo"
           qualityRole="logo"
           sizes={IMAGE_SIZES.logo}
@@ -147,7 +232,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
       <span
         className={cn(
           'font-semibold text-lg sm:text-xl tracking-tight uppercase',
-          isLightTheme ? 'text-[#2B2B2B]' : 'text-white',
+          isLight ? 'text-[#2B2B2B]' : 'text-white',
         )}
       >
         Salatiga
@@ -155,12 +240,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
     </Link>
   );
 
-  const actionButton = onOpenTestDrive ? (
+  const desktopActionButton = onOpenTestDrive ? (
     <NavbarActionButton onClick={() => onOpenTestDrive()} tone={isLightTheme ? 'dark' : 'light'}>
       Test Drive
     </NavbarActionButton>
   ) : (
     <NavbarActionButton href="/kontak" tone={isLightTheme ? 'dark' : 'light'}>
+      Kontak
+    </NavbarActionButton>
+  );
+
+  const mobileActionButton = onOpenTestDrive ? (
+    <NavbarActionButton onClick={() => onOpenTestDrive()} tone={isMobileLightTheme ? 'dark' : 'light'}>
+      Test Drive
+    </NavbarActionButton>
+  ) : (
+    <NavbarActionButton href="/kontak" tone={isMobileLightTheme ? 'dark' : 'light'}>
       Kontak
     </NavbarActionButton>
   );
@@ -182,7 +277,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
             : 'bg-neutral-950/85! border-b border-white/10 shadow-lg'
         }
       >
-        {brandLogo}
+        {renderBrandLogo(isLightTheme)}
         <NavItems
           items={navLinks}
           className="lg:flex"
@@ -201,33 +296,38 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
           enableSlidingPill={isLightTheme}
           isActive={isNavItemActive}
         />
-        <div className="relative z-20 flex items-center shrink-0">{actionButton}</div>
+        <div className="relative z-20 flex items-center shrink-0">{desktopActionButton}</div>
       </NavBody>
 
       <MobileNav
         visibleClassName={
-          isLightTheme
-            ? 'bg-[#F8F9FA]! border-b border-black/5 shadow-lg'
-            : 'bg-neutral-950/90! border-b border-white/10 shadow-lg'
+          isMobileLightTheme
+            ? 'bg-white/70! border border-black/10 shadow-[0_12px_36px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.85)]'
+            : 'bg-neutral-950/70! border border-white/15 shadow-[0_16px_40px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.25)]'
         }
-        className="px-4 sm:px-8 lg:hidden"
+        defaultClassName={
+          isMobileDefaultTransparent
+            ? 'bg-transparent! border-transparent! shadow-none!'
+            : isMobileLightTheme
+              ? 'bg-white/50 border-b border-black/5 shadow-sm'
+              : 'bg-black/20 border-b border-white/10'
+        }
+        className="px-3 sm:px-6 lg:hidden"
       >
-        <MobileNavHeader>
-          {brandLogo}
-          <MobileNavToggle
-            isOpen={mobileMenuOpen}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={isLightTheme ? 'text-[#2B2B2B]' : 'text-white'}
-          />
-        </MobileNavHeader>
+        <MobileNavHeaderSection
+          isMobileDefaultTransparent={isMobileDefaultTransparent}
+          isMobileLightTheme={isMobileLightTheme}
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOpen={setMobileMenuOpen}
+        />
 
         <MobileNavMenu
           isOpen={mobileMenuOpen}
           onClose={() => setMobileMenuOpen(false)}
           menuClassName={
-            isLightTheme
-              ? 'bg-[#F8F9FA] backdrop-blur-xl border-t border-black/5 text-[#2B2B2B]'
-              : 'bg-neutral-950/95 backdrop-blur-xl border-t border-white/10 text-white'
+            isMobileLightTheme
+              ? 'bg-white/85 border border-black/10 shadow-[0_24px_50px_rgba(0,0,0,0.12),inset_0_1px_1px_rgba(255,255,255,0.9)] text-[#2B2B2B]'
+              : 'bg-neutral-950/80 border border-white/15 shadow-[0_24px_50px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.2)] text-white'
           }
         >
           {navLinks.map((item, idx) => {
@@ -239,22 +339,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
                 onClick={() => setMobileMenuOpen(false)}
                 aria-current={isActiveItem ? 'page' : undefined}
                 className={cn(
-                  'relative w-full rounded-full px-4 py-2.5 transition-colors duration-200',
+                  'group relative w-full flex items-center justify-between rounded-full px-5 py-3 hover:py-4 text-sm sm:text-base font-semibold transition-all duration-200 ease-out',
                   isActiveItem
-                    ? isLightTheme
-                      ? 'bg-black! font-bold text-white!'
-                      : 'font-bold text-white'
-                    : isLightTheme
-                      ? 'text-[#45464C] hover:bg-black/8 hover:text-[#2B2B2B]'
-                      : 'text-white/60 hover:text-white',
+                    ? 'bg-black text-white shadow-md shadow-black/20 py-3.5'
+                    : isMobileLightTheme
+                      ? 'text-[#2B2B2B] hover:bg-[#2C2D31] hover:text-white hover:shadow-md hover:shadow-black/10'
+                      : 'text-white/85 hover:bg-[#2C2D31] hover:text-white hover:shadow-md hover:shadow-black/20',
                 )}
               >
-                <span className="block">{item.name}</span>
+                <span className="relative z-10 transition-transform duration-200 group-hover:translate-x-1">
+                  {item.name}
+                </span>
+                <span
+                  className={cn(
+                    'w-2 h-2 rounded-full transition-all duration-200',
+                    isActiveItem
+                      ? 'bg-white scale-100 opacity-100'
+                      : 'bg-white scale-50 opacity-0 group-hover:opacity-100 group-hover:scale-100',
+                  )}
+                />
               </Link>
             );
           })}
-          <div className="flex w-full flex-col gap-4">
-            <div className="w-full">{actionButton}</div>
+          <div className="w-full pt-3 mt-1 border-t border-black/10">
+            <div className="w-full [&>div]:w-full [&>div>button]:w-full [&>div>a]:w-full">
+              {mobileActionButton}
+            </div>
           </div>
         </MobileNavMenu>
       </MobileNav>

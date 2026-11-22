@@ -11,15 +11,15 @@ const statsData = [
 
 export const StatsSection: React.FC = () => {
   return (
-    <section className="bg-[#F8F9FA] border-y border-gray-200/80 py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-[1728px] mx-auto px-2 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-8 sm:gap-y-0 divide-y-0 sm:divide-x divide-gray-300/60 text-center">
+    <section className="bg-[#F8F9FA] border-y border-gray-200/80 py-6 sm:py-10 px-3 sm:px-6 lg:px-8">
+      <div className="max-w-[1728px] mx-auto px-1 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-4 divide-x divide-gray-300/60 text-center">
           {statsData.map((stat, idx) => (
-            <div key={idx} className="flex flex-col items-center justify-center px-2 sm:px-4">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-black text-black tracking-tight">
+            <div key={idx} className="flex flex-col items-center justify-center px-1.5 sm:px-4">
+              <span className="text-xl xs:text-2xl sm:text-4xl md:text-5xl font-black text-black tracking-tight leading-tight">
                 {stat.value}
               </span>
-              <span className="text-xs sm:text-sm font-semibold text-gray-700 mt-1.5 sm:mt-2 tracking-wide">
+              <span className="text-[10px] xs:text-xs sm:text-sm font-semibold text-gray-700 mt-1 sm:mt-2 tracking-tight sm:tracking-wide text-center leading-tight">
                 {stat.label}
               </span>
             </div>

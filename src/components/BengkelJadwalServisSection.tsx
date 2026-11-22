@@ -37,13 +37,13 @@ export const BengkelJadwalServisSection: React.FC = () => {
           {/* Dealership Exterior / Cars Lineup Image */}
           <div className="relative aspect-[16/10] w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-md bg-gray-200">
             <Image
-              src="/images/layanan bengkel/kantor.jpeg"
+              src="/images/kontak/kantor.jpeg"
               alt="Chery Service Center & Dealership"
               fill
               qualityRole="hero"
               sizes={IMAGE_SIZES.heroSplit}
               placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDERS['kantor-bengkel']}
+              blurDataURL={BLUR_PLACEHOLDERS['kantor-kontak']}
               className="object-cover object-center"
             />
           </div>
