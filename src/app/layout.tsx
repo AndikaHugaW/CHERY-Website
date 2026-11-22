@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     locale: 'id_ID',
     url: 'https://kiasemarang.id',
     siteName: 'Chery Semarang',
-    title: 'Chery Semarang - Dealer Resmi Mobil Chery Jawa Tengah',
+    title: 'Chery Salatiga - Dealer Resmi Mobil Chery Jawa Tengah',
     description:
-      'Dealer resmi Chery di Semarang dengan pilihan SUV, MPV, dan EV terbaru. Promo spesial, test drive gratis, dan kredit DP ringan.',
+      'Dealer resmi Chery di Salatiga dengan pilihan SUV, MPV, dan EV terbaru. Promo spesial, test drive gratis, dan kredit DP ringan.',
     images: [
       {
         url: '/images/kontak/kantor.jpeg',
