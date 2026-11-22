@@ -39,15 +39,6 @@ export const CAR_SPECIFICATIONS: Record<string, CarSpecification> = {
     ],
     "categories": []
   },
-  "chery-c5-csh": {
-    "carId": "chery-c5-csh",
-    "carName": "CHERY C5 CSH",
-    "tagline": "AKSELERASI MAKSIMUM",
-    "variants": [
-      "CHERY C5 CSH"
-    ],
-    "categories": []
-  },
   "j6": {
     "carId": "j6",
     "carName": "J6",

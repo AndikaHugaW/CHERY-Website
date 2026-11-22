@@ -45,13 +45,6 @@ export const CAR_CARD_DISPLAY: Record<string, CarCardDisplaySpecs> = {
     wheelbase: '2630 mm',
     kursi: 5,
   },
-  'chery-c5-csh': {
-    mesin: '1,5 TGDI',
-    tenaga: '204 PS',
-    panjang: '4600 mm',
-    wheelbase: '2610 mm',
-    kursi: 5,
-  },
   'tiggo-9-csh': {
     baterai: '34,46 kWh',
     mesin: '1,5 TGDI',
@@ -108,7 +101,7 @@ export const CAR_CARD_DISPLAY: Record<string, CarCardDisplaySpecs> = {
 
 export const LINEUP_BY_POWERTRAIN = {
   BEV: ['chery-q', 'j6', 'chery-e5'],
-  CSH: ['tiggo-9-csh', 'tiggo-8-csh', 'chery-c5-csh', 'tiggo-cross-csh-hybrid'],
+  CSH: ['tiggo-9-csh', 'tiggo-8-csh', 'tiggo-cross-csh-hybrid'],
   ICE: ['tiggo-8-pro-max', 'tiggo-8', 'tiggo-cross-sport', 'tiggo-cross'],
 } as const;
 

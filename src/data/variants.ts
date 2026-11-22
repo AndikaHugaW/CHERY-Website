@@ -498,24 +498,6 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
       ]
     }
   ],
-  "chery-c5-csh": [
-    {
-      "name": "CHERY C5 CSH",
-      "trim": "CHERY C5 CSH",
-      "price": "Rp 419.900.000",
-      "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/color-options/car-red.webp",
-      "badge": "TERSEDIA",
-      "engine": "Comprehensive Mileage 1000km+",
-      "transmission": "Automatic",
-      "seats": 5,
-      "fuelType": "Hybrid",
-      "features": [
-        "Comprehensive Mileage 1000km+",
-        "Konsumsi Bahan Bakar 20,4 km/L (NEDC)",
-        "Akselerasi 0-100 km di 7,7s"
-      ]
-    }
-  ],
   "chery-c5": [
     {
       "name": "CHERY C5 Z",

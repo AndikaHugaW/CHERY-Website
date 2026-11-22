@@ -24,7 +24,6 @@ export interface Car {
   fuelType: 'Bensin' | 'Diesel' | 'Listrik' | 'Hybrid';
   seats: number;
   image: string;
-  gallery: string[];
   battery?: string;
   range?: string;
   driveType?: string;
@@ -80,14 +79,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Listrik",
     "seats": 5,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/chery-q/main-image-desktop-02.webp",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/chery-q/main-image-desktop-02.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/chery-q/main-image-front.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/chery-q/safety/apa-v2.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/chery-q/interior/wireless-fast-charging.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/chery-q/additional-on-sigma/17-Inch-Capsule-Loop-Alloy-Wheel.jpg",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/chery-q/additional-on-sigma/Electric-Tailgate-New.jpg"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"
@@ -101,59 +92,6 @@ export const CARS_DATA: Car[] = [
       "6 Airbag",
       "20 ADAS Features",
       "540 Camera"
-    ],
-    "specs": {
-      "warranty": "Garansi resmi Chery Indonesia"
-    }
-  },
-  {
-    "id": "chery-c5-csh",
-    "name": "CHERY C5 CSH",
-    "trim": "CHERY C5 CSH",
-    "model": "CHERY C5 CSH",
-    "brand": "Chery",
-    "year": "2026",
-    "color": "Red Ruby",
-    "description": "Nikmati sensasi akselerasi 0-100km/jam dalam 7,7 detik bersama Chery C5 CSH. Temukan teknologi Super Hybrid dan desain futuristik Anda di sini!",
-    "kilometer": "0 km",
-    "status": "Tersedia",
-    "tagline": "AKSELERASI MAKSIMUM",
-    "category": "SUV",
-    "powertrain": "CSH",
-    "bodyType": "SUV",
-    "priceStarting": "Rp 419.9 Jt",
-    "formattedPrice": "Rp 419.900.000",
-    "rawPrice": 419900000,
-    "engine": "1,5 TGDI",
-    "power": "N/A",
-    "transmissionType": "Automatic",
-    "transmissionDetail": "Automatic",
-    "fuelType": "Hybrid",
-    "seats": 5,
-    "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/color-options/car-red.webp",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/color-options/car-red.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/thumbnails/chery-c5-csh-fix.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/thumbnails/car-front-thumbnail.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/exteriors/new-wheel-design.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/exteriors/new-roof-rack.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/exteriors/new-interior-design.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/csh/c5-csh/exteriors/new-csh-emblem.webp"
-    ],
-    "badge": {
-      "text": "TERSEDIA",
-      "type": "ready"
-    },
-    "features": [
-      "Comprehensive Mileage 1000km+",
-      "Konsumsi Bahan Bakar 20,4 km/L (NEDC)",
-      "Akselerasi 0-100 km di 7,7s",
-      "MESIN: 1,5 TGDI",
-      "COMPREHENSIVE MILEAGE: 1000 Km+",
-      "TENAGA: 204 PS",
-      "TORSI: 310 Nm",
-      "7 Airbag",
-      "14 ADAS Safety Items"
     ],
     "specs": {
       "warranty": "Garansi resmi Chery Indonesia"
@@ -184,10 +122,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Listrik",
     "seats": 5,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/J6.png",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/J6.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/omoda/product-types/j6/j6-front-thumbnail.png"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"
@@ -246,14 +180,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Hybrid",
     "seats": 5,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/tiggo-9-csh/thumbnail-tiggo-9-csh.webp",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/tiggo-9-csh/thumbnail-tiggo-9-csh.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-9-csh/thumbnail-front-image.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-9-csh/super-comfort/super-large-comfortable-7-seat.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-9-csh/super-comfort/8-ways-electric-driver-seat-with-4-way-lumbar-support.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-9-csh/super-comfort/4-ways-electric-wheel-steering.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-9-csh/super-comfort/Electric%20Panoramic%20Sunroof.jpg"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"
@@ -305,14 +231,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Hybrid",
     "seats": 7,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/Tiggo%208%20CSH.png",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/Tiggo%208%20CSH.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-csh/thumbnail-front-image-desktop.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-csh/best-comfort/super-large-comfortable-7-seater.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-csh/best-comfort/front-passenger-seat-massage.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-csh/best-comfort/ventilated-front-seat.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-csh/best-comfort/comfortable-chassis-optimize-vibration-reduction.webp"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"
@@ -361,14 +279,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Bensin",
     "seats": 7,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/Tiggo-8-Pro-Max.png",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/Tiggo-8-Pro-Max.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-pro-max/thumbnail-front-image-desktop.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-pro-max/photos/tiggo-photo-1.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-pro-max/photos/tiggo-photo-2.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-pro-max/photos/tiggo-photo-3.webp",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8-pro-max/photos/tiggo-photo-4.webp"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"
@@ -423,10 +333,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Bensin",
     "seats": 7,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/Tiggo%208.png",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/Tiggo%208.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-8/thumbnail-front-image-desktop.png"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"
@@ -485,10 +391,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Hybrid",
     "seats": 5,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/Tiggo-Cross-CSH.png",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/product-list-nov/Tiggo-Cross-CSH.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-cross-csh/thumbnail-front-image.png"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"
@@ -542,9 +444,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Bensin",
     "seats": 5,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-cross-sport/thumbnail-home-tiggo-cross-sport.webp",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-cross-sport/thumbnail-home-tiggo-cross-sport.webp"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"
@@ -594,10 +493,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Bensin",
     "seats": 5,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/main-images/Tiggo%20Cross.png",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/main-images/Tiggo%20Cross.png",
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/tiggo/product-types/tiggo-cross/thumbnail-front-image-desktop.webp"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"
@@ -649,9 +544,6 @@ export const CARS_DATA: Car[] = [
     "fuelType": "Listrik",
     "seats": 5,
     "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/omoda/product-types/omoda-e5/Chery%20E5.png",
-    "gallery": [
-      "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/product-models/omoda/product-types/omoda-e5/Chery%20E5.png"
-    ],
     "badge": {
       "text": "TERSEDIA",
       "type": "ready"

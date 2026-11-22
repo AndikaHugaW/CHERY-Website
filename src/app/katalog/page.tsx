@@ -34,7 +34,7 @@ const HERO_SLIDES = [
     src: '/images/katalog unit/chery-e5/hero-banner 1.jpg',
     alt: 'Chery Hero Katalog',
     blurDataURL: BLUR_PLACEHOLDERS['hero-banner-e5'],
-    carId: 'chery-c5-csh',
+    carId: 'chery-e5',
   },
 ] as const;
 

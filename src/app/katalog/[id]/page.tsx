@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Image from '@/components/ui/optimized-image';
 import { IMAGE_SIZES } from '@/lib/image-optimization';
+import { getCarGallery } from '@/lib/car-gallery';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { Navbar } from '@/components/Navbar';
@@ -18,6 +19,7 @@ import {
   Settings,
   User,
   Fuel,
+  ImageOff,
 } from 'lucide-react';
 
 const GALLERY_THUMBS_VISIBLE = 3;
@@ -58,6 +60,25 @@ export default function CarDetailPage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * Galeri diambil dari folder mobil masing-masing lewat manifest build
+   * (src/data/car-gallery-manifest.ts) — bukan lagi array CDN hardcode.
+   * Urutan = urutan nama file, dan sudah deduplikasi (path + isi file).
+   * Kosong `[]` berarti folder tidak ditemukan / belum berisi gambar.
+   */
+  const gallery = useMemo(() => (car ? getCarGallery(car) : []), [car]);
+
+  /**
+   * Index gambar yang sedang tampil. Bila `selectedImage` belum cocok
+   * dengan isi galeri, jatuh ke gambar pertama agar primary dan thumbnail
+   * aktif selalu sinkron. -1 hanya bila galeri benar-benar kosong.
+   */
+  const matchedIndex = gallery.indexOf(selectedImage);
+  const activeIndex =
+    matchedIndex >= 0 ? matchedIndex : gallery.length > 0 ? 0 : -1;
+  const activeSrc = activeIndex >= 0 ? gallery[activeIndex] : '';
+  const activeNumber = activeIndex >= 0 ? activeIndex + 1 : 1;
+
   useEffect(() => {
     if (!carId) return;
 
@@ -70,7 +91,7 @@ export default function CarDetailPage() {
         if (json.status === 'success' && json.data) {
           setCar(json.data);
           setThumbPage(0);
-          setSelectedImage(json.data.image || json.data.gallery?.[0] || '');
+          setSelectedImage(getCarGallery(json.data)[0] ?? '');
         } else {
           setError(json.message || 'Mobil tidak ditemukan');
         }
@@ -85,19 +106,30 @@ export default function CarDetailPage() {
     fetchCarDetail();
   }, [carId]);
 
-  useEffect(() => {
-    if (!car?.gallery?.length) return;
-    const idx = car.gallery.indexOf(selectedImage);
-    if (idx === -1) return;
-    if (car.gallery.length <= GALLERY_THUMBS_VISIBLE) return;
+  /**
+   * Pilih gambar dari thumbnail: primary ikut berganti, dan strip thumbnail
+   * digeser bila gambar terpilih berada di luar jendela yang terlihat.
+   *
+   * Logika ini sengaja ditaruh di sini, bukan di `useEffect`, karena
+   * `selectedImage` hanya pernah berubah lewat pemuatan data dan klik
+   * thumbnail — keduanya sudah menangani reset halaman secara eksplisit.
+   */
+  const selectImage = (imgUrl: string) => {
+    const idx = gallery.indexOf(imgUrl);
+    setSelectedImage(imgUrl);
+
+    if (idx === -1 || gallery.length <= GALLERY_THUMBS_VISIBLE) return;
     setThumbPage((prev) => {
       if (idx < prev) return idx;
       if (idx >= prev + GALLERY_THUMBS_VISIBLE) {
-        return Math.min(idx - GALLERY_THUMBS_VISIBLE + 1, car.gallery!.length - GALLERY_THUMBS_VISIBLE);
+        return Math.min(
+          idx - GALLERY_THUMBS_VISIBLE + 1,
+          gallery.length - GALLERY_THUMBS_VISIBLE
+        );
       }
       return prev;
     });
-  }, [selectedImage, car]);
+  };
 
   const handleWhatsAppContact = () => {
     if (!car) return;
@@ -161,31 +193,52 @@ export default function CarDetailPage() {
             {/* Left Column: Image Showcase & Gallery (6 cols) */}
             <div className="lg:col-span-6 space-y-4">
               
-              {/* Main Image Frame */}
-              <div className="relative aspect-[16/11] sm:aspect-[4/3] bg-gray-50 border border-gray-200/90 rounded-3xl overflow-hidden group shadow-sm">
-                <Image
-                  src={selectedImage || car.image}
-                  alt={car.name}
-                  fill
-                  qualityRole="product"
-                  sizes={IMAGE_SIZES.detailMain}
-                  className="object-contain object-center p-4 sm:p-8 transition-all duration-500"
-                  preload
-                />
+              {/*
+                Main Image Frame — full bleed.
+                Rasio tetap (16/9) agar tinggi card tidak lompat saat ganti
+                gambar; object-cover + tanpa padding supaya gambar menempel
+                sampai ke tepi. Pemotongan di tepi diterima demi tampilan penuh.
+                Rasio 16/9 dipilih karena mayoritas gambar galeri ≈ 1.85.
+              */}
+              <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-gray-200/90 bg-gray-50 shadow-sm group">
+                {activeSrc ? (
+                  <Image
+                    src={activeSrc}
+                    alt={`${car.name} gambar ${activeNumber}`}
+                    fill
+                    qualityRole="product"
+                    sizes={IMAGE_SIZES.detailMain}
+                    className="object-cover object-center transition-all duration-500"
+                    /* Next 16: `priority` sudah deprecated, diganti `preload`. */
+                    preload
+                  />
+                ) : (
+                  /* Folder mobil tidak ditemukan / kosong dan gambar katalog
+                     pun tidak ada: placeholder aman, bukan error. */
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-8 text-center">
+                    <ImageOff className="w-10 h-10 text-gray-300" aria-hidden />
+                    <p className="text-sm font-bold text-gray-400">
+                      Gambar belum tersedia
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      Folder gambar {car.name} masih kosong.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Thumbnails Row / Carousel (>3 gambar) */}
-              {car.gallery && car.gallery.length > 0 && (() => {
-                const gallery = car.gallery;
+              {gallery.length > 0 && (() => {
                 const useCarousel = gallery.length > GALLERY_THUMBS_VISIBLE;
                 const maxThumbPage = Math.max(0, gallery.length - GALLERY_THUMBS_VISIBLE);
+                const startIdx = useCarousel ? thumbPage : 0;
                 const visibleThumbs = useCarousel
                   ? gallery.slice(thumbPage, thumbPage + GALLERY_THUMBS_VISIBLE)
                   : gallery;
 
                 return (
                   <div
-                    className={`flex items-stretch gap-2 sm:gap-3 ${useCarousel ? '' : ''}`}
+                    className="flex items-stretch gap-2 sm:gap-3"
                     aria-label="Galeri thumbnail"
                   >
                     {useCarousel && (
@@ -201,14 +254,16 @@ export default function CarDetailPage() {
                     )}
 
                     <div className="flex-1 min-w-0 grid grid-cols-3 gap-3 sm:gap-3.5">
-                      {visibleThumbs.map((imgUrl) => {
-                        const idx = gallery.indexOf(imgUrl);
-                        const isSelected = selectedImage === imgUrl;
+                      {visibleThumbs.map((imgUrl, visibleIdx) => {
+                        // Index absolut dalam daftar galeri penuh.
+                        const idx = startIdx + visibleIdx;
+                        const isSelected = activeIndex === idx;
                         return (
                           <button
-                            key={`${imgUrl}-${idx}`}
+                            key={`${idx}-${imgUrl}`}
                             type="button"
-                            onClick={() => setSelectedImage(imgUrl)}
+                            onClick={() => selectImage(imgUrl)}
+                            aria-current={isSelected}
                             className={`relative aspect-[16/10] bg-gray-50 rounded-2xl overflow-hidden transition-all cursor-pointer ${
                               isSelected
                                 ? 'border-2 border-black ring-2 ring-black/10 shadow-md shadow-black/10'
@@ -218,7 +273,7 @@ export default function CarDetailPage() {
                             <div className="relative w-full h-full">
                               <Image
                                 src={imgUrl}
-                                alt={`${car.name} thumb ${idx + 1}`}
+                                alt={`${car.name} gambar ${idx + 1}`}
                                 fill
                                 qualityRole="thumbnail"
                                 sizes={IMAGE_SIZES.detailThumb}
