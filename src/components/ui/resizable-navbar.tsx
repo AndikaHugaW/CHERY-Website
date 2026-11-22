@@ -8,6 +8,7 @@ import {
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
+  useReducedMotion,
 } from "motion/react";
 
 import React, { useRef, useState } from "react";
@@ -47,6 +48,18 @@ interface NavItemsProps {
   isActive?: (item: { name: string; link: string }, idx: number) => boolean;
   /** Extra classes merged onto the hover pill behind the active link. */
   hoverPillClassName?: string;
+  /**
+   * Background of the pill behind the ACTIVE link. When omitted the active
+   * link only gets the text treatment, with no pill.
+   */
+  activePillClassName?: string;
+  /**
+   * When true the active link keeps its own pill visible even while another
+   * item is hovered, and the hover pill slides between items.
+   */
+  enableSlidingPill?: boolean;
+  /** Duration of the sliding pill transition in seconds. */
+  pillTransitionDuration?: number;
 }
 
 interface MobileNavProps {
@@ -146,7 +159,10 @@ export const NavBody = ({
         minWidth: `${minWidth}px`,
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
+        // A full-bleed bar has no visible rounded ends; the floating pill
+        // state does.
+        visible ? "rounded-full" : "rounded-none",
         !visible && defaultClassName,
         visible && cn("bg-white/80 dark:bg-neutral-950/80", visibleClassName),
         className,
@@ -165,8 +181,31 @@ export const NavItems = ({
   activeClassName,
   isActive,
   hoverPillClassName,
+  activePillClassName,
+  enableSlidingPill = false,
+  pillTransitionDuration = 0.3,
 }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const reduceMotion = useReducedMotion();
+
+  /**
+   * The pill is absolutely positioned, so it never takes part in layout and
+   * hovering can never shift the menu items. Each item renders its own pill
+   * element; only the hovered (or active) one is mounted, and motion's
+   * shared `layoutId` animates the pill between them.
+   *
+   * The active pill uses a DIFFERENT layoutId from the hover pill so the two
+   * never fight over the same shared element: the active pill stays put while
+   * the hover pill slides around it.
+   */
+  const pillTransition = reduceMotion
+    ? { duration: 0 }
+    : {
+        type: "spring" as const,
+        stiffness: 380,
+        damping: 32,
+        duration: pillTransitionDuration,
+      };
 
   return (
     <motion.div
@@ -174,31 +213,58 @@ export const NavItems = ({
       className={cn(
         "relative z-10 hidden flex-1 flex-row items-center justify-center gap-1 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:gap-1",
         className,
-      )}    >
-      {items.map((item, idx) => (
-        <Link
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className={cn(
-            "relative shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-neutral-600 dark:text-neutral-300",
-            linkClassName,
-            isActive?.(item, idx) && activeClassName,
-          )}
-          key={`link-${idx}`}
-          href={item.link}
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className={cn(
-                "absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800",
-                hoverPillClassName,
-              )}
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </Link>
-      ))}
+      )}
+    >
+      {items.map((item, idx) => {
+        const isItemActive = isActive?.(item, idx) ?? false;
+        const showActivePill = Boolean(activePillClassName) && isItemActive;
+        // Hovering the active item must not stack a second pill on top of the
+        // active one: the active pill already marks it. Only inactive items
+        // get the translucent hover pill.
+        const showHoverPill = hovered === idx && !showActivePill;
+
+        return (
+          <Link
+            onMouseEnter={() => setHovered(idx)}
+            onFocus={() => setHovered(idx)}
+            onClick={onItemClick}
+            aria-current={isItemActive ? "page" : undefined}
+            className={cn(
+              "relative shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-neutral-600 dark:text-neutral-300",
+              linkClassName,
+              isItemActive && activeClassName,
+            )}
+            key={`link-${idx}`}
+            href={item.link}
+          >
+            {showActivePill && (
+              <motion.div
+                layoutId={enableSlidingPill ? "active-nav-pill" : undefined}
+                aria-hidden
+                className={cn(
+                  "absolute inset-0 h-full w-full rounded-full",
+                  activePillClassName,
+                )}
+                transition={pillTransition}
+              />
+            )}
+
+            {showHoverPill && (
+              <motion.div
+                layoutId={enableSlidingPill ? "hovered-nav-pill" : undefined}
+                aria-hidden
+                className={cn(
+                  "absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800",
+                  hoverPillClassName,
+                )}
+                transition={pillTransition}
+              />
+            )}
+
+            <span className="relative z-20">{item.name}</span>
+          </Link>
+        );
+      })}
     </motion.div>
   );
 };
@@ -229,7 +295,7 @@ export const MobileNav = ({
         damping: 50,
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2",
         !visible && defaultClassName,
         visible && cn("bg-white/80 dark:bg-neutral-950/80", visibleClassName),
         className,

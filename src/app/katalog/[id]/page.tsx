@@ -23,6 +23,28 @@ import {
 const GALLERY_THUMBS_VISIBLE = 3;
 
 import { CAR_VARIANTS_MAP, CarVariantCard } from '@/data/variants';
+import type { LucideIcon } from 'lucide-react';
+
+/**
+ * Satu item spesifikasi kendaraan pada card varian.
+ *
+ * Ikon diletakkan pada sel berukuran tetap (16px x 20px = lebar ikon x
+ * line-height teks) dan dipusatkan di dalamnya. Dengan begitu ikon selalu
+ * sejajar dengan baris pertama teks — baik teksnya satu baris maupun
+ * membungkus ke baris berikutnya — tanpa pergeseran manual per item.
+ * Lebar sel yang tetap juga membuat teks pada keempat item mulai pada
+ * posisi x yang sama dalam setiap kolom.
+ */
+function VariantSpec({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
+  return (
+    <div className="flex min-w-0 items-start gap-2">
+      <span className="flex h-5 w-4 shrink-0 items-center justify-center text-gray-400">
+        <Icon className="h-4 w-4" aria-hidden />
+      </span>
+      <span className="min-w-0 break-words leading-5">{label}</span>
+    </div>
+  );
+}
 
 
 export default function CarDetailPage() {
@@ -403,24 +425,12 @@ export default function CarDetailPage() {
                       </div>
                     </div>
 
-                    {/* Specs 4-box grid */}
-                    <div className="grid grid-cols-2 gap-y-3 gap-x-2 pt-3 border-t border-gray-100 text-xs text-gray-600 font-medium">
-                      <div className="flex items-center gap-2">
-                        <Settings className="w-4 h-4 text-gray-400 shrink-0" />
-                        <span className="truncate">{v.engine}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Settings className="w-4 h-4 text-gray-400 shrink-0" />
-                        <span className="truncate">{v.transmission}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <User className="w-4 h-4 text-gray-400 shrink-0" />
-                        <span className="truncate">{v.seats} Seats</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Fuel className="w-4 h-4 text-gray-400 shrink-0" />
-                        <span className="truncate">{v.fuelType}</span>
-                      </div>
+                    {/* Specs 4-box grid — 2 kolom x 2 baris, ikon & teks selalu sejajar */}
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-3 border-t border-gray-100 pt-4 text-xs font-medium text-gray-600">
+                      <VariantSpec icon={Settings} label={v.engine} />
+                      <VariantSpec icon={Settings} label={v.transmission} />
+                      <VariantSpec icon={User} label={`${v.seats} Seats`} />
+                      <VariantSpec icon={Fuel} label={v.fuelType} />
                     </div>
 
                     {/* Fitur Utama List */}
