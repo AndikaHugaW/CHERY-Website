@@ -7,7 +7,6 @@ import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
 import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/Navbar';
 
-const KontakTimProfesionalSection = dynamic(() => import('@/components/KontakTimProfesionalSection').then(mod => mod.KontakTimProfesionalSection));
 const KontakInquireSection = dynamic(() => import('@/components/KontakInquireSection').then(mod => mod.KontakInquireSection));
 const Footer = dynamic(() => import('@/components/Footer').then(mod => mod.Footer));
 
@@ -26,7 +25,7 @@ export default function KontakPage() {
       <Navbar />
 
       {/* Section 1: Hero Contact */}
-      <section className="flex-1 max-w-[1728px] mx-auto px-4 sm:px-8 lg:px-12 py-12 sm:py-20 flex items-center w-full">
+      <section className="flex-1 max-w-[1728px] mx-auto px-4 sm:px-8 lg:px-12 pt-24 sm:pt-28 pb-12 sm:pb-20 flex items-center w-full">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-stretch">
           
           {/* Left Column: Content + CTAs + Small Info Cards */}
@@ -39,7 +38,7 @@ export default function KontakPage() {
               </h1>
               
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-normal max-w-xl">
-                Dapatkan informasi lengkap mengenai model Kia, harga, promo, pembiayaan, hingga layanan purna jual langsung dari tim dealer kami.
+                Dapatkan informasi lengkap mengenai model Chery, harga, promo, pembiayaan, hingga layanan purna jual langsung dari tim dealer kami.
               </p>
 
               {/* Action Buttons */}
@@ -105,10 +104,7 @@ export default function KontakPage() {
         </div>
       </section>
 
-      {/* Section 2: Tim Profesional Kami */}
-      <KontakTimProfesionalSection />
-
-      {/* Section 3: Inquire with Chery & Showroom Map / Hours */}
+      {/* Section 2: Inquire with Chery & Showroom Map / Hours */}
       <KontakInquireSection />
 
       {/* Footer */}

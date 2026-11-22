@@ -121,11 +121,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
   };
 
   /**
-   * Halaman detail mobil memakai navbar terang (latar #F8F9FA) dengan logo
-   * dan CTA hitam, seperti pada referensi desain. Halaman lain mempertahankan
+   * Halaman detail mobil dan kontak & tentang memakai navbar terang (latar #F8F9FA)
+   * dengan logo dan CTA hitam, seperti pada referensi desain. Halaman lain mempertahankan
    * tema gelap-hingga-scroll yang sudah ada.
    */
-  const isLightTheme = isCatalogUnitDetail;
+  const isLightTheme =
+    isCatalogUnitDetail || pathname === '/kontak' || pathname === '/kontak/';
 
   const brandLogo = (
     <Link
@@ -176,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
             : undefined
         }
         visibleClassName={
-          isCatalogUnitDetail
+          isLightTheme
             ? 'bg-[#F8F9FA]! border-b border-black/5 shadow-lg'
             : 'bg-neutral-950/85! border-b border-white/10 shadow-lg'
         }
