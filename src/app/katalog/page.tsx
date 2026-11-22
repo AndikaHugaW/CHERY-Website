@@ -139,7 +139,7 @@ export default function KatalogPage() {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link
                   href="#katalog-grid"
-                  className="flex-1 min-w-0 bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/40 text-white font-medium text-sm sm:text-base py-3 pl-8 sm:pl-9 pr-2 rounded-full flex items-center justify-between gap-4 transition-all group"
+                  className="flex-1 min-w-0 bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/40 text-white font-medium text-sm sm:text-base py-3 pl-5 sm:pl-9 pr-2 rounded-full flex items-center justify-between gap-4 transition-all group"
                 >
                   <span>Lihat Semua Mobil</span>
                   <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-gray-900 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -149,7 +149,7 @@ export default function KatalogPage() {
                 <button
                   type="button"
                   onClick={() => handleOpenTestDrive(activeSlide.car.id)}
-                  className="flex-1 min-w-0 bg-white hover:bg-neutral-100 text-gray-900 font-semibold text-sm sm:text-base py-3 pl-8 sm:pl-9 pr-2 rounded-full flex items-center justify-between gap-4 transition-all group shadow-lg"
+                  className="flex-1 min-w-0 bg-white hover:bg-neutral-100 text-gray-900 font-semibold text-sm sm:text-base py-3 pl-5 sm:pl-9 pr-2 rounded-full flex items-center justify-between gap-4 transition-all group shadow-lg cursor-pointer"
                 >
                   <span>Booking Test Drive</span>
                   <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gray-900 text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">

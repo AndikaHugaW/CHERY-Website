@@ -144,7 +144,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                   placeholder="Masukkan nama Anda"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-sm"
+                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-base sm:text-sm"
                 />
               </div>
 
@@ -159,7 +159,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                     placeholder="0812xxxxxxx"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-base sm:text-sm"
                   />
                 </div>
 
@@ -173,7 +173,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                     placeholder="nama@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-base sm:text-sm"
                   />
                 </div>
               </div>
@@ -186,7 +186,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                   <select
                     value={formData.carId}
                     onChange={(e) => setFormData({ ...formData, carId: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-base sm:text-sm"
                   >
                     {CARS_DATA.map((car) => (
                       <option key={car.id} value={car.id}>
@@ -205,7 +205,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                     required
                     value={formData.preferredDate}
                     onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-base sm:text-sm"
                   />
                 </div>
               </div>
@@ -217,7 +217,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                 <select
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-sm"
+                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-base sm:text-sm"
                 >
                   <option value="Showroom Official Chery Salatiga">
                     Showroom Official Chery Salatiga
@@ -240,7 +240,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                   placeholder="Contoh: Ingin mencoba fitur parkir otomatis..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-sm"
+                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-base sm:text-sm"
                 />
               </div>
 

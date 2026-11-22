@@ -245,7 +245,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
                     <span className="truncate">{item.label}</span>
                   </dt>
                   <dd
-                    className={`mt-1 sm:mt-1.5 text-xs sm:text-sm font-bold leading-tight ${
+                    className={`mt-1 sm:mt-1.5 text-[11px] sm:text-sm font-bold leading-tight break-words ${
                       isDark ? 'text-white' : 'text-gray-900'
                     } ${align.value}`}
                   >
@@ -280,7 +280,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
             <button
               type="button"
               onClick={onPrimaryAction}
-              className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold transition-all duration-200 active:scale-[0.98] ${
+              className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-sm font-bold transition-all duration-200 active:scale-[0.98] ${
                 isDark
                   ? 'bg-white text-gray-900 hover:bg-white/90'
                   : 'bg-gray-900 text-white hover:bg-gray-800'
@@ -290,7 +290,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
             </button>
           ) : (
             <span
-              className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold ${
+              className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-sm font-bold ${
                 isDark ? 'bg-white text-gray-900' : 'bg-gray-900 text-white'
               }`}
             >
@@ -300,13 +300,13 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
 
           <Link
             href={href}
-            className={`group/btn inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full border px-2.5 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold transition-all duration-200 active:scale-[0.98] ${
+            className={`group/btn inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full border px-2 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-sm font-bold transition-all duration-200 active:scale-[0.98] ${
               isDark
                 ? 'border-white/25 text-white hover:border-white/50 hover:bg-white/10'
                 : 'border-gray-300 text-gray-900 hover:border-gray-900 hover:bg-gray-900 hover:text-white'
             }`}
           >
-            <span className="truncate">Detail Spesifikasi</span>
+            <span className="whitespace-nowrap">Detail Spesifikasi</span>
             <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
           </Link>
         </div>

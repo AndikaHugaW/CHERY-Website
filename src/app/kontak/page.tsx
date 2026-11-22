@@ -42,12 +42,12 @@ export default function KontakPage() {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-4">
+              <div className="flex flex-row items-center gap-3 pt-4">
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-black hover:bg-neutral-800 text-white font-extrabold text-sm px-7 py-3.5 rounded-xl shadow-md transition-all active:scale-[0.99] text-center"
+                  className="flex-1 bg-black hover:bg-neutral-800 text-white font-extrabold text-xs sm:text-sm px-3 sm:px-7 py-3 sm:py-3.5 rounded-xl shadow-md transition-all active:scale-[0.99] text-center"
                 >
                   Hubungi Sales
                 </a>
@@ -56,17 +56,17 @@ export default function KontakPage() {
                   href={mapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-900 font-extrabold text-sm px-7 py-3.5 rounded-xl transition-all active:scale-[0.99] text-center"
+                  className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-900 font-extrabold text-xs sm:text-sm px-3 sm:px-7 py-3 sm:py-3.5 rounded-xl transition-all active:scale-[0.99] text-center"
                 >
-                  Lihat Lokasi Dealer
+                  Lihat Lokasi
                 </a>
               </div>
             </div>
 
-            {/* Bottom 2 Info Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-center space-y-1 h-[150px]">
-                <span className="text-xs text-gray-500 font-semibold">
+            {/* Bottom 2 Info Cards (1 baris berdampingan seperti web) */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-4">
+              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-center space-y-1 h-[115px] sm:h-[150px]">
+                <span className="text-[11px] sm:text-xs text-gray-500 font-semibold">
                   24/7
                 </span>
                 <span className="text-xs sm:text-sm font-bold text-gray-900 tracking-wider uppercase">
@@ -74,8 +74,8 @@ export default function KontakPage() {
                 </span>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-center space-y-1 h-[150px]">
-                <span className="text-xs text-gray-500 font-semibold">
+              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-center space-y-1 h-[115px] sm:h-[150px]">
+                <span className="text-[11px] sm:text-xs text-gray-500 font-semibold">
                   Senin – Sabtu
                 </span>
                 <span className="text-xs sm:text-sm font-bold text-gray-900 tracking-wider uppercase">

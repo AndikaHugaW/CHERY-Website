@@ -325,7 +325,7 @@ function SpecificationContent() {
                 placeholder="Cari fitur spesifikasi..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-gray-100 border border-gray-200 rounded-xl text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-black focus:outline-none transition-all"
+                className="w-full pl-10 pr-4 py-2 bg-gray-100 border border-gray-200 rounded-xl text-base sm:text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-black focus:outline-none transition-all"
               />
             </div>
 

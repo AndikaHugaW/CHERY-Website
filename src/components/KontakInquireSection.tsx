@@ -87,7 +87,7 @@ export const KontakInquireSection: React.FC = () => {
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all"
+                      className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-base sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all"
                     />
                   </div>
 
@@ -101,7 +101,7 @@ export const KontakInquireSection: React.FC = () => {
                       placeholder="0813-2652-822"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all"
+                      className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-base sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all"
                     />
                   </div>
                 </div>
@@ -115,7 +115,7 @@ export const KontakInquireSection: React.FC = () => {
                     required
                     value={formData.interest}
                     onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                    className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-black transition-all appearance-none cursor-pointer"
+                    className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-base sm:text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-black transition-all appearance-none cursor-pointer"
                   >
                     <option value="Informasi Produk / Harga">Informasi Produk / Harga</option>
                     <option value="Jadual Test Drive">Jadwal Test Drive</option>
@@ -135,7 +135,7 @@ export const KontakInquireSection: React.FC = () => {
                     placeholder="Detailkan kebutuhan Anda di sini..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full flex-1 min-h-[140px] bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all resize-none"
+                    className="w-full flex-1 min-h-[140px] bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-base sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all resize-none"
                   ></textarea>
                 </div>
               </div>

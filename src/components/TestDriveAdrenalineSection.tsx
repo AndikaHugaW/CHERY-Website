@@ -28,7 +28,7 @@ export const TestDriveAdrenalineSection: React.FC<TestDriveAdrenalineSectionProp
         <div className="bg-[#0E1522] text-white rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12">
           
           {/* Left Column: Text & Schedule Form */}
-          <div className="lg:col-span-6 p-8 sm:p-12 lg:p-16 flex flex-col justify-center space-y-6">
+          <div className="lg:col-span-6 p-6 sm:p-12 lg:p-16 flex flex-col justify-center space-y-6">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-[1.15]">
               Experience the Adrenaline
             </h2>
@@ -50,12 +50,12 @@ export const TestDriveAdrenalineSection: React.FC<TestDriveAdrenalineSectionProp
                   placeholder="Masukkan Nomor Telepon"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="bg-white text-gray-900 placeholder-gray-400 px-5 py-3.5 rounded-xl font-medium text-sm focus:outline-none focus:ring-2 focus:ring-red-600 flex-1 shadow-inner"
+                  className="bg-white text-gray-900 placeholder-gray-400 px-4 sm:px-5 py-3.5 rounded-xl font-medium text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-red-600 flex-1 shadow-inner"
                 />
 
                 <button
                   type="submit"
-                  className="bg-[#B91C1C] hover:bg-red-700 active:scale-95 text-white font-extrabold px-7 py-3.5 rounded-xl text-sm transition-all shadow-lg shrink-0 whitespace-nowrap"
+                  className="bg-[#B91C1C] hover:bg-red-700 active:scale-95 text-white font-extrabold px-6 sm:px-7 py-3.5 rounded-xl text-sm transition-all shadow-lg shrink-0 whitespace-nowrap cursor-pointer"
                 >
                   Jadwalkan Sekarang
                 </button>

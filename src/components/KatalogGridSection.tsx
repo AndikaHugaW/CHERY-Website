@@ -120,17 +120,17 @@ export const KatalogGridSection: React.FC<KatalogGridSectionProps> = ({
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                placeholder="Cari mobil kita..."
-                className="w-full pl-10 pr-4 py-2.5 sm:py-3 text-sm border border-gray-200 rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-gray-300"
+                placeholder="Cari mobil Chery..."
+                className="w-full pl-10 pr-4 py-2.5 sm:py-3 text-base sm:text-sm border border-gray-200 rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-gray-300"
               />
             </div>
 
-            <div className="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-3 items-center">
-              <div className="relative flex-1 sm:flex-none sm:min-w-[140px]">
+            <div className="grid grid-cols-2 sm:flex sm:flex-nowrap gap-2 sm:gap-3 items-center w-full lg:w-auto">
+              <div className="relative min-w-0 sm:min-w-[140px]">
                 <select
                   value={selectedModel}
                   onChange={(e) => setSelectedModel(e.target.value)}
-                  className="w-full appearance-none bg-white border border-gray-200 rounded-2xl pl-3 pr-9 py-2.5 text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-black/10 cursor-pointer"
+                  className="w-full appearance-none bg-white border border-gray-200 rounded-2xl pl-3 pr-8 py-2.5 text-xs sm:text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-black/10 cursor-pointer"
                 >
                   {MODEL_OPTIONS.map((opt) => (
                     <option key={opt.value || 'all'} value={opt.value}>
@@ -141,11 +141,11 @@ export const KatalogGridSection: React.FC<KatalogGridSectionProps> = ({
                 <ChevronDown className="w-4 h-4 text-gray-500 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
 
-              <div className="relative flex-1 sm:flex-none sm:min-w-[160px]">
+              <div className="relative min-w-0 sm:min-w-[160px]">
                 <select
                   value={selectedTransmission}
                   onChange={(e) => setSelectedTransmission(e.target.value)}
-                  className="w-full appearance-none bg-white border border-gray-200 rounded-2xl pl-3 pr-9 py-2.5 text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-black/10 cursor-pointer"
+                  className="w-full appearance-none bg-white border border-gray-200 rounded-2xl pl-3 pr-8 py-2.5 text-xs sm:text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-black/10 cursor-pointer"
                 >
                   <option value="Semua">Semua Transmisi</option>
                   <option value="Automatic">Automatic</option>
@@ -154,11 +154,11 @@ export const KatalogGridSection: React.FC<KatalogGridSectionProps> = ({
                 <ChevronDown className="w-4 h-4 text-gray-500 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
 
-              <div className="relative flex-1 sm:flex-none sm:min-w-[180px]">
+              <div className="relative min-w-0 sm:min-w-[180px]">
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full appearance-none bg-white border border-gray-200 rounded-2xl pl-3 pr-9 py-2.5 text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-black/10 cursor-pointer"
+                  className="w-full appearance-none bg-white border border-gray-200 rounded-2xl pl-3 pr-8 py-2.5 text-xs sm:text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-black/10 cursor-pointer"
                 >
                   <option value="popular">Urutan: Paling Laku</option>
                   <option value="newest">Terbaru</option>
@@ -172,10 +172,11 @@ export const KatalogGridSection: React.FC<KatalogGridSectionProps> = ({
               <button
                 type="button"
                 onClick={applyFilters}
-                className="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black hover:bg-neutral-800 text-white flex items-center justify-center transition-colors ml-auto lg:ml-0"
+                className="w-full sm:w-12 h-[42px] sm:h-12 rounded-2xl sm:rounded-full bg-black hover:bg-neutral-800 text-white flex items-center justify-center transition-colors cursor-pointer gap-2"
                 aria-label="Terapkan pencarian"
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-xs font-bold sm:hidden">Cari</span>
               </button>
             </div>
           </div>

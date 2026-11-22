@@ -116,7 +116,7 @@ export const BengkelJadwalServisSection: React.FC = () => {
                       placeholder="Masukkan nama Anda"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all"
+                      className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-base sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all"
                     />
                   </div>
 
@@ -130,7 +130,7 @@ export const BengkelJadwalServisSection: React.FC = () => {
                       placeholder="0813 xxxx xxxx"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all"
+                      className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-base sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition-all"
                     />
                   </div>
                 </div>
@@ -144,7 +144,7 @@ export const BengkelJadwalServisSection: React.FC = () => {
                     required
                     value={formData.carModel}
                     onChange={(e) => setFormData({ ...formData, carModel: e.target.value })}
-                    className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-black transition-all appearance-none cursor-pointer"
+                    className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-base sm:text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-black transition-all appearance-none cursor-pointer"
                   >
                     <option value="" disabled>
                       Pilih Model Chery Anda
@@ -167,7 +167,7 @@ export const BengkelJadwalServisSection: React.FC = () => {
                     required
                     value={formData.serviceType}
                     onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                    className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-black transition-all appearance-none cursor-pointer"
+                    className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-base sm:text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-black transition-all appearance-none cursor-pointer"
                   >
                     <option value="" disabled>
                       Pilih Jenis Servis
@@ -190,7 +190,7 @@ export const BengkelJadwalServisSection: React.FC = () => {
                     required
                     value={formData.arrivalDate}
                     onChange={(e) => setFormData({ ...formData, arrivalDate: e.target.value })}
-                    className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-black transition-all cursor-pointer"
+                    className="w-full bg-[#F3F4F6] border-none rounded-xl px-4 py-3 text-base sm:text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-black transition-all cursor-pointer"
                   />
                 </div>
               </div>
