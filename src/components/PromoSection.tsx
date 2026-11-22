@@ -13,7 +13,7 @@ interface PromoSectionProps {
 export const PromoSection: React.FC<PromoSectionProps> = ({ promos, onOpenTestDrive }) => {
   const handleWhatsAppConsultation = (title: string) => {
     const message = encodeURIComponent(
-      `Halo Sales Executive Chery Semarang, saya ingin bertanya tentang promo: ${title}`
+      `Halo Sales Executive Chery Salatiga, saya ingin bertanya tentang promo: ${title}`
     );
     window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${message}`, '_blank');
   };
@@ -31,7 +31,7 @@ export const PromoSection: React.FC<PromoSectionProps> = ({ promos, onOpenTestDr
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
               Promo Exclusive bulan ini di{' '}
               <span className="bg-gradient-to-r from-red-500 via-amber-400 to-amber-200 bg-clip-text text-transparent">
-                Chery Semarang
+                Chery Salatiga
               </span>
             </h2>
             <p className="text-gray-400 text-base">

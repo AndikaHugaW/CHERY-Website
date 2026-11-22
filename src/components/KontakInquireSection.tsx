@@ -19,7 +19,7 @@ export const KontakInquireSection: React.FC = () => {
   };
 
   const handleWhatsAppRedirect = () => {
-    const text = `Halo Chery Semarang, saya ingin mengirimkan pertanyaan:\nNama: ${formData.name}\nTelepon: ${formData.phone}\nMinat: ${formData.interest}\nPesan: ${formData.message}`;
+    const text = `Halo Chery Salatiga, saya ingin mengirimkan pertanyaan:\nNama: ${formData.name}\nTelepon: ${formData.phone}\nMinat: ${formData.interest}\nPesan: ${formData.message}`;
     window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -54,7 +54,7 @@ export const KontakInquireSection: React.FC = () => {
                 Pertanyaan Terkirim!
               </h4>
               <p className="text-gray-600 text-sm max-w-md mx-auto">
-                Terima kasih <span className="font-bold text-gray-900">{formData.name}</span>. Tim konsultan Chery Semarang akan segera menghubungi Anda.
+                Terima kasih <span className="font-bold text-gray-900">{formData.name}</span>. Tim konsultan Chery Salatiga akan segera menghubungi Anda.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
@@ -165,7 +165,7 @@ export const KontakInquireSection: React.FC = () => {
             {/* Map Frame with Dynamic Lazy Loading */}
             <div className="w-full h-52 relative border-b border-gray-100 bg-gray-100">
               <iframe
-                title="Lokasi Dealer Chery Semarang"
+                title="Lokasi Dealer Chery Salatiga"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.2191547417633!2d110.4324854!3d-6.9834441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708d005111c565%3A0xec4b0fb5242743b2!2sKIA%20Semarang%20Masati!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid"
                 width="100%"
                 height="100%"
@@ -188,7 +188,7 @@ export const KontakInquireSection: React.FC = () => {
 
               <div className="space-y-1">
                 <p className="font-bold text-gray-900 text-sm sm:text-base">
-                  Chery Semarang
+                  Chery Salatiga
                 </p>
                 <p className="text-gray-600 text-xs sm:text-sm">
                   JL. Dr Cipto 136 B dan C Rejosari

@@ -39,7 +39,7 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Jajaran Mobil Terbaru{' '}
             <span className="bg-gradient-to-r from-red-500 to-amber-400 bg-clip-text text-transparent">
-              Chery Semarang
+              Chery Salatiga
             </span>
           </h2>
           <p className="text-gray-400 text-base sm:text-lg">
@@ -159,7 +159,7 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
               {/* Card Footer Price & Actions */}
               <div className="px-6 pb-6 pt-2 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs text-gray-400">Harga OTR Semarang Mulai</span>
+                  <span className="text-xs text-gray-400">Harga OTR Salatiga Mulai</span>
                   <p className="text-xl font-extrabold text-white">{car.priceStarting}</p>
                 </div>
 
@@ -213,7 +213,7 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
                   {activeModalCar.category} Spec Sheet
                 </span>
                 <h3 className="text-2xl font-black text-white">{activeModalCar.name}</h3>
-                <p className="text-sm text-gray-400">{activeModalCar.priceStarting} OTR Semarang</p>
+                <p className="text-sm text-gray-400">{activeModalCar.priceStarting} OTR Salatiga</p>
               </div>
             </div>
 

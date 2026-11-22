@@ -12,12 +12,12 @@ export interface Promo {
 export const PROMOS_DATA: Promo[] = [
   {
     id: 'promo-dp-ringan',
-    title: 'Promo Spesial Chery Semarang',
+    title: 'Promo Spesial Chery Salatiga',
     subtitle: 'DP Ringan Mulai 10% atau Angsuran Terjangkau',
     tag: 'LIMITED DEAL',
     discountValue: 'Free Wallbox Charger',
     validUntil: '31 Agustus 2026',
-    description: 'Dapatkan penawaran khusus pembelian Chery EV6 di Dealer Resmi Chery Semarang. Bonus Wallbox Home Charger senilai Rp 20 Juta & Free Instalasi Listrik.',
+    description: 'Dapatkan penawaran khusus pembelian Chery EV6 di Dealer Resmi Chery Salatiga. Bonus Wallbox Home Charger senilai Rp 20 Juta & Free Instalasi Listrik.',
     highlights: [
       'Gratis Home Charger + Instalasi PLN',
       'Bunga 0% tenor hingga 2 tahun',

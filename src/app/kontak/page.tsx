@@ -15,7 +15,7 @@ import { CONTACT_INFO } from '@/data/contact';
 export default function KontakPage() {
 
   const whatsappUrl =
-    `https://wa.me/${CONTACT_INFO.waNumber}?text=Halo%20Chery%20Semarang,%20saya%20butuh%20informasi%20mengenai%20unit,%20harga,%20dan%20promo`;
+    `https://wa.me/${CONTACT_INFO.waNumber}?text=Halo%20Chery%20Salatiga,%20saya%20butuh%20informasi%20mengenai%20unit,%20harga,%20dan%20promo`;
   const mapsUrl =
     CONTACT_INFO.gmapsUrl;
 
@@ -90,7 +90,7 @@ export default function KontakPage() {
           <div className="lg:col-span-6 relative w-full min-h-[380px] lg:min-h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg shadow-black/5 bg-gray-200">
             <Image
               src="/images/kontak/kantor.jpeg"
-              alt="Chery Semarang Showroom Exterior"
+              alt="Chery Salatiga Showroom Exterior"
               fill
               qualityRole="hero"
               sizes={IMAGE_SIZES.heroSplit}

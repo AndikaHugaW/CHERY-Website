@@ -22,15 +22,15 @@ const HERO_SLIDES = [
   },
   {
     src: '/images/landing page/landingpage 2.jpg',
-    alt: 'Chery Semarang',
+    alt: 'Chery Salatiga',
   },
   {
     src: '/images/landing page/landingpage 3.jpg',
-    alt: 'Chery Semarang',
+    alt: 'Chery Salatiga',
   },
   {
     src: '/images/landing page/landingpage 4.png',
-    alt: 'Chery Semarang',
+    alt: 'Chery Salatiga',
   },
 ] as const;
 
@@ -97,7 +97,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => 
 
         {/* Description */}
         <p className="text-sm sm:text-base font-medium text-white/80 tracking-wide pb-1">
-          Dealer resmi Chery Semarang
+          Dealer resmi Chery Salatiga
         </p>
 
         {/* Action Buttons (Stacked Vertically) */}

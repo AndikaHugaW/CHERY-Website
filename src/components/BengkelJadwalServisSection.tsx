@@ -24,7 +24,7 @@ export const BengkelJadwalServisSection: React.FC = () => {
   };
 
   const handleWhatsAppRedirect = () => {
-    const text = `Halo Chery Semarang, saya ingin konfirmasi booking servis:\nNama: ${formData.name}\nTelepon: ${formData.phone}\nModel: ${formData.carModel || '-'}\nLayanan: ${formData.serviceType || '-'}\nTanggal: ${formData.arrivalDate || '-'}`;
+    const text = `Halo Chery Salatiga, saya ingin konfirmasi booking servis:\nNama: ${formData.name}\nTelepon: ${formData.phone}\nModel: ${formData.carModel || '-'}\nLayanan: ${formData.serviceType || '-'}\nTanggal: ${formData.arrivalDate || '-'}`;
     window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
   };
 

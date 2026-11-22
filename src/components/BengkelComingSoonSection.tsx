@@ -11,7 +11,7 @@ export const BengkelComingSoonSection: React.FC = () => {
       {/* Full Width & Height Background Image */}
       <Image
         src="/images/layanan bengkel/hero-layanan-bengkel.webp"
-        alt="Layanan Bengkel Chery Semarang"
+        alt="Layanan Bengkel Chery Salatiga"
         fill
         preload
         qualityRole="hero"
@@ -31,7 +31,7 @@ export const BengkelComingSoonSection: React.FC = () => {
         </h2>
 
         <p className="text-gray-200 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed font-medium drop-shadow">
-          Jelajahi berbagai model Kia, mulai dari SUV, MPV, hingga kendaraan listrik dengan teknologi modern, fitur keselamatan terbaik, dan desain yang menginspirasi.
+          Layanan perawatan dan perbaikan resmi Chery Salatiga dengan teknisi bersertifikasi pabrikan, peralatan diagnostik modern, dan jaminan suku cadang asli untuk menjaga performa optimal mobil Chery Anda.
         </p>
 
         <div className="pt-2">

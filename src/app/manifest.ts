@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Chery Semarang - Dealer Resmi Mobil Chery',
-    short_name: 'Chery Semarang',
-    description: 'Dealer Resmi Mobil Chery Semarang. Promo terbaru, test drive gratis & simulasi kredit.',
+    name: 'Chery Salatiga - Dealer Resmi Mobil Chery',
+    short_name: 'Chery Salatiga',
+    description: 'Dealer Resmi Mobil Chery Salatiga. Promo terbaru, test drive gratis & simulasi kredit.',
     start_url: '/',
     display: 'standalone',
     background_color: '#000000',

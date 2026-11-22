@@ -5,7 +5,7 @@ export async function GET() {
   return NextResponse.json({
     status: 'success',
     updatedAt: new Date().toISOString(),
-    dealer: 'Chery Official Dealer Semarang',
+    dealer: 'Chery Official Dealer Salatiga',
     totalPromos: PROMOS_DATA.length,
     data: PROMOS_DATA
   });

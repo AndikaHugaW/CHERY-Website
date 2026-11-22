@@ -9,7 +9,7 @@ import { CONTACT_INFO } from '@/data/contact';
 import logoImg from '../../public/images/logo/logo.webp';
 
 const WHATSAPP_MESSAGE =
-  'Halo%20Chery%20Semarang,%20saya%20butuh%20informasi%20mengenai%20unit,%20harga,%20dan%20promo';
+  'Halo%20Chery%20Salatiga,%20saya%20butuh%20informasi%20mengenai%20unit,%20harga,%20dan%20promo';
 
 const socialLinks = [
   {

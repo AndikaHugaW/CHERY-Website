@@ -25,7 +25,7 @@ const bookingsStore: TestDriveBooking[] = [
     carId: 'tiggo-cross',
     carName: 'TIGGO CROSS',
     preferredDate: '2026-08-10',
-    location: 'Dealer Chery Semarang (Dr. Cipto)',
+    location: 'Dealer Chery Salatiga',
     notes: 'Ingin mencoba sunroof dan fitur 1.5L IVT',
     createdAt: new Date().toISOString(),
     status: 'CONFIRMED'
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       carId,
       carName: selectedCar ? selectedCar.name : carId,
       preferredDate,
-      location: location || 'Dealer Chery Semarang',
+      location: location || 'Dealer Chery Salatiga',
       notes: notes || '',
       createdAt: new Date().toISOString(),
       status: 'PENDING_CONFIRMATION'
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         status: 'success',
-        message: 'Jadwal Test Drive berhasil dikirim! Tim Sales Chery Semarang akan segera menghubungi Anda.',
+        message: 'Jadwal Test Drive berhasil dikirim! Tim Sales Chery Salatiga akan segera menghubungi Anda.',
         data: newBooking
       },
       { status: 201 }

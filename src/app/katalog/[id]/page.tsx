@@ -135,7 +135,7 @@ export default function CarDetailPage() {
     if (!car) return;
     const phone = CONTACT_INFO.waNumber;
     const text = encodeURIComponent(
-      `Halo Chery Semarang, saya tertarik dengan unit ${car.name} (${car.trim}) - ${car.formattedPrice}. Bisa tanyakan informasi promo & simulasi kreditnya?`
+      `Halo Chery Salatiga, saya tertarik dengan unit ${car.name} (${car.trim}) - ${car.formattedPrice}. Bisa tanyakan informasi promo & simulasi kreditnya?`
     );
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
   };

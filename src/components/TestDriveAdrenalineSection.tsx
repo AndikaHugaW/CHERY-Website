@@ -40,7 +40,7 @@ export const TestDriveAdrenalineSection: React.FC<TestDriveAdrenalineSectionProp
             {submitted ? (
               <div className="bg-emerald-950/80 border border-emerald-500/30 rounded-2xl p-4 flex items-center gap-3 text-emerald-400 text-sm font-semibold">
                 <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
-                <span>Terima kasih! Tim Sales Chery Semarang akan segera menghubungi nomor WhatsApp Anda.</span>
+                <span>Terima kasih! Tim Sales Chery Salatiga akan segera menghubungi nomor WhatsApp Anda.</span>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch gap-3 pt-2 max-w-lg">

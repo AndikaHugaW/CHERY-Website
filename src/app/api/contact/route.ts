@@ -14,13 +14,13 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       status: 'success',
-      message: 'Pesan Anda telah diterima oleh Sales Executive Chery Semarang.',
+      message: 'Pesan Anda telah diterima oleh Sales Executive Chery Salatiga.',
       ticketId: `TKT-Chery-${Math.floor(10000 + Math.random() * 90000)}`,
       receivedData: {
         name,
         phone,
         subject: subject || 'Konsultasi Unit Chery',
-        message: message || 'Tertarik dengan katalog unit Chery Semarang',
+        message: message || 'Tertarik dengan katalog unit Chery Salatiga',
         timestamp: new Date().toISOString()
       }
     });

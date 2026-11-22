@@ -119,7 +119,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       status: 'success',
       total: filteredCars.length,
-      dealer: 'Chery Official Dealer Semarang',
+      dealer: 'Chery Official Dealer Salatiga',
       address: CONTACT_INFO.address,
       contact: '0813-2652-822',
       data: filteredCars,

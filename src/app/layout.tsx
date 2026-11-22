@@ -10,13 +10,13 @@ import './globals.css';
  */
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kiasemarang.id'),
+  metadataBase: new URL('https://cherysalatiga.id'),
   title: {
     default: 'Chery Salatiga - Dealer Resmi Mobil Chery Jawa Tengah',
-    template: '%s | Chery Semarang',
+    template: '%s | Chery Salatiga',
   },
   description:
-    'Website resmi Dealer Chery Semarang. Katalog lengkap Tiggo, Chery C5, J6, Chery Q/E5, dan lini CSH hybrid — harga & spesifikasi resmi chery.co.id. Test drive gratis & simulasi kredit.',
+    'Website resmi Dealer Chery Salatiga. Katalog lengkap Tiggo, Chery C5, J6, Chery Q/E5, dan lini CSH hybrid — harga & spesifikasi resmi chery.co.id. Test drive gratis & simulasi kredit.',
   keywords: [
     'Chery Salatiga',
     'Dealer Chery Salatiga',
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'id_ID',
-    url: 'https://kiasemarang.id',
-    siteName: 'Chery Semarang',
+    url: 'https://cherysalatiga.id',
+    siteName: 'Chery Salatiga',
     title: 'Chery Salatiga - Dealer Resmi Mobil Chery Jawa Tengah',
     description:
       'Dealer resmi Chery di Salatiga dengan pilihan SUV, MPV, dan EV terbaru. Promo spesial, test drive gratis, dan kredit DP ringan.',
@@ -49,15 +49,15 @@ export const metadata: Metadata = {
         url: '/images/kontak/kantor.jpeg',
         width: 1200,
         height: 630,
-        alt: 'Chery Semarang Showroom Banner',
+        alt: 'Chery Salatiga Showroom Banner',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chery Semarang - Dealer Resmi Mobil Chery Jawa Tengah',
+    title: 'Chery Salatiga - Dealer Resmi Mobil Chery Jawa Tengah',
     description:
-      'Website resmi Dealer Chery Semarang. Servis resmi, test drive gratis & simulasi kredit.',
+      'Website resmi Dealer Chery Salatiga. Servis resmi, test drive gratis & simulasi kredit.',
     images: ['/images/kontak/kantor.jpeg'],
   },
 

@@ -39,7 +39,7 @@ export const KontakTimProfesionalSection: React.FC = () => {
                 <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden shrink-0 border-4 border-white shadow-md">
                   <Image
                     src={member.image}
-                    alt={`${member.name} - ${member.role} Chery Semarang`}
+                    alt={`${member.name} - ${member.role} Chery Salatiga`}
                     fill
                     qualityRole="avatar"
                     sizes={IMAGE_SIZES.avatar}

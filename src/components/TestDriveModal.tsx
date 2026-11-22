@@ -21,7 +21,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
     email: '',
     carId: preselectedCarId || 'tiggo-cross',
     preferredDate: '',
-    location: 'Showroom Chery Semarang (Jl. Dr. Cipto)',
+    location: 'Showroom Chery Salatiga',
     notes: '',
   });
 
@@ -122,7 +122,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
               </div>
               <div>
                 <h3 className="text-2xl font-extrabold text-gray-900">Jadwalkan Test Drive</h3>
-                <p className="text-xs text-gray-500">Layanan Test Drive GRATIS ke Rumah / Kantor Area Semarang</p>
+                <p className="text-xs text-gray-500">Layanan Test Drive GRATIS ke Rumah / Kantor Area Salatiga</p>
               </div>
             </div>
 
@@ -219,10 +219,10 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-black focus:ring-1 focus:ring-black text-sm"
                 >
-                  <option value="Showroom Chery Semarang (Jl. Dr. Cipto)">
-                    Showroom Official Chery Semarang
+                  <option value="Showroom Official Chery Salatiga">
+                    Showroom Official Chery Salatiga
                   </option>
-                  <option value="Home Test Drive (Rumah Pelanggan Area Semarang)">
+                  <option value="Home Test Drive (Rumah Pelanggan Area Salatiga)">
                     Home Test Drive (Antar Unit ke Rumah)
                   </option>
                   <option value="Office Test Drive (Kantor Pelanggan)">

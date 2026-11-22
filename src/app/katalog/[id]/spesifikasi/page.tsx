@@ -30,7 +30,7 @@ import { CONTACT_INFO } from '@/data/contact';
 function SpecificationContent() {
   const params = useParams();
   const searchParams = useSearchParams();
-  const carId = (params?.id as string) || 'kia-all-new-carens';
+  const carId = (params?.id as string) || 'tiggo-cross';
   const variantParam = searchParams.get('variant');
 
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -159,7 +159,7 @@ function SpecificationContent() {
                 {car.name} <span className="font-normal text-gray-400 block sm:inline">Specifications</span>
               </h1>
               <p className="text-gray-400 text-xs sm:text-base leading-relaxed">
-                Data komparasi spesifikasi teknis lengkap untuk seluruh varian {car.name} di Dealer Chery Masati Semarang.
+                Data komparasi spesifikasi teknis lengkap untuk seluruh varian {car.name} di Dealer Chery Salatiga.
               </p>
             </div>
 
@@ -532,10 +532,10 @@ function SpecificationContent() {
         <div className="mt-10 sm:mt-12 bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <h3 className="text-base sm:text-xl font-black text-gray-900">
-              Butuh Informasi Simulasi Kredit atau Promo OTR Semarang untuk {car.name}?
+              Butuh Informasi Simulasi Kredit atau Promo OTR Salatiga untuk {car.name}?
             </h3>
             <p className="text-gray-500 text-xs sm:text-sm mt-1">
-              Hubungi Sales Executive resmi Chery Masati Semarang untuk penawaran harga terbaik & test drive.
+              Hubungi Sales Executive resmi Chery Salatiga untuk penawaran harga terbaik & test drive.
             </p>
           </div>
           <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto shrink-0 justify-center">
@@ -546,7 +546,7 @@ function SpecificationContent() {
               Booking Test Drive
             </button>
             <a
-              href={`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(`Halo Chery Semarang, saya ingin tanyakan spesifikasi dan promo untuk ${car.name}`)}`}
+              href={`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(`Halo Chery Salatiga, saya ingin tanyakan spesifikasi dan promo untuk ${car.name}`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 sm:flex-none px-4 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-md transition-all text-center"

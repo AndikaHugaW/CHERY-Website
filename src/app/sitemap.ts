@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { CARS_DATA } from '@/data/cars';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://kiasemarang.id';
+  const baseUrl = 'https://cherysalatiga.id';
 
   const routes = ['', '/katalog', '/bengkel', '/kontak'].map((route) => ({
     url: `${baseUrl}${route}`,

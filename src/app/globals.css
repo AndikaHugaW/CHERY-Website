@@ -44,9 +44,9 @@
   :root {
     --background: #090B10;
     --foreground: #F3F4F6;
-    --kia-red: #E5121B;
-    --kia-red-dark: #B30C13;
-    --kia-silver: #C0C0C0;
+    --chery-red: #E5121B;
+    --chery-red-dark: #B30C13;
+    --chery-silver: #C0C0C0;
     --glass-bg: rgba(18, 22, 32, 0.75);
     --glass-border: rgba(255, 255, 255, 0.1);
   }
@@ -96,11 +96,11 @@ p {
 }
 
 /* Glow Effects */
-.glow-kia-red {
+.glow-chery-red {
   box-shadow: 0 0 35px -5px rgba(229, 18, 27, 0.45);
 }
 
-.glow-kia-cyan {
+.glow-chery-cyan {
   box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.35);
 }
 

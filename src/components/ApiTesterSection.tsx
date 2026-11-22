@@ -18,20 +18,20 @@ const ENDPOINTS: ApiEndpoint[] = [
     name: 'Get All Cars',
     method: 'GET',
     url: '/api/cars',
-    description: 'Mengambil seluruh daftar mobil Chery OTR Semarang beserta spesifikasi utama.',
+    description: 'Mengambil seluruh daftar mobil Chery OTR Salatiga beserta spesifikasi utama.',
   },
   {
     id: 'get-cars-ev',
     name: 'Filter EV Only',
     method: 'GET',
     url: '/api/cars?category=EV',
-    description: 'Mengambil daftar mobil Chery berkategori Electric Vehicle (EV6 & EV9).',
+    description: 'Mengambil daftar mobil Chery berkategori Electric Vehicle.',
   },
   {
     id: 'get-cars-search',
     name: 'Search Car by Keyword',
     method: 'GET',
-    url: '/api/cars?q=seltos',
+    url: '/api/cars?q=tiggo',
     description: 'Mencari mobil Chery berdasarkan nama/deskripsi.',
   },
   {
@@ -39,7 +39,7 @@ const ENDPOINTS: ApiEndpoint[] = [
     name: 'Get Active Promos',
     method: 'GET',
     url: '/api/promos',
-    description: 'Mengambil promo dan paket kredit terbaru Dealer Chery Semarang.',
+    description: 'Mengambil promo dan paket kredit terbaru Dealer Chery Salatiga.',
   },
   {
     id: 'post-test-drive',
@@ -52,9 +52,9 @@ const ENDPOINTS: ApiEndpoint[] = [
         name: 'Ahmad Faisal',
         phone: '08123456789',
         email: 'ahmad@example.com',
-        carId: 'kia-sonet',
+        carId: 'tiggo-cross',
         preferredDate: '2026-08-15',
-        location: 'Showroom Chery Semarang',
+        location: 'Showroom Chery Salatiga',
         notes: 'Uji coba performa 1.5L IVT'
       },
       null,
@@ -66,13 +66,13 @@ const ENDPOINTS: ApiEndpoint[] = [
     name: 'Send Inquiry (POST)',
     method: 'POST',
     url: '/api/contact',
-    description: 'Mengirim pertanyaan/konsultasi ke tim Sales Executive Chery Semarang.',
+    description: 'Mengirim pertanyaan/konsultasi ke tim Sales Executive Chery Salatiga.',
     sampleBody: JSON.stringify(
       {
         name: 'Dewi Lestari',
         phone: '085712345678',
-        subject: 'Tanya Angsuran Chery Sonet',
-        message: 'Berapa simulasi DP 20% tenor 5 tahun untuk Chery Sonet?'
+        subject: 'Tanya Angsuran Chery Tiggo',
+        message: 'Berapa simulasi DP 20% tenor 5 tahun untuk Chery Tiggo?'
       },
       null,
       2

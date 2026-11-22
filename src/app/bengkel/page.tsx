@@ -45,7 +45,7 @@ export default function BengkelPage() {
           </h1>
 
           <p className="text-gray-200 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed mt-4 font-medium drop-shadow">
-            Jelajahi berbagai model Kia, mulai dari SUV, MPV, hingga kendaraan listrik dengan teknologi modern, fitur keselamatan terbaik, dan desain yang menginspirasi.
+            Layanan perawatan dan perbaikan resmi Chery Salatiga dengan teknisi bersertifikasi pabrikan, peralatan diagnostik modern, dan jaminan suku cadang asli untuk menjaga performa optimal mobil Chery Anda.
           </p>
 
           <div className="pt-6">
