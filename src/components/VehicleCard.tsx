@@ -5,6 +5,7 @@ import Image from '@/components/ui/optimized-image';
 import { IMAGE_SIZES } from '@/lib/image-optimization';
 import Link from 'next/link';
 import { Car } from '@/data/cars';
+import { CONTACT_INFO } from '@/data/contact';
 import { getCarCardDisplay, CarCardDisplaySpecs } from '@/data/catalog-card-specs';
 import { Fuel, Gauge, Users, BatteryCharging, ArrowRight, Ruler, Milestone } from 'lucide-react';
 
@@ -158,6 +159,15 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
   const specGridCols = SPEC_GRID_COLS[specCount] ?? SPEC_GRID_COLS[3];
   const specAligns = SPEC_ALIGN_ORDER[specCount] ?? SPEC_ALIGN_ORDER[3];
 
+  const handlePrimaryClick = () => {
+    if (onPrimaryAction) {
+      onPrimaryAction();
+    } else {
+      const text = `Halo Chery Salatiga, saya tertarik dan ingin memesan unit Chery ${car.name}. Mohon informasi ketersediaan unit, promo, dan penawaran terbaiknya.`;
+      window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+  };
+
   return (
     <article
       className={`group relative flex flex-col overflow-hidden rounded-2xl border transition-all duration-300 ease-out ${
@@ -276,27 +286,17 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
 
         {/* Actions — lebar penuh, dua tombol sama lebar, sejajar dengan baris spesifikasi */}
         <div className={`mt-5 sm:mt-6 grid grid-cols-2 ${CARD_GRID_GAP}`}>
-          {onPrimaryAction ? (
-            <button
-              type="button"
-              onClick={onPrimaryAction}
-              className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-sm font-bold transition-all duration-200 active:scale-[0.98] ${
-                isDark
-                  ? 'bg-white text-gray-900 hover:bg-white/90'
-                  : 'bg-gray-900 text-white hover:bg-gray-800'
-              }`}
-            >
-              {primaryLabel}
-            </button>
-          ) : (
-            <span
-              className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-sm font-bold ${
-                isDark ? 'bg-white text-gray-900' : 'bg-gray-900 text-white'
-              }`}
-            >
-              {primaryLabel}
-            </span>
-          )}
+          <button
+            type="button"
+            onClick={handlePrimaryClick}
+            className={`inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full px-2 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-sm font-bold transition-all duration-200 active:scale-[0.98] cursor-pointer ${
+              isDark
+                ? 'bg-white text-gray-900 hover:bg-white/90'
+                : 'bg-gray-900 text-white hover:bg-gray-800'
+            }`}
+          >
+            {primaryLabel}
+          </button>
 
           <Link
             href={href}

@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic';
 import { ArrowRight } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { CARS_DATA } from '@/data/cars';
+import { CONTACT_INFO } from '@/data/contact';
 
 const KatalogGridSection = dynamic(() =>
   import('@/components/KatalogGridSection').then((mod) => mod.KatalogGridSection)
@@ -56,7 +57,11 @@ export default function KatalogPage() {
 
   const handleOpenTestDrive = (carId?: string) => {
     setSelectedCarId(carId);
-    setTestDriveOpen(true);
+    const car = carId ? CARS_DATA.find((c) => c.id === carId) : undefined;
+    const text = car
+      ? `Halo Chery Salatiga, saya ingin booking Test Drive untuk unit Chery ${car.name}. Mohon informasi jadwal dan ketersediaan unit.`
+      : 'Halo Chery Salatiga, saya ingin booking Test Drive mobil Chery. Mohon informasi jadwal dan ketersediaan unit.';
+    window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   /** Unit katalog untuk tiap slide; fallback ke unit utama bila id tidak ditemukan. */

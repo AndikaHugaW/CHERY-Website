@@ -16,10 +16,12 @@ export const KontakInquireSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    const text = `Halo Chery Salatiga, saya ingin mengirimkan pertanyaan:\n\n*Nama:* ${formData.name}\n*Nomor Telepon/WA:* ${formData.phone}\n*Kebutuhan/Minat:* ${formData.interest}\n*Pesan:* ${formData.message}`;
+    window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const handleWhatsAppRedirect = () => {
-    const text = `Halo Chery Salatiga, saya ingin mengirimkan pertanyaan:\nNama: ${formData.name}\nTelepon: ${formData.phone}\nMinat: ${formData.interest}\nPesan: ${formData.message}`;
+    const text = `Halo Chery Salatiga, saya ingin mengirimkan pertanyaan:\n\n*Nama:* ${formData.name}\n*Nomor Telepon/WA:* ${formData.phone}\n*Kebutuhan/Minat:* ${formData.interest}\n*Pesan:* ${formData.message}`;
     window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
   };
 

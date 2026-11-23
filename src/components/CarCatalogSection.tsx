@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from '@/components/ui/optimized-image';
 import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { Car } from '@/data/cars';
+import { CONTACT_INFO } from '@/data/contact';
 import { Search, Zap, Users, Gauge, CalendarCheck, Info, X, CheckCircle2 } from 'lucide-react';
 
 interface CarCatalogSectionProps {
@@ -173,8 +174,11 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
                   </button>
 
                   <button
-                    onClick={() => onOpenTestDrive(car.id)}
-                    className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 transition-all flex items-center justify-center gap-2 shadow-md"
+                    onClick={() => {
+                      const text = `Halo Chery Salatiga, saya ingin menjadwalkan Test Drive untuk unit Chery ${car.name}. Mohon informasi jadwal dan ketersediaan unit.`;
+                      window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
+                    }}
+                    className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer"
                   >
                     <CalendarCheck className="w-4 h-4" />
                     Test Drive
@@ -258,11 +262,12 @@ export const CarCatalogSection: React.FC<CarCatalogSectionProps> = ({
               </button>
               <button
                 onClick={() => {
-                  const carId = activeModalCar.id;
+                  const carName = activeModalCar.name;
                   setActiveModalCar(null);
-                  onOpenTestDrive(carId);
+                  const text = `Halo Chery Salatiga, saya ingin menjadwalkan Test Drive untuk unit Chery ${carName}. Mohon informasi jadwal dan ketersediaan unit.`;
+                  window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
                 }}
-                className="px-6 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 shadow-lg"
+                className="px-6 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 shadow-lg cursor-pointer"
               >
                 Jadwalkan Test Drive
               </button>

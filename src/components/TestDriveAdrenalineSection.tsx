@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from '@/components/ui/optimized-image';
 import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { CheckCircle2 } from 'lucide-react';
+import { CONTACT_INFO } from '@/data/contact';
 
 interface TestDriveAdrenalineSectionProps {
   onOpenTestDrive?: (carId?: string) => void;
@@ -17,6 +18,8 @@ export const TestDriveAdrenalineSection: React.FC<TestDriveAdrenalineSectionProp
     e.preventDefault();
     if (!phoneNumber) return;
     setSubmitted(true);
+    const text = `Halo Chery Salatiga, saya ingin menjadwalkan Test Drive mobil Chery.\nNomor Telepon/WA: ${phoneNumber}`;
+    window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
     if (onOpenTestDrive) {
       onOpenTestDrive();
     }

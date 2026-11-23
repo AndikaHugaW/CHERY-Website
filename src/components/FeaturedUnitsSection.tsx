@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { CARS_DATA } from '@/data/cars';
+import { CONTACT_INFO } from '@/data/contact';
 import { VehicleCard } from '@/components/VehicleCard';
 import { IMAGE_SIZES } from '@/lib/image-optimization';
 
@@ -47,7 +48,10 @@ export const FeaturedUnitsSection: React.FC<FeaturedUnitsSectionProps> = ({ onOp
               key={car.id}
               car={car}
               primaryLabel="Pesan"
-              onPrimaryAction={() => onOpenTestDrive?.(car.id)}
+              onPrimaryAction={() => {
+                const text = `Halo Chery Salatiga, saya tertarik dan ingin memesan unit Chery ${car.name}. Mohon informasi ketersediaan unit, promo, dan penawaran terbaiknya.`;
+                window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
+              }}
               sizes={IMAGE_SIZES.featuredCard}
             />
           ))}

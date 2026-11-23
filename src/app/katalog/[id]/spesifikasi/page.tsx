@@ -172,8 +172,11 @@ function SpecificationContent() {
                 <span>Cetak Spec</span>
               </button>
               <button
-                onClick={() => setIsTestDriveOpen(true)}
-                className="px-4 py-2.5 sm:px-6 sm:py-3 bg-white text-black hover:bg-gray-100 font-extrabold text-xs sm:text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"
+                onClick={() => {
+                  const text = `Halo Chery Salatiga, saya ingin menjadwalkan Test Drive untuk unit Chery ${car.name}. Mohon informasi jadwal dan ketersediaan unit.`;
+                  window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
+                }}
+                className="px-4 py-2.5 sm:px-6 sm:py-3 bg-white text-black hover:bg-gray-100 font-extrabold text-xs sm:text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <PhoneCall className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 <span>Test Drive</span>
@@ -540,8 +543,11 @@ function SpecificationContent() {
           </div>
           <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto shrink-0 justify-center">
             <button
-              onClick={() => setIsTestDriveOpen(true)}
-              className="flex-1 sm:flex-none px-4 py-3 bg-black hover:bg-neutral-800 text-white font-bold text-xs rounded-xl shadow-md transition-all text-center"
+              onClick={() => {
+                const text = `Halo Chery Salatiga, saya ingin booking Test Drive untuk unit Chery ${car.name}. Mohon informasi jadwal dan ketersediaan unit.`;
+                window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
+              }}
+              className="flex-1 sm:flex-none px-4 py-3 bg-black hover:bg-neutral-800 text-white font-bold text-xs rounded-xl shadow-md transition-all text-center cursor-pointer"
             >
               Booking Test Drive
             </button>

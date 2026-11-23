@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from '@/components/ui/optimized-image';
 import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { usePathname } from 'next/navigation';
+import { CONTACT_INFO } from '@/data/contact';
 import { LiquidGlass } from '@/components/ui/liquid-glass';
 import { cn } from '@/lib/utils';
 import {
@@ -240,8 +241,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
     </Link>
   );
 
+  const handleTestDriveRedirect = () => {
+    const text = 'Halo Chery Salatiga, saya ingin menjadwalkan Test Drive mobil Chery. Mohon informasi jadwal dan ketersediaan unit.';
+    window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
   const desktopActionButton = onOpenTestDrive ? (
-    <NavbarActionButton onClick={() => onOpenTestDrive()} tone={isLightTheme ? 'dark' : 'light'}>
+    <NavbarActionButton onClick={handleTestDriveRedirect} tone={isLightTheme ? 'dark' : 'light'}>
       Test Drive
     </NavbarActionButton>
   ) : (
@@ -251,7 +257,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
   );
 
   const mobileActionButton = onOpenTestDrive ? (
-    <NavbarActionButton onClick={() => onOpenTestDrive()} tone={isMobileLightTheme ? 'dark' : 'light'}>
+    <NavbarActionButton onClick={handleTestDriveRedirect} tone={isMobileLightTheme ? 'dark' : 'light'}>
       Test Drive
     </NavbarActionButton>
   ) : (

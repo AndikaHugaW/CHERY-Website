@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from '@/components/ui/optimized-image';
 import { IMAGE_SIZES } from '@/lib/image-optimization';
 import { BLUR_PLACEHOLDERS } from '@/lib/blur-placeholders';
+import { CONTACT_INFO } from '@/data/contact';
 import Link from 'next/link';
 import { 
   ArrowUpRight,
@@ -50,6 +51,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => 
 
     return () => window.clearInterval(id);
   }, []);
+
+  const handleTestDriveRedirect = () => {
+    const text = 'Halo Chery Salatiga, saya ingin booking Test Drive mobil Chery. Mohon info ketersediaan unit dan jadwalnya.';
+    window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
+    onOpenTestDrive?.();
+  };
 
   return (
     <section className="relative w-full min-h-[92dvh] md:min-h-screen flex flex-col justify-end md:justify-between overflow-hidden bg-neutral-950 text-white p-6 sm:p-10 lg:p-14 rounded-none my-0 z-20">
@@ -115,8 +122,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => 
 
           {/* Secondary CTA: Solid White Pill */}
           <button
-            onClick={() => onOpenTestDrive?.()}
-            className="w-full bg-white hover:bg-gray-100 text-gray-950 font-bold text-base py-3 pl-6 pr-2.5 rounded-full flex items-center justify-between shadow-2xl transition-all group active:scale-[0.98] text-left"
+            onClick={handleTestDriveRedirect}
+            className="w-full bg-white hover:bg-gray-100 text-gray-950 font-bold text-base py-3 pl-6 pr-2.5 rounded-full flex items-center justify-between shadow-2xl transition-all group active:scale-[0.98] text-left cursor-pointer"
           >
             <span className="font-bold tracking-tight">Booking Test Drive</span>
             <span className="w-11 h-11 rounded-full bg-slate-900 text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-md">
@@ -189,8 +196,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTestDrive }) => 
 
           {/* Button 2: Solid White Pill */}
           <button
-            onClick={() => onOpenTestDrive?.()}
-            className="w-full sm:w-auto bg-white hover:bg-gray-100 text-gray-950 font-bold text-base sm:text-lg py-2.5 sm:py-3 pl-6 pr-2.5 rounded-full flex items-center justify-between gap-4 shadow-2xl transition-all group active:scale-[0.98] text-left"
+            onClick={handleTestDriveRedirect}
+            className="w-full sm:w-auto bg-white hover:bg-gray-100 text-gray-950 font-bold text-base sm:text-lg py-2.5 sm:py-3 pl-6 pr-2.5 rounded-full flex items-center justify-between gap-4 shadow-2xl transition-all group active:scale-[0.98] text-left cursor-pointer"
           >
             <span className="font-bold tracking-tight whitespace-nowrap">Booking Test Drive</span>
             <span className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-slate-900 text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-md">

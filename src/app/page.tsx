@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { CARS_DATA } from '@/data/cars';
+import { CONTACT_INFO } from '@/data/contact';
 import { Navbar } from '@/components/Navbar';
 import { HeroSection } from '@/components/HeroSection';
 
@@ -21,7 +23,11 @@ export default function Home() {
 
   const handleOpenTestDrive = (carId?: string) => {
     setSelectedCarId(carId);
-    setTestDriveOpen(true);
+    const car = carId ? CARS_DATA.find((c) => c.id === carId) : undefined;
+    const text = car
+      ? `Halo Chery Salatiga, saya tertarik dan ingin booking Test Drive untuk unit Chery ${car.name}. Mohon informasi ketersediaan unit dan jadwalnya.`
+      : 'Halo Chery Salatiga, saya ingin menjadwalkan Test Drive mobil Chery. Mohon informasi jadwal dan ketersediaan unit.';
+    window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (

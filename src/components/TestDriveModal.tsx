@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { CARS_DATA } from '@/data/cars';
+import { CONTACT_INFO } from '@/data/contact';
 import { X, CalendarCheck, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 interface TestDriveModalProps {
@@ -35,6 +36,11 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
     e.preventDefault();
     setLoading(true);
     setErrorMsg(null);
+
+    const car = CARS_DATA.find((c) => c.id === formData.carId);
+    const carName = car?.name || 'Chery';
+    const text = `Halo Chery Salatiga, saya ingin booking Test Drive:\n\n*Nama:* ${formData.name}\n*Nomor Telepon/WA:* ${formData.phone}\n*Unit Mobil:* ${carName}\n*Tanggal:* ${formData.preferredDate}\n*Lokasi:* ${formData.location}\n*Catatan:* ${formData.notes || '-'}`;
+    window.open(`https://wa.me/${CONTACT_INFO.waNumber}?text=${encodeURIComponent(text)}`, '_blank');
 
     try {
       const res = await fetch('/api/test-drive', {
