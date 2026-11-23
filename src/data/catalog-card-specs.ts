@@ -110,12 +110,15 @@ export const CAR_CARD_DISPLAY: Record<string, CarCardDisplaySpecs> = {
 
 export const LINEUP_BY_POWERTRAIN = {
   BEV: ['chery-q', 'j6', 'chery-e5'],
-  CSH: ['j6t-csh', 'tiggo-9-csh', 'tiggo-8-csh', 'tiggo-cross-csh-hybrid'],
+  CSH: ['tiggo-9-csh', 'tiggo-8-csh', 'tiggo-cross-csh-hybrid'],
   ICE: ['tiggo-8-pro-max', 'tiggo-8', 'tiggo-cross-sport', 'tiggo-cross'],
 } as const;
 
+/** Urutan tampil katalog: J6T CSH langsung di bawah CHERY Q. */
 export const CATALOG_LINEUP_ORDER: string[] = [
-  ...LINEUP_BY_POWERTRAIN.BEV,
+  'chery-q',
+  'j6t-csh',
+  ...LINEUP_BY_POWERTRAIN.BEV.filter((id) => id !== 'chery-q'),
   ...LINEUP_BY_POWERTRAIN.CSH,
   ...LINEUP_BY_POWERTRAIN.ICE,
 ];

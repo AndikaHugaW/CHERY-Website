@@ -13,7 +13,7 @@ interface FeaturedUnitsSectionProps {
 }
 
 export const FeaturedUnitsSection: React.FC<FeaturedUnitsSectionProps> = ({ onOpenTestDrive }) => {
-  const featuredIds = ['chery-q', 'j6', 'chery-e5'];
+  const featuredIds = ['chery-q', 'j6t-csh', 'j6', 'chery-e5'];
   const featuredUnits = featuredIds
     .map((id) => CARS_DATA.find((c) => c.id === id))
     .filter((c): c is (typeof CARS_DATA)[number] => Boolean(c));
@@ -42,7 +42,7 @@ export const FeaturedUnitsSection: React.FC<FeaturedUnitsSectionProps> = ({ onOp
         </div>
 
         {/* 3 Featured Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {featuredUnits.map((car) => (
             <VehicleCard
               key={car.id}
