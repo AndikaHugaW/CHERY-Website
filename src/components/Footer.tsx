@@ -146,7 +146,7 @@ export const Footer: React.FC<FooterProps> = () => {
             </h4>
             <div className="space-y-3 text-sm text-gray-600">
               <a
-                href="https://maps.app.goo.gl/LtEd1xDa1nDk8CQz5"
+                href={CONTACT_INFO.gmapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 hover:text-black transition-colors group"
