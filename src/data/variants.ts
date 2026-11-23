@@ -174,6 +174,54 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
       ]
     }
   ],
+  "j6t-csh": [
+    {
+      "name": "J6T CSH RWD",
+      "trim": "J6T CSH RWD",
+      "price": "Rp 549.900.000",
+      "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/j6/j6t-rwd.png",
+      "badge": "TERSEDIA",
+      "engine": "1.5 TGDI Range Extender (REEV)",
+      "transmission": "Single-Speed Electric Drive",
+      "seats": 5,
+      "fuelType": "Hybrid",
+      "features": [
+        "Rear Wheel Drive",
+        "Jarak EV Murni 190 km (NEDC)",
+        "Jarak Tempuh Kombinasi 1.000+ km",
+        "Baterai 33,67 kWh",
+        "Ground Clearance 220 mm",
+        "Wading Depth 650 mm",
+        "V2L 6 kW",
+        "15 Fungsi ADAS",
+        "6 Airbag",
+        "Velg 21 inci"
+      ]
+    },
+    {
+      "name": "J6T CSH iWD",
+      "trim": "J6T CSH iWD",
+      "price": "Rp 599.900.000",
+      "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/j6/j6t-iwd.png",
+      "badge": "TERSEDIA",
+      "engine": "1.5 TGDI Range Extender (REEV) Dual Motor",
+      "transmission": "Single-Speed Electric Drive",
+      "seats": 5,
+      "fuelType": "Hybrid",
+      "features": [
+        "Intelligent Wheel Drive (Dual Motor)",
+        "Tenaga 428 PS / Torsi 505 Nm",
+        "Akselerasi 0-100 km/h < 5 detik",
+        "Jarak EV Murni 160 km (NEDC)",
+        "Jarak Tempuh Kombinasi 1.000+ km",
+        "Baterai 33,67 kWh",
+        "Tank Turn Function (Putar 360°)",
+        "All-Terrain 8+1 Drive Modes",
+        "Head Unit 15,6 inci + 12 Speaker",
+        "15 Fungsi ADAS"
+      ]
+    }
+  ],
   "tiggo-9-csh": [
     {
       "name": "TIGGO 9 CSH AWD",

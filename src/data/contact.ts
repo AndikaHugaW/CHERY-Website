@@ -4,8 +4,8 @@ export const CONTACT_INFO = {
   phoneFormattedIntl: '+62 813-2652-822',
   waNumber: '628132652822',
   waUrl: 'https://wa.me/628132652822',
-  address: 'JL. Dr Cipto 136 B dan C Rejosari, Semarang Timur, Kota Semarang, Jawa Tengah 50125',
-  addressShort: 'JL. Dr Cipto 136 B dan C, Semarang',
+  address: 'Jl. Diponegoro No.96A, Sidorejo Lor, Kec. Sidorejo, Kota Salatiga, Jawa Tengah 50714',
+  addressShort: 'Jl. Diponegoro No.96A, Salatiga',
   gmapsUrl: 'https://maps.app.goo.gl/LtEd1xDa1nDk8CQz5',
   gmapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.2191547417633!2d110.4324854!3d-6.9834441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708d005111c565%3A0xec4b0fb5242743b2!2sKIA%20Semarang%20Masati!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid',
   operatingHours: {

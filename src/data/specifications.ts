@@ -840,6 +840,223 @@ export const CAR_SPECIFICATIONS: Record<string, CarSpecification> = {
       }
     ]
   },
+  "j6t-csh": {
+    "carId": "j6t-csh",
+    "carName": "CHERY J6T CSH",
+    "tagline": "Freedom Beyond Limits — REEV Technology",
+    "variants": [
+      "J6T CSH RWD",
+      "J6T CSH iWD"
+    ],
+    "categories": [
+      {
+        "id": "basic",
+        "title": "Basic",
+        "items": [
+          {
+            "name": "Dimensions",
+            "values": {
+              "J6T CSH RWD": "4550 x 1950 x 1785 mm",
+              "J6T CSH iWD": "4550 x 1950 x 1785 mm"
+            }
+          },
+          {
+            "name": "Wheel Base",
+            "values": {
+              "J6T CSH RWD": "2715 mm",
+              "J6T CSH iWD": "2715 mm"
+            }
+          },
+          {
+            "name": "Ground Clearance",
+            "values": {
+              "J6T CSH RWD": "220 mm",
+              "J6T CSH iWD": "220 mm"
+            }
+          },
+          {
+            "name": "Wading Depth",
+            "values": {
+              "J6T CSH RWD": "650 mm",
+              "J6T CSH iWD": "650 mm"
+            }
+          },
+          {
+            "name": "Engine Type",
+            "values": {
+              "J6T CSH RWD": "1.5 TGDI Range Extender (Efisiensi Termal 44,5%)",
+              "J6T CSH iWD": "1.5 TGDI Range Extender (Efisiensi Termal 44,5%)"
+            }
+          },
+          {
+            "name": "Drivetrain",
+            "values": {
+              "J6T CSH RWD": "Rear Wheel Drive (Single Motor)",
+              "J6T CSH iWD": "Intelligent Wheel Drive (Dual Motor)"
+            }
+          },
+          {
+            "name": "Total System Power",
+            "values": {
+              "J6T CSH RWD": "-",
+              "J6T CSH iWD": "428 PS"
+            }
+          },
+          {
+            "name": "Total System Torque",
+            "values": {
+              "J6T CSH RWD": "-",
+              "J6T CSH iWD": "505 Nm"
+            }
+          },
+          {
+            "name": "Battery Capacity",
+            "values": {
+              "J6T CSH RWD": "33,67 kWh",
+              "J6T CSH iWD": "33,67 kWh"
+            }
+          },
+          {
+            "name": "Pure EV Range (NEDC)",
+            "values": {
+              "J6T CSH RWD": "190 km",
+              "J6T CSH iWD": "160 km"
+            }
+          },
+          {
+            "name": "Comprehensive Range",
+            "values": {
+              "J6T CSH RWD": "1.000+ km",
+              "J6T CSH iWD": "1.000+ km"
+            }
+          },
+          {
+            "name": "Acceleration 0-100 km/h",
+            "values": {
+              "J6T CSH RWD": "-",
+              "J6T CSH iWD": "< 5 seconds"
+            }
+          }
+        ]
+      },
+      {
+        "id": "exterior",
+        "title": "Exterior",
+        "items": [
+          {
+            "name": "Suspension",
+            "values": {
+              "J6T CSH RWD": "H-Arm Aluminum Suspension",
+              "J6T CSH iWD": "H-Arm Aluminum Suspension"
+            }
+          },
+          {
+            "name": "Tyre",
+            "values": {
+              "J6T CSH RWD": "21\" Alloy Wheel",
+              "J6T CSH iWD": "21\" Alloy Wheel"
+            }
+          },
+          {
+            "name": "Drive Modes",
+            "values": {
+              "J6T CSH RWD": "All-Terrain 8+1 Drive Modes",
+              "J6T CSH iWD": "All-Terrain 8+1 Drive Modes"
+            }
+          },
+          {
+            "name": "Tank Turn Function",
+            "values": {
+              "J6T CSH RWD": "Not Available",
+              "J6T CSH iWD": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "id": "interior",
+        "title": "Interior",
+        "items": [
+          {
+            "name": "Head Unit",
+            "values": {
+              "J6T CSH RWD": "15.6\" Touch Screen",
+              "J6T CSH iWD": "15.6\" Touch Screen"
+            }
+          },
+          {
+            "name": "Speakers",
+            "values": {
+              "J6T CSH RWD": "12 Speakers",
+              "J6T CSH iWD": "12 Speakers"
+            }
+          },
+          {
+            "name": "Multi-Color Ambient Light",
+            "values": {
+              "J6T CSH RWD": "Available",
+              "J6T CSH iWD": "Available"
+            }
+          },
+          {
+            "name": "Cabin Concept",
+            "values": {
+              "J6T CSH RWD": "Rubik Cube Multi Dimensional",
+              "J6T CSH iWD": "Rubik Cube Multi Dimensional"
+            }
+          },
+          {
+            "name": "Second Row Seat Recline",
+            "values": {
+              "J6T CSH RWD": "Available",
+              "J6T CSH iWD": "Available"
+            }
+          },
+          {
+            "name": "V2L (Vehicle-to-Load)",
+            "values": {
+              "J6T CSH RWD": "6 kW",
+              "J6T CSH iWD": "6 kW"
+            }
+          }
+        ]
+      },
+      {
+        "id": "safety",
+        "title": "Safety",
+        "items": [
+          {
+            "name": "Airbag",
+            "values": {
+              "J6T CSH RWD": "6 Airbags",
+              "J6T CSH iWD": "6 Airbags"
+            }
+          },
+          {
+            "name": "ADAS Functions",
+            "values": {
+              "J6T CSH RWD": "15 Functions",
+              "J6T CSH iWD": "15 Functions"
+            }
+          },
+          {
+            "name": "Body Structure",
+            "values": {
+              "J6T CSH RWD": "Aluminum Alloy Body",
+              "J6T CSH iWD": "Aluminum Alloy Body"
+            }
+          },
+          {
+            "name": "Battery Protection",
+            "values": {
+              "J6T CSH RWD": "Sandwich Structure Protection",
+              "J6T CSH iWD": "Sandwich Structure Protection"
+            }
+          }
+        ]
+      }
+    ]
+  },
   "tiggo-9-csh": {
     "carId": "tiggo-9-csh",
     "carName": "TIGGO 9 CSH",
