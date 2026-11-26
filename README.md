@@ -3,7 +3,7 @@
 Website Company Profile & Katalog Digital Interaktif untuk **Dealer Resmi Chery Salatiga**, Jawa Tengah.  
 Menampilkan lini produk kendaraan Chery terbaru (BEV, CSH / Super Hybrid, dan ICE) dengan pengalaman visual modern, responsif, dan terintegrasi langsung dengan layanan dealer.
 
-🌐 **Website:** [https://cherysalatiga.id](https://cherysalatiga.id)
+🌐 **Website:** [https://www.cherysalatiga.com/](https://www.cherysalatiga.com/)
 
 ---
 
