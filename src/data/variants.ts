@@ -178,7 +178,7 @@ export const CAR_VARIANTS_MAP: Record<string, CarVariantCard[]> = {
     {
       "name": "J6T CSH RWD",
       "trim": "J6T CSH RWD",
-      "price": "Rp 549.900.000",
+      "price": "Rp 564.900.000",
       "image": "https://cheryidn.sgp1.cdn.digitaloceanspaces.com/prod/j6/j6t-rwd.png",
       "badge": "TERSEDIA",
       "engine": "1.5 TGDI Range Extender (REEV)",
